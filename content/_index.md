@@ -5,6 +5,6 @@ template = "index.html"
 
 ## Hello!
 
-I'm Ben. I like to tour through random technology, and I keep notes to myself at my [blog](./blog/)! I'm a Christian (Micah 6:8 is my most recent favorite verse), I like to hike, and I just got married!
+I'm Ben. I like to tour through random technology, and I keep notes to myself at my [blog](./blog/)! I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, and I just got married!
 
 ![Me and Jenny at the beach](Ben-Jen-at-beach.jpg)

@@ -1,10 +1,16 @@
-from staticsite.md
+# My Site!
+
+Really liking Zola! I can build this locally with `zola serve`!
 
 # TODO
 
-- turn root page into about me and link to blog
-- switch from zola branch to master branch in netlify, update config.toml with www instead of zola and push...
-- get zola instead of master - see https://stackoverflow.com/a/2862938/2958070
+- add create_post script
+- Site Analytics - https://github.com/piratepx/app
+- Get search working (put in home page)
+- RSS feed
+- TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
+- Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
+- Use page.relative_path to add "Edit on Github" link (wish I could use current_path)
 
 # Done
 
@@ -22,43 +28,3 @@ from staticsite.md
 - Is code CSS not working anymore? It looks like it's using a zola built-in one. Rm the original CSS
 - port /img/favicon/... images (not sure where they're needed?)
 - Push to netlify!
-
-# TODO later
-
-- Get search working (put in home page)
-- RSS feed
-- Site analytics - https://github.com/piratepx/app
-- TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
-- Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
-
-# View Page Source
-
-Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
-I want to be able to add links to edit pages on GitHub
-
-I can use page.relative_path for this! https://www.getzola.org/documentation/templates/pages-sections/
-
-root:
-    http://127.0.0.1:1111/
-    ./content/_index.md
-    https://github.com/bbkane/bbkane.github.io/blob/zola/content/_index.md
-section:
-    http://127.0.0.1:1111/blog
-    ./content/blog/_index.md
-    https://github.com/bbkane/bbkane.github.io/blob/zola/content/blog/_index.md
-Text post:
-    http://127.0.0.1:1111/blog/sad-work-from-home-meals/
-    ./content/blog/Sad-Work-from-home-Meals.md
-Img Post:
-    http://127.0.0.1:1111/blog/my-workstation/
-    ./content/blog/My-Workstation/index.md
-
-From https://www.getzola.org/documentation/templates/overview/ - the only thing available is the current_path for all pages.
-
-I don't see anything for it in
-https://www.getzola.org/documentation/content/page/ either. This doesn't appear
-possible without manually adding metadata in each page. I'm going to abandon it
-and maybe propose a "page.filepath" once I've implemented sorting by updated.
-
----
-done with 
