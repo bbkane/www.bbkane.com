@@ -5,7 +5,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 # TODO
 
 - add create_post script
-- Site Analytics - https://github.com/piratepx/app
+- Site Analytics - https://github.com/piratepx/app , https://counter.dev/ , https://www.goatcounter.com/
 - Get search working (put in home page)
 - RSS feed
 - TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
