@@ -244,3 +244,11 @@ writer = csv.DictWriter(sys.stdout, fieldnames=Student._fields)
 writer.writeheader()
 writer.writerows([s._asdict() for s in students])
 ```
+
+## Executing a subprocess and capturing the output as text
+
+```python
+from subprocess import run
+
+res = run(["echo", "hi"], capture_output=True, encoding="utf-8", text=True)
+```
