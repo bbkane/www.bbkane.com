@@ -11,6 +11,8 @@ Really liking Zola! I can build this locally with `zola serve`!
 - TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
 - Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
 - Use page.relative_path to add "Edit on Github" link (wish I could use current_path)
+- Get twitter, reddit, LI pipeline
+- fix blog up with mozilla
 
 # Done
 
