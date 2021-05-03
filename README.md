@@ -5,14 +5,12 @@ Really liking Zola! I can build this locally with `zola serve`!
 # TODO
 
 - add create_post script
-- Site Analytics - https://github.com/piratepx/app , https://counter.dev/ , https://www.goatcounter.com/
 - Get search working (put in home page)
-- RSS feed
 - TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
 - Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
 - Use page.relative_path to add "Edit on Github" link (wish I could use current_path)
 - Get twitter, reddit, LI pipeline
-- fix blog up with mozilla
+- fix blog up with mozilla - https://observatory.mozilla.org/analyze/bbkane.com
 
 # Done
 
@@ -30,3 +28,5 @@ Really liking Zola! I can build this locally with `zola serve`!
 - Is code CSS not working anymore? It looks like it's using a zola built-in one. Rm the original CSS
 - port /img/favicon/... images (not sure where they're needed?)
 - Push to netlify!
+- Site Analytics - https://github.com/piratepx/app , https://counter.dev/ , https://www.goatcounter.com/
+- RSS feed
