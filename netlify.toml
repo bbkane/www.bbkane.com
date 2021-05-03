@@ -23,4 +23,4 @@ command = "zola build --base-url $DEPLOY_PRIME_URL"
     # https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
     Permissions-Policy = "interest-cohort=()"
     # https://infosec.mozilla.org/guidelines/web_security#content-security-policy
-    Content-Security-Policy: default-src https:; object-src 'none'
+    Content-Security-Policy = "default-src https:; object-src 'none'"
