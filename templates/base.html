@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="/assets/css/ie.css">
     <![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  {% block rss %}
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+  {% endblock %}
 </head>
 
 <!-- <body>
@@ -50,8 +53,8 @@
         </span>
         <span class="credits left">Site:
           <a href="{{ config.extra.site_github_repo_url }}">Repo</a> |
-          <a href="{{ config.extra.site_goatcounter_url }}">GoatCounter</a> |
-          <a href="{{ config.extra.site_counter_dev_url }}">Counter.dev</a>
+          <a href="/blog/">Blog</a> |
+          <a href="/atom.xml">RSS</a>
         </span>
       </div>
 

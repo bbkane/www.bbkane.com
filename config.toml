@@ -2,6 +2,7 @@
 base_url = "https://www.bbkane.com/"
 title = "Ben's Corner"
 generate_feed = true
+feed_filename = "atom.xml"
 minify_html = false
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -19,9 +20,6 @@ highlight_code = true
 # Put all your custom variables here
 
 github_url = "https://github.com/bbkane"
-google_analytics = "UA-89444199-1"
 linkedin_url = "https://www.linkedin.com/in/benjamin-kane"
-site_counter_dev_url = "https://counter.dev/dashboard.html?user=bbkane&token=MEzACRAJKeLPGaij"
 site_github_repo_url = "https://github.com/bbkane/www.bbkane.com"
-site_goatcounter_url = "https://www-bbkane-com.goatcounter.com/"
 stackoverflow_url = "https://stackoverflow.com/users/2958070/ben"
