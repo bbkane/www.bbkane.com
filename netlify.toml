@@ -20,7 +20,18 @@ command = "zola build --base-url $DEPLOY_PRIME_URL"
 [[headers]]
   for = "/*"
   [headers.values]
+    # https://infosec.mozilla.org/guidelines/web_security#content-security-policy
+    # NOTE: this is probably blocking counter.dev - turn that into a src script?
+    Content-Security-Policy = "default-src https:; frame-ancestors 'none'; object-src 'none'"
+
     # https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
     Permissions-Policy = "interest-cohort=()"
-    # https://infosec.mozilla.org/guidelines/web_security#content-security-policy
-    Content-Security-Policy = "default-src https:; object-src 'none'"
+
+    # https://infosec.mozilla.org/guidelines/web_security#x-content-type-options
+    X-Content-Type-Options = "nosniff"
+
+    # https://infosec.mozilla.org/guidelines/web_security#x-frame-options
+    X-Frame-Options = "DENY"
+
+    # https://infosec.mozilla.org/guidelines/web_security#x-xss-protection
+    X-XSS-Protection = "1; mode=block"
