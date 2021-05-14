@@ -37,3 +37,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 - learn SSL
 - DB Client Bakeoff
 - Markdown Client Bakeoff
+- CLI lib bakeoff
+- Output Isomorphism (sugarkane)
+- Go for small CLI apps
+- Favorite android apps/mac apps
