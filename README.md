@@ -30,3 +30,10 @@ Really liking Zola! I can build this locally with `zola serve`!
 - Push to netlify!
 - Site Analytics - https://github.com/piratepx/app , https://counter.dev/ , https://www.goatcounter.com/
 - RSS feed
+
+# Blog Post Ideas
+
+- json vs dhall (functional) vs jsonnet (OO) vs CUE (graph)
+- learn SSL
+- DB Client Bakeoff
+- Markdown Client Bakeoff
