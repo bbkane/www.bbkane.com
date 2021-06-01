@@ -41,3 +41,8 @@ Really liking Zola! I can build this locally with `zola serve`!
 - Output Isomorphism (sugarkane)
 - Go for small CLI apps
 - Favorite android apps/mac apps
+- useful perl switches
+  - https://stackoverflow.com/a/6302045/2958070
+  - https://stackoverflow.com/a/37390329/2958070
+  - https://perl101.org/command-line-switches.html
+  - go-jira config
