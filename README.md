@@ -46,3 +46,9 @@ Really liking Zola! I can build this locally with `zola serve`!
   - https://stackoverflow.com/a/37390329/2958070
   - https://perl101.org/command-line-switches.html
   - go-jira config
+- diagrams
+  - https://excalidraw.com/
+  - https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid
+  - https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+  - https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio
+  - https://typora.io/
