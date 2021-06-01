@@ -30,6 +30,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 - Push to netlify!
 - Site Analytics - https://github.com/piratepx/app , https://counter.dev/ , https://www.goatcounter.com/
 - RSS feed
+- Make your Go project easy to install: https://github.com/a-h/templ/issues/10
 
 # Blog Post Ideas
 
