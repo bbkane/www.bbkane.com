@@ -35,7 +35,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 # Blog Post Ideas
 
 - json vs dhall (functional) vs jsonnet (OO) vs CUE (graph)
-- learn SSL
+- SSL CSR post - https://gist.github.com/bbkane/900c8e3f74da2ae5e123e94a1b2bb695
 - DB Client Bakeoff
 - Markdown Client Bakeoff
 - CLI lib bakeoff
