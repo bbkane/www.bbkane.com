@@ -1,15 +1,14 @@
 +++
 title = "Creating an OpenSSL CSR"
 date = 2021-06-12
-
 +++
 
 If you want to make a TLS certicate, you need a Certificate Signing Request (CSR). Let's make one! I've verified that this produces a CSR suitable for pasting into DigiCert to get a certificate.
 
 Making one isn't too bad if you use a config file. The following posts were super helpful when I was googling this:
 
-- https://geekflare.com/san-ssl-certificate/
-- https://www.golinuxcloud.com/openssl-subject-alternative-name/
+- [Know about SAN Certificate and How to Create With OpenSSL ](https://geekflare.com/san-ssl-certificate/)
+- [Steps to generate CSR for SAN certificate with openssl](https://www.golinuxcloud.com/openssl-subject-alternative-name/)
 
 ## Config file
 
@@ -95,4 +94,3 @@ To test that this method and has all the information needed to create a DigiCert
 - Headed to [https://www.audiobubbly.com](https://www.audiobubbly.com) to load the site.
 
 On a whim I **REVOKED** the certificate and headed to [SSL Labs](https://www.ssllabs.com/ssltest/) to see what happened. Yup. Things looked pretty secure, except my certificate got an "F" for being revoked. Interestingly, my browser still trusts the cert. I thought it might be a cache issue from before I revoked the cert, so I tried to load the site on my phone browser and it also worked just fine...
-
