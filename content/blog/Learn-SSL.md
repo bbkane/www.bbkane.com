@@ -78,3 +78,13 @@ LetsEncrypt also has an OpenSSL oneliner to create a self-signed cert that also 
 ### Miscellaneous
 
 [Google Chrome's docs on Certificate Transparency](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/net/docs/certificate-transparency.md)
+
+## Libraries to work with SSL
+
+Citing note: I'm copying most of these descriptions from the preceding links :)
+
+- Multi-language: [certifi](https://github.com/certifi) - A carefully curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. [google/tink](https://github.com/google/tink) appears to offer crypto primittives, but I haven't tried it.
+- Python: [cryptography](https://cryptography.io/en/latest/) - `cryptography` includes both high level recipes and low level interfaces to common cryptographic algorithms such as symmetric ciphers, message digests, and key derivation functions.
+- Go: [crypto/tls](https://golang.org/pkg/crypto/tls/) - Go's standard library actually has some really good functionality for TLS
+- Java: [bouncycastle](https://www.bouncycastle.org/) - I haven't personally used this one, but a colleague found it and it seems to work for them.
+- Rust: [ctz/rustls](https://github.com/ctz/rustls) - One of these days I'll learn Rust, and when I do, I'll use `rustls` for the TLS.
