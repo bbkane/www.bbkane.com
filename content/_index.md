@@ -15,7 +15,9 @@ Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](http
 
 ### Words that define me
 
-Several months ago, a colleague suggested I boil down my ambitions into 5 words (thanks Jon!!). Here are the top three I haven't been able to displace:
+Several months ago, a colleague suggested I boil down my ambitions into 5 words (thanks Jon!!). Here are the top three I haven't been able to displace.
+
+I want to:
 
 - [Love](https://www.biblegateway.com/passage/?search=Matthew%2022%3A36-40&version=KJV)
 - Improve
