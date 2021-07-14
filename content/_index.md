@@ -19,9 +19,9 @@ Several months ago, a colleague suggested I boil down my ambitions into 5 words 
 
 I want to:
 
-- [Love](https://www.biblegateway.com/passage/?search=Matthew%2022%3A36-40&version=KJV)
-- Improve
-- Enjoy
+- [Love](https://www.biblegateway.com/passage/?search=Matthew%2022%3A36-40&version=KJV) (people (especially my wife!!!!) and God. I want to help folks and not keep grudges)
+- Improve (myself/others/projects)
+- Enjoy (life! I need to make time to do interesting things with people I love)
 
 ![Us at the Beach](Ben-Jen-at-beach.jpg)
 
