@@ -11,6 +11,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 - Use page.relative_path to add "Edit on Github" link (wish I could use current_path)
 - Get twitter, reddit, LI pipeline
 - fix blog up with mozilla - https://observatory.mozilla.org/analyze/bbkane.com
+- https://ogp.me/ - add this to posts?
 
 # Done
 
