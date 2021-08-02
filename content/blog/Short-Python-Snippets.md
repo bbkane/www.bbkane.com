@@ -252,3 +252,15 @@ from subprocess import run
 
 res = run(["echo", "hi"], capture_output=True, encoding="utf-8", text=True)
 ```
+
+## Useful f-strings
+
+```python
+a = "bob"
+
+print(f"{a}")  # bob
+print(f"{a!r}")  # 'bob'
+print(f"{a=}")  # a='bob'
+print(f"{a = }")  # a = 'bob'
+```
+
