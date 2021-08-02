@@ -10,14 +10,14 @@ Here's my naming standard:
 All non-name-limited Azure resources attempt to use the following standard:
 
 ```
-[project]-[part...]-[resource-type]-[env]-[owner]
+[project]-[part...]-[resource-type]-[env]-[client]
 ```
 
 - `[project]` : the overarching name of the project -  Example: `mywebapp` for some webapp
 - `[part...]` : project-specific dash-delimited words. For example, instance number, or location code, or subpart. - Example: `admin`, `admin-wus2-01`. If the project is simple enough to not have parts, just use `01`
 - `[resource-type]` : short resource type abbreviation - Example: `kv` for Key Vault. There is in incomplete list of abbreviations [here](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - `[env]` : One of `dev`, `test`, `prod`
-- `[owner]`: Owner of the project - Example: `bbk`. Useful to ensure globally unique names or to stand up instances of the same project for different owners
+- `[client]`: Owner of the project - Example: `bbk` (short for my org, bbkane.com) . Useful to ensure globally unique names or to stand up instances of the same project for different clients
 
 Some resources have name limitations. For example, storage account names must be globally unique, can only use alpha-numeric characters, and are limited to 24 characters in length. These resource types should “do their best” to follow the standard.
 
