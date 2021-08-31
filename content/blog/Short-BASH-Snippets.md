@@ -198,9 +198,22 @@ done
 
 Not a Bash snippet, but useful nonetheless :) . From [SuperUser](https://superuser.com/a/877181/643441)
 
-```
+```bash
 for d (www.linkedin.com www.reddit.com www.google.com) {
     dig +short +noshort "$d"
 }
+```
+
+## Diff everything in a directory!
+
+Consider doing a git clean before this:
+
+```bash
+git clean -xd --dry-run
+git clean -xd --force
+```
+
+```bash
+diff -qr -x '.git' folder1/ folder2/
 ```
 
