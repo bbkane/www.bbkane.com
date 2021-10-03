@@ -211,7 +211,7 @@ ok  	command-line-arguments	0.096s
 
 Code examples can be added to tests and also show up in the docs! See [the Go blog](https://go.dev/blog/examples) for more details, or see my example below:
 
-```
+```go
 package main_test
 
 import "fmt"
