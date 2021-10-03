@@ -156,12 +156,13 @@ func TestWrite(t *testing.T) {
 	if *update {
 		mkdirErr := os.MkdirAll("testdata", 0700)
 		require.Nil(t, mkdirErr)
-		ioutil.WriteFile(golden, actualBuffer.Bytes(), 0600)
+		writeErr := ioutil.WriteFile(golden, actualBuffer.Bytes(), 0600)
+		require.Nil(t, writeErr)
 		t.Logf("Wrote: %v\n", golden)
 	}
 
-	expectedBytes, expectedErr := ioutil.ReadFile(golden)
-	require.Nil(t, expectedErr)
+	expectedBytes, readErr := ioutil.ReadFile(golden)
+	require.Nil(t, readErr)
 
 	require.Equal(t, expectedBytes, actualBuffer.Bytes())
 }
