@@ -48,7 +48,7 @@ This method even preserves clickable links
 1. Export to SVG: `plantuml -tsvg <name>`.
 2. Paste text into *HTML* macro in Confluence.
 
-As an altarnative, also consider [Mermaid](https://mermaid-js.github.io/mermaid/#/). It has [Typora](https://typora.io/) support as well as VS Code plugins. I don't personally use it because PlantUML covers most of my needs, but it looks super nice!
+As an altarnative, also consider [Mermaid](https://mermaid-js.github.io/mermaid/#/). It has [Typora](https://typora.io/) support as well as [VS Code plugins](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid). I don't personally use it because PlantUML covers most of my needs, but it looks super nice!
 
 ## graphviz
 

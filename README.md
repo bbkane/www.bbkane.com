@@ -36,21 +36,9 @@ Really liking Zola! I can build this locally with `zola serve`!
 # Blog Post Ideas
 
 - json vs dhall (functional) vs jsonnet (OO) vs CUE (graph)
-- SSL CSR post - https://gist.github.com/bbkane/900c8e3f74da2ae5e123e94a1b2bb695
-- DB Client Bakeoff
-- Markdown Client Bakeoff
-- CLI lib bakeoff
-- Output Isomorphism (sugarkane)
-- Go for small CLI apps
 - Favorite android apps/mac apps
 - useful perl switches
   - https://stackoverflow.com/a/6302045/2958070
   - https://stackoverflow.com/a/37390329/2958070
   - https://perl101.org/command-line-switches.html
   - go-jira config
-- diagrams
-  - https://excalidraw.com/
-  - https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid
-  - https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
-  - https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio
-  - https://typora.io/
