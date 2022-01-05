@@ -63,7 +63,14 @@ brew install azure-functions-core-tools@4
 
 I'm going to start in the `terraform/` directory with a single `main.tf` file. As the project grows it can be helpful to split these files up, but for now I find it least confusing to have all needed parts in one directory.
 
-Let's start with the providers we're going to need. I have the `version` parts commented out because I want to use the latest. Once I have this in prod, I'll uncomment these and add version constraints
+Let's start with the providers we're going to need. I have the `version` parts commented out because I want to use the latest versions while developing. Once this code is in prod, it's important to lock down versions so things don't break behind your back.
+
+I'm also directly putting my subscription ID directly in the code. A potentially better option is to put this information in your environment and let Terraform read from that. Then, if a colleage wants to use your code, they only need to set an environment variable instead of change the code. Similarly, Terraform provides lots of ways to [set variables](https://www.terraform.io/language/values/variables#assigning-values-to-root-module-variables) and most of them are more appropriate (but a tad less simple) then embedding the values directly in the code.
+
+```
+export ARM_SUBSCRIPTION_ID=<your subscription id>
+```
+
 
 ```terraform
 terraform {
@@ -83,17 +90,18 @@ terraform {
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 provider "azurerm" {
   # export ARM_SUBSCRIPTION_ID=...
-  subscription_id = "<My subscription ID>"
+  # subscription_id = "<My subscription ID>"
   features {}
 }
 
 variable "azure_ad_tenant_id" {
   type    = string
+  # export TF_VAR_tenant_id=...
   default = "<My tenant ID>"
 }
 ```
 
-Next step is to add some variables I use in all my projects so I get [consistent naming](https://www.bbkane.com/blog/azure-resource-naming/):
+Next step is to add some variables I use in all my projects so I get [consistent naming](https://www.bbkane.com/blog/azure-resource-naming/). Once again, see [the docs](https://www.terraform.io/language/values/variables#assigning-values-to-root-module-variables) for other ways to set variables.
 
 ```terraform
 variable "env" {
