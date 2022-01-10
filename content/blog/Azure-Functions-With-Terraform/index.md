@@ -303,7 +303,7 @@ The first lines are pretty self-explanatory - we give it a name, location, blah 
 
 The `app_settings` block is interesting. In the top part, we're setting up some settings for the function worker runtime to look at - where to send app insights, the code we'll be using, and the authentication secret for our ad app we just created. the `WEBSITE_RUN_FROM_PACKAGE` variable is changed every time we upload new code, so we set it to an empty string, and, in the bottom `lifecycle` block ignore it. Afterward, we set some settings for our code to look at - essentially the information we need to create a Key Vault.
 
-I don't completely understand the `auth_settings` block, but it lest users in our tenant log into the our app.
+I don't completely understand the `auth_settings` block, but it lets users in our tenant log into the our app.
 
 Interestingly, we're also assigning *another* identity to this function in the `identity` block - a system assigned one. This is the identity our function app will use to create Key Vaults. A reasonable question you might ask is "why can't our app just have one identity?". The answer is least privilege - we have to manage the state of the registered app we created. The password might leak or expire. We want to use that identity as little as possible. The System Assigned Identity, however is managed by Azure and tied to the lifecycle of our function resource. We don't even know its password, and we certainly can't lose it. However, users can't authenticate to a System Assigned Identity, and we need that. So we have to use the less secure registered app for users to authenticate to, then pivot to the System Assigned Identity to do as much of the real work as we can.
 
