@@ -444,13 +444,13 @@ createkv_function_app_name = "concert-createkv-fa-dev-bbk"
 
 When we head to the hostname in a browser ( https://concert-createkv-fa-dev-bbk.azurewebsites.net ), it makes me log in and then shows me the hello world screen:
 
-![image-20211213154406105](index.assets/image-20211213154406105.png)
+![image-20211213154406105](./image-20211213154406105.png)
 
-![image-20211213154430320](index.assets/image-20211213154430320.png)
+![image-20211213154430320](./image-20211213154430320.png)
 
 Hooray! Let's check the monitoring we laboriously set up.
 
-![image-20211213154849861](index.assets/image-20211213154849861.png)
+![image-20211213154849861](./image-20211213154849861.png)
 
 Fun times - we're not seeing any hits, and it's been deprecated! Let's check it after we upload some code. I didn't realize this resource has been deprecated, which is annoying, but that's life when you depend on a cloud provider for your infrastructure ([see this hilarious and sad Google Cloud article](https://steve-yegge.medium.com/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc)). I'm running into a similar deprecation issue with Azure AD (see "Open Questions" at the end of this post). 
 
@@ -983,7 +983,7 @@ We can run this function locally and upload and remotely the same way we ran the
 
 Heading to http://localhost:7071/api/createkv shows an error message, exactly as we expect it to.
 
-![image-20211221111238346](index.assets/image-20211221111238346.png)
+![image-20211221111238346](./image-20211221111238346.png)
 
 Heading to http://localhost:7071/api/createkv?owning_group_object_id=UUID_HERE&keyvault_name=kv2021-12-21 shows the created Key Vault!
 
@@ -997,11 +997,11 @@ $ func azure functionapp publish concert-createkv-fa-dev-bbk
 
 We can find logs in the "Logs" tab of the Log Analytics workspace we created ( `concert-all-law-dev-bbk`). For example, we grab an invocation ID and see the logs for it:
 
-![image-20211222093350248](index.assets/image-20211222093350248.png)
+![image-20211222093350248](./image-20211222093350248.png)
 
 We can see metrics in the Application Insights: 
 
-![image-20211222093710640](index.assets/image-20211222093710640.png)
+![image-20211222093710640](./image-20211222093710640.png)
 
 As mentioned before, there's that worrisome deprecation message. I haven't had time to investigate what needs to change in Terraform to fix that.
 
@@ -1019,7 +1019,7 @@ It looks like the Graph RBAC is [deprecated](https://docs.microsoft.com/en-us/py
 
 How do I get just the Azure AD groups for a signed-in user? Something with the [token store](https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization#token-store)? Also, it looks like the MS Graph API returns [other types of groups than Azure AD groups](https://docs.microsoft.com/en-us/graph/api/group-list?view=graph-rest-1.0&tabs=http)?
 
-![image-20211222095815776](index.assets/image-20211222095815776.png)
+![image-20211222095815776](./image-20211222095815776.png)
 
 How do I just get AD groups? What does” including but not limited to Microsoft 365 groups” mean? 
 
