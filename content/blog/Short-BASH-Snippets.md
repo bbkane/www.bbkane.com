@@ -216,4 +216,10 @@ git clean -xd --force
 ```bash
 diff -qr -x '.git' folder1/ folder2/
 ```
+## Customize `dig`
 
+Unfortunately, there's no way to use multiple name servers
+
+```bash
+dig +noall +answer +question +identify @dns2.p09.nsone.net. -q linkedin.com -t ns -q linkedin.com -t a```
+```
