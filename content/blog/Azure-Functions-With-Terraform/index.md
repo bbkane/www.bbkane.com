@@ -5,7 +5,9 @@ date = 2021-12-13
 
 Over the last several months, I've been prototyping with Azure Functions and Terraform when I have time. Ideally, I see Azure Functions as a great way to manipulate Azure resources in response to events. Azure Functions are just plain code, so they are familiar to write and can use the Azure SDK, but they're also native Azure resources, so they can use managed identities and hook up to Azure monitoring solutions. In practice, I've run into several papercuts that impede this vision, but I think I've found solutions or workarounds to most problems.
 
-I want to thank my manager Tom for allowing me to post what I've learned doing this work for LinkedIn (which, disclaimer, is owned by Microsoft) on my personal blog, and everyone who's helped me along the way - blog post authors (especially [Max Ivanov](https://www.maxivanov.io/deploy-azure-functions-with-terraform/)), the Azure team (especially on the public [microsoft-python discord](https://discord.com/invite/b8YJQPx)), and Microsoft documentation authors.
+Disclaimer: I'm a Microsoft employee (through my employment at LinkedIn). This post contains my personal opinions, not those of my employer.
+
+I want to thank my manager Tom for allowing me to post what I've learned doing this work for LinkedIn on my personal blog, and everyone who's helped me along the way - blog post authors (especially [Max Ivanov](https://www.maxivanov.io/deploy-azure-functions-with-terraform/)), the Azure team (especially on the public [microsoft-python discord](https://discord.com/invite/b8YJQPx)), and Microsoft documentation authors.
 
 ## Goal
 
