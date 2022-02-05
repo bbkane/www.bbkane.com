@@ -3,13 +3,13 @@ title = "Azure Functions With Terraform"
 date = 2021-12-13
 +++
 
-Over the last several months, I've been prototyping with Azure Functions and Terraform. Ideally, I see Azure Functions as a great way to manipulate Azure resources in response to events. Azure Functions are just plain code, so they are familiar to write and can use the Azure SDK, but they're also native Azure resources, so they can use managed identities and hook up to Azure monitoring resoruces. In practice, I've run into several papercuts that impede this vision, but I think I've found solutions or workarounds to most problems.
+Over the last several months, I've been prototyping with Azure Functions and Terraform when I have time. Ideally, I see Azure Functions as a great way to manipulate Azure resources in response to events. Azure Functions are just plain code, so they are familiar to write and can use the Azure SDK, but they're also native Azure resources, so they can use managed identities and hook up to Azure monitoring solutions. In practice, I've run into several papercuts that impede this vision, but I think I've found solutions or workarounds to most problems.
 
-I want to thank my manager Tom for allowing me to post what I've learned doing this work for LinkedIn on my personal blog, and everyone who's helped me along the way - blog post authors (especially [Max Ivanov](https://www.maxivanov.io/deploy-azure-functions-with-terraform/)), the Azure team (especially on the public [microsoft-python discord](https://discord.com/invite/b8YJQPx)), and Microsoft documentation authors.
+I want to thank my manager Tom for allowing me to post what I've learned doing this work for LinkedIn (which, disclaimer, is owned by Microsoft) on my personal blog, and everyone who's helped me along the way - blog post authors (especially [Max Ivanov](https://www.maxivanov.io/deploy-azure-functions-with-terraform/)), the Azure team (especially on the public [microsoft-python discord](https://discord.com/invite/b8YJQPx)), and Microsoft documentation authors.
 
 ## Goal
 
-My goal here is to create an Azure Function that creates an Azure Key Vault when a member of my organization clicks a link. This Azure Function should be: 
+My goal here is to create an Azure Function that creates an Azure Key Vault when a member of my organization clicks a link. This Azure Function should be:
 
 - easy to develop (IDE support) and run locally
 - defined by code so I can reproduce it easily in dev/test/prod environments
@@ -299,7 +299,7 @@ resource "azuread_application_password" "createkv_ad_app_pass" {
 
 ### The Function App
 
-The first lines are pretty self-explanatory - we give it a name, location, blah blah blah. 
+The first lines are pretty self-explanatory - we give it a name, location, blah blah blah.
 
 The `app_settings` block is interesting. In the top part, we're setting up some settings for the function worker runtime to look at - where to send app insights, the code we'll be using, and the authentication secret for our ad app we just created. the `WEBSITE_RUN_FROM_PACKAGE` variable is changed every time we upload new code, so we set it to an empty string, and, in the bottom `lifecycle` block ignore it. Afterward, we set some settings for our code to look at - essentially the information we need to create a Key Vault.
 
@@ -452,7 +452,7 @@ Hooray! Let's check the monitoring we laboriously set up.
 
 ![image-20211213154849861](./image-20211213154849861.png)
 
-Fun times - we're not seeing any hits, and it's been deprecated! Let's check it after we upload some code. I didn't realize this resource has been deprecated, which is annoying, but that's life when you depend on a cloud provider for your infrastructure ([see this hilarious and sad Google Cloud article](https://steve-yegge.medium.com/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc)). I'm running into a similar deprecation issue with Azure AD (see "Open Questions" at the end of this post). 
+Fun times - we're not seeing any hits, and it's been deprecated! Let's check it after we upload some code. I didn't realize this resource has been deprecated, which is annoying, but that's life when you depend on a cloud provider for your infrastructure ([see this hilarious and sad Google Cloud article](https://steve-yegge.medium.com/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc)). I'm running into a similar deprecation issue with Azure AD (see "Open Questions" at the end of this post).
 
 ## Generate Hello World Python Code
 
@@ -566,7 +566,7 @@ This file is created automatically with `func init`, but that command also creat
 
 Creating a function with this tool always creates files with `\r\n` line endings (the default on Windows). I work primarily on Mac and Linux, so I use `\n` line endings wherever I can. I opened [this issue](https://github.com/Azure/azure-functions-core-tools/issues/2673) and maybe someday it'll be fixed.
 
-Here's a [manual fix](https://stackoverflow.com/a/54759625/2958070) to change the files tracked by `git` (which excludes binary files and things in the `.git/` directory): 
+Here's a [manual fix](https://stackoverflow.com/a/54759625/2958070) to change the files tracked by `git` (which excludes binary files and things in the `.git/` directory):
 
 ```
 $ git ls-files -z | xargs -0 dos2unix
@@ -999,7 +999,7 @@ We can find logs in the "Logs" tab of the Log Analytics workspace we created ( `
 
 ![image-20211222093350248](./image-20211222093350248.png)
 
-We can see metrics in the Application Insights: 
+We can see metrics in the Application Insights:
 
 ![image-20211222093710640](./image-20211222093710640.png)
 
@@ -1021,7 +1021,7 @@ How do I get just the Azure AD groups for a signed-in user? Something with the [
 
 ![image-20211222095815776](./image-20211222095815776.png)
 
-How do I just get AD groups? What does” including but not limited to Microsoft 365 groups” mean? 
+How do I just get AD groups? What does” including but not limited to Microsoft 365 groups” mean?
 
 ---
 
