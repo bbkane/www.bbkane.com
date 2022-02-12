@@ -4,12 +4,10 @@ Really liking Zola! I can build this locally with `zola serve`!
 
 # TODO
 
-- add create_post script
 - Get search working (put in home page)
 - TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
 - Get "view page source" on GitHub - see https://tera.netlify.app/docs/#macros for macros
 - Use page.relative_path to add "Edit on Github" link (wish I could use current_path)
-- Get twitter, reddit, LI pipeline
 - fix blog up with mozilla - https://observatory.mozilla.org/analyze/bbkane.com
 - https://ogp.me/ - add this to posts?
 
@@ -41,4 +39,3 @@ Really liking Zola! I can build this locally with `zola serve`!
   - https://stackoverflow.com/a/6302045/2958070
   - https://stackoverflow.com/a/37390329/2958070
   - https://perl101.org/command-line-switches.html
-  - go-jira config

@@ -45,20 +45,20 @@ Then reboot.
 
 When you're back, make a profile if there isn't one:
 
-```posh
+```powershell
 New-Item -Path $PROFILE -ItemType file
 ```
 
 Open it:
 
-```posh
+```powershell
 notepad $PROFILE
 ```
 
 
 Copy the following things into it (these are from [my profile](https://github.com/bbkane/backup/blob/master/windows/Microsoft.PowerShell_profile.ps1):
 
-```posh
+```powershell
 function Install-PowerShellGoodies()
 {
 
@@ -72,14 +72,14 @@ function Install-PowerShellGoodies()
 
 Re-source your profile and run it:
 
-```posh
+```powershell
 . $PROFILE
 Install-PowerShellGoodies
 ```
 
 Finally, get a better console. I really like [ConEmu](https://conemu.github.io/)
 
-```posh
+```powershell
 # As admin:
 choco install conemu
 ```

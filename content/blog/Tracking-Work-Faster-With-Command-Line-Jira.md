@@ -1,8 +1,12 @@
 +++
-title = "Career Engineering By Tracking Work Faster With Command Line Jira"
+title = "Tracking Work Faster With Command Line Jira"
 date = 2021-01-30
 updated = 2021-02-11
-aliases = [ "2021/01/30/Career-Engineering-By-Tracking-Work-Faster-With-Command-Line-Jira.html" ]
+aliases = [ 
+    "2021/01/30/Career-Engineering-By-Tracking-Work-Faster-With-Command-Line-Jira.html",
+    "blog/career-engineering-by-tracking-work-faster-with-command-line-jira",
+    "blog/career-engineering-by-tracking-work-faster-with-command-line-jira/",
+]
 +++
 
 Thank you Matt Doar and Josiah Bradley for reviewing this post.
