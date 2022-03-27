@@ -11,7 +11,7 @@ I keep notes to myself at my [blog](/blog). Some posts are more polished and up 
 
 ## About me
 
-Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, and I just got married!
+Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and we're expecting our first child!
 
 ### Words that define me
 
