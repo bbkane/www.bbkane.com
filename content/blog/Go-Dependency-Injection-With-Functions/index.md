@@ -3,7 +3,7 @@ title = "Go Dependency Injection With Functions"
 date = 2022-02-24
 +++
 
-I'm writing [`warg`](https://github.com/bbkane/warg) to parse my CLI apps. In some cases, I want to be able to read an environmental variable into a data structure. I started doing this and it worked fine:
+I'm writing [warg](https://github.com/bbkane/warg) to parse my CLI apps. In some cases, I want to be able to read an environmental variable into a data structure. I started doing this and it worked fine:
 
 ```go
 func Work() {
