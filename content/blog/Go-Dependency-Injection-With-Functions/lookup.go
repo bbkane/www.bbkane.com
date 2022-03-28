@@ -7,7 +7,7 @@ import (
 
 // -- func
 
-type LookupFunc = func(key string) (string, bool)
+type LookupFunc func(key string) (string, bool)
 
 func DictLookup(m map[string]string) LookupFunc {
 	return func(key string) (string, bool) {

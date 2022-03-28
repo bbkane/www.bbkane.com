@@ -63,7 +63,7 @@ Can I do better? Actually, yes!
 Because I really only depend on the behavior of `os.LookupEnv`, I can declare a function type that matches `os.LookupEnv`'s arguments and return values, and depend on an instance of that type only. This means I don't need to wrap `os.LookupEnv` in a struct to use it - I can use `os.LookupEnv` directly and make each call site easier to read.
 
 ```go
-type LookupFunc = func(key string) (string, bool)
+type LookupFunc func(key string) (string, bool)
 
 func DictLookup(m map[string]string) LookupFunc {
 	return func(key string) (string, bool) {
@@ -93,4 +93,4 @@ Work(os.LookupEnv)
 
 Less code, and it's easier to read! Win!
 
-See a running example in [./lookup.go](./lookup.go) or the [Go Playground](https://go.dev/play/p/M8VzBIecxm4).
+See a running example in [./lookup.go](./lookup.go) or the [Go Playground](https://go.dev/play/p/YlOxokcJAf4).
