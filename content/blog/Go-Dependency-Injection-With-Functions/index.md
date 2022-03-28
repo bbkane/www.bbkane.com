@@ -13,11 +13,11 @@ func Work() {
 }
 ```
 
-Then I realized I needed to test this my code...
+Then I realized I needed to test my code...
 
 Code depending on the environment directly like this makes tests more difficult because the test results are now also dependent on whats in the environment. This is especially difficult when the tests are parallelized. What if another test removes this environmental variable while this test is testing for it?
 
-The classic and most obvious solution is to define an interface and two implementations - one that uses the environment, and one that lets me mock the environment, then paramaterize `Work` with that interface:
+The classic and most obvious solution is to define an interface and two implementations - one that uses the environment, and one that lets me mock the environment, then parameterize `Work` with that interface:
 
 ```go
 type EnvironLike interface {
@@ -50,7 +50,7 @@ Now I'm *injecting* the environment dependency instead of depending on it direct
 Work(DictEnviron(map[string]string{"USER": "me"}))
 ```
 
-And applicaton code can depend on the environemnt wrapper:
+And application code can depend on the environment wrapper:
 
 ```go
 Work(Environ{})
