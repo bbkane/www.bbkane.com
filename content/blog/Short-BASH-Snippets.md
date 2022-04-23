@@ -221,5 +221,18 @@ diff -qr -x '.git' folder1/ folder2/
 Unfortunately, there's no way to use multiple name servers
 
 ```bash
-dig +noall +answer +question +identify @dns2.p09.nsone.net. -q linkedin.com -t ns -q linkedin.com -t a```
+dig +noall +answer +question +identify @dns2.p09.nsone.net. -q linkedin.com -t ns -q linkedin.com -t a
 ```
+
+## Search and replace across files
+
+Most people use `sed` for this, but `sed` differs between MacOS and Linux. Taken from [StackOverflow](https://stackoverflow.com/a/27985566/2958070):
+
+```
+perl -pi -w -e 's/search/replace/g;' *.php
+```
+
+- -e means execute the following line of code.
+- -i means edit in-place
+- -w write warnings
+- -p loop
