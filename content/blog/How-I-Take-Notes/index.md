@@ -3,6 +3,11 @@ title = "How I Take Notes"
 date = 2022-02-11
 +++
 
+## Background
+
+This section is a little wordy... feel free to skip to
+[Requirements](#requirements) for the meat of this post.
+
 As an SRE, I work with a number of protocols, systems, and languages, but also
 get interrupted quite frequently to fix things, answer questions, fulfull
 requests, etc. This is fine, in fact generally I really enjoy helping people,
