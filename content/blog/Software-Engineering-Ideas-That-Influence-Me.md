@@ -97,6 +97,7 @@ imperative code with plain old data types.
   architectures but I really liked these talks.
 - [Against unnecessary databases](https://beepb00p.xyz/unnecessary-db.html) - This seems obvious in hindsight. However, I often get too eager to transform my data as I'm ingesting it and pay the price (difficult to understand, change, and test) later.
 - [WTF Dial](https://wtfdial.com/) Ben B Johnson wrote this app and an (incomplete) series of blog posts about how it works. I really like it because there's very little library usage. He's implementing things "by hand". I've learned a lot by reading the blog posts and studying the source code.
+- [Contributing to Complex Projects](https://mitchellh.com/writing/contributing-to-complex-projects) desribes somes useful steps to familiarize myself with giant projects. Super helpful!!
 
 ### Examples
 
