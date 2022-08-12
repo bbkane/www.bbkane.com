@@ -48,3 +48,21 @@ popular ones:
   workflows](https://www.atlassian.com/git/tutorials/comparing-workflows).
 - GitHub also highlights a workflow method [in one of their
   guides](https://guides.github.com/introduction/flow/).
+
+
+## Forking and Syncing with GitHub
+
+Sometimes I need to make a change to a public repo I own (like my dotfiles)
+from my work laptop. I can't simply clone the repo and make the change because
+my work laptop doesn't have access to my personal logins so I don't have
+permissions to push (by design, not necessity). So, here's how to do a PR workflow
+
+- Work PC: In GitHub, fork the repo to my work GitHub account
+- Work PC: In the terminal, clone the repo
+- Work PC: In the terminal, make the change, commit, and push
+- Work PC: In GitHub, make a PR to the personal repo
+- Home PC: In GitHub, merge the PR
+- Work PC: In GitHub, sync the fork (button at the top)
+- Work PC: In the terminal: `git pull` to pull the merge commit
+
+Many of these steps use GitHub's web UI. There's [other ways](https://stackoverflow.com/questions/39819441/keeping-a-fork-up-to-date) to do parts of this with Git directly, but they're not as convenient for me.
