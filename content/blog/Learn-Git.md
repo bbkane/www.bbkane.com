@@ -66,3 +66,13 @@ permissions to push (by design, not necessity). So, here's how to do a PR workfl
 - Work PC: In the terminal: `git pull` to pull the merge commit
 
 Many of these steps use GitHub's web UI. There's [other ways](https://stackoverflow.com/questions/39819441/keeping-a-fork-up-to-date) to do parts of this with Git directly, but they're not as convenient for me.
+
+## Moving commits to a new branch
+
+I try to work on new features in a branch, but sometimes I just work on master and need to move to different branches. Luckily, [Stackoverflow](https://stackoverflow.com/a/22654961/2958070) has me covered:
+
+```bash
+git checkout -b newbranch # switch to a new branch
+git branch -f master HEAD~3 # make master point to some older commit
+```
+
