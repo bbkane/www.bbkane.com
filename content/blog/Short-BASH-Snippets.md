@@ -228,7 +228,7 @@ dig +noall +answer +question +identify @dns2.p09.nsone.net. -q linkedin.com -t n
 
 Most people use `sed` for this, but `sed` differs between MacOS and Linux. Taken from [StackOverflow](https://stackoverflow.com/a/27985566/2958070):
 
-```
+```bash
 perl -pi -w -e 's/search/replace/g;' *.php
 ```
 
@@ -236,3 +236,9 @@ perl -pi -w -e 's/search/replace/g;' *.php
 - -i means edit in-place
 - -w write warnings
 - -p loop
+
+This can be combined with `find` to run recursively:
+
+```bash
+find . -name '*.py' -print0 | xargs -0 perl -pi -w -e 's/"2022-04-01"/"2022-04-01-preview"/g;'
+```
