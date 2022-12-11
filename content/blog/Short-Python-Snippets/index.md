@@ -253,7 +253,7 @@ from subprocess import run
 res = run(["echo", "hi"], capture_output=True, encoding="utf-8", text=True)
 ```
 
-## Useful f-strings
+## Useful debug f-strings
 
 ```python
 a = "bob"
@@ -263,4 +263,115 @@ print(f"{a!r}")  # 'bob'
 print(f"{a=}")  # a='bob'
 print(f"{a = }")  # a = 'bob'
 ```
+
+## Turn up Azure Logging
+
+This turns up logging enough that you can see the details for each HTTP request/response.
+
+```python
+#!/usr/bin/env python
+
+from azure import identity
+from azure.mgmt.dns import DnsManagementClient
+import azure.mgmt.dns.models as dm
+import logging
+import logging.handlers
+import os
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    handlers=(
+        logging.StreamHandler(),
+        # overwrite log file each time
+        logging.handlers.RotatingFileHandler("tmplog.log", mode="w"),
+    )
+)
+logger = logging.getLogger(__name__)
+
+
+def main():
+    logger.debug("starting run")
+    cred = identity.ClientSecretCredential(
+        client_id=os.environ["AZURE_CLIENT_ID"],
+        client_secret=os.environ["AZURE_CLIENT_SECRET"],
+        tenant_id=os.environ["AZURE_TENANT_ID"],
+    )
+
+    subscription_id = "sub-uuid-here"
+    resource_group = "rg-name-here"
+
+    # https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?view=azure-python&tabs=pip#arguments-for-libraries-based-on-azurecore
+    dns_client = DnsManagementClient(
+        credential=cred,
+        subscription_id=subscription_id,
+        logger=logger,
+        logging_enable=True,
+        connection_timeout=100,
+        read_timeout=100,
+        retry_total=3,
+    )
+
+    created_zone = dns_client.zones.create_or_update(
+        resource_group_name=resource_group,
+        zone_name="example.com",
+        parameters=dm.Zone(
+            location="global",
+        ),
+    )
+    logger.info("created zone: %r", created_zone)
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+## Debug Python CLI in VS Code
+
+From [Debugging configurations for Python apps in Visual Studio Code](https://code.visualstudio.com/docs/python/debugging#_command-line-debugging)
+
+First add the following debug configuration (this is in my workspace file, but can also place in other places):
+
+```json
+{
+	"folders": [
+		{
+			"path": "..."
+		},
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Python: Attach",
+				"type": "python",
+				"request": "attach",
+				"connect": {
+				  "host": "localhost",
+				  "port": 5678
+				}
+			  }
+		]
+	}
+}
+```
+
+Once this is created, you'll be able to see the debug config in the debug tab:
+
+![image-20221208133348694](vscode-debug-config.png)
+
+Install debugpy in venv:
+
+```bash
+python -m pip install --upgrade debugpy
+```
+
+Then run the script using debugpy:
+
+```bash
+python -m debugpy --listen 5678 --wait-for-client ./main.py arg1 arg2
+```
+
+Nothing will happen because it's waiting for VS Code's debug client to connect. Connect by hitting the green "play" button you just configured.
 
