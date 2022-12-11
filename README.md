@@ -1,8 +1,6 @@
 # My Site!
 
-Really liking Zola! I can build this locally with `zola serve`!
-
-# TODO
+## TODO
 
 - Get search working (put in home page)
 - TELL PEOPLE TO EMAIL ME IF THEY LIKE MY BLOG POSTS!!
@@ -11,7 +9,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 - fix blog up with mozilla - https://observatory.mozilla.org/analyze/bbkane.com
 - https://ogp.me/ - add this to posts?
 
-# Done
+## Done
 
 - get word count - done
 - port mds - done
@@ -31,7 +29,7 @@ Really liking Zola! I can build this locally with `zola serve`!
 - RSS feed
 - Make your Go project easy to install: https://github.com/a-h/templ/issues/10
 
-# Blog Post Ideas
+## Blog Post Ideas
 
 - json vs dhall (functional) vs jsonnet (OO) vs CUE (graph)
 - Favorite android apps/mac apps
