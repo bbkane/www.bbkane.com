@@ -230,7 +230,7 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 
 - An error should consist of a unique (to the repo) message and optionally more information specific to the problem. The message should be unique because Go errors do not include file information such as line numbers, so you need to grep for the error. Example: `ChoiceNotFound{Msg: "choice not found", Choices: []string{"a", "b", "c"}}`.
 - Errors should not include information the caller already knows. Example: in `ChoiceNotFound` above, the error does not need to contain the choice sent to the function that returns it because the caller already knows it.
-- Errrors that do not need to include extra information can just use a package level sentinel `errors.New(...)` var. Example: `var ErrIncompatibleInterface = errors.New("could not decode interface into Value")`.
+- Errors that do not need to include extra information can just use a package level sentinel `errors.New(...)` var. Example: `var ErrIncompatibleInterface = errors.New("could not decode interface into Value")`.
 - Errors that do need to include extra information should not jam that into `fmt.Errorf`, but instead use a struct with an `Error()` method so the caller can retrieve the extra info.
 - Propagate errors by wrapping them - either with `fmt.Errorf` (if you don't need to add more unique context), or with a struct using an `Unwrap` method (if you do need more unique context).
 
