@@ -268,6 +268,8 @@ print(f"{a = }")  # a = 'bob'
 
 This turns up logging enough that you can see the details for each HTTP request/response.
 
+Information from [Usage patterns with the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?tabs=pip) and [Configure logging in the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-logging).  
+
 ```python
 #!/usr/bin/env python
 
