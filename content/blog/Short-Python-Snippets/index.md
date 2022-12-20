@@ -92,6 +92,15 @@ def parse_args(*args, **kwargs):
         help='Use a file or stdin'
     )
 
+    # Use boolean with a default (--tee/--no-tee)
+    # alternative to action='store_true'/'store_false'
+    parser.add_argument(
+        "--tee",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="stream change output to stdout in addition to a file",
+    )
+
     return parser.parse_args(*args, **kwargs)
 
 
@@ -253,6 +262,8 @@ from subprocess import run
 res = run(["echo", "hi"], capture_output=True, encoding="utf-8", text=True)
 ```
 
+If you trust the input, it's also possible to use string interpolation to run a bash script with Python variables - see [this](https://stackoverflow.com/a/51663133/2958070)
+
 ## Useful debug f-strings
 
 ```python
@@ -267,6 +278,8 @@ print(f"{a = }")  # a = 'bob'
 ## Turn up Azure Logging
 
 This turns up logging enough that you can see the details for each HTTP request/response.
+
+Information from [Usage patterns with the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?tabs=pip) and [Configure logging in the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-logging).  
 
 ```python
 #!/usr/bin/env python
