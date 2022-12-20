@@ -207,7 +207,9 @@ $ go test golden_test.go
 ok  	command-line-arguments	0.096s
 ```
 
-## Code examples
+FOr a more real-world example, see warg
+
+### Code examples
 
 Code examples can be added to tests and also show up in the docs! See [the Go blog](https://go.dev/blog/examples) for more details, or see my example below:
 
@@ -221,3 +223,28 @@ func ExampleExample() {
 	// Output: hello!
 }
 ```
+
+## Errors
+
+To some extent these error creation/handling ideas are tested in `warg` and other code, but I still have yet to prove other ideas. In particular, when prototyping I can get quite far eschewing these ideas and just using `fmt.Errorf` for everything, and this code can ossify in my project as it matures.
+
+- An error should consist of a unique (to the repo) message and optionally more information specific to the problem. The message should be unique because Go errors do not include file information such as line numbers, so you need to grep for the error. Example: `ChoiceNotFound{Msg: "choice not found", Choices: []string{"a", "b", "c"}}`.
+- Errors should not include information the caller already knows. Example: in `ChoiceNotFound` above, the error does not need to contain the choice sent to the function that returns it because the caller already knows it.
+- Errors that do not need to include extra information can just use a package level sentinel `errors.New(...)` var. Example: `var ErrIncompatibleInterface = errors.New("could not decode interface into Value")`.
+- Errors that do need to include extra information should not jam that into `fmt.Errorf`, but instead use a struct with an `Error()` method so the caller can retrieve the extra info.
+- Propagate errors by wrapping them - either with `fmt.Errorf` (if you don't need to add more unique context), or with a struct using an `Unwrap` method (if you do need more unique context).
+
+### Unsolved Problems / Tradeoffs
+
+- I wish errors had more file information like line numbers for debugging purposes. There ARE packages to add this, but I haven't chosen one.
+- Error wrapping allows you to produce errors with one wrapped "child" error (like a chain of errors), but sometimes you'd like to produce an error with more than one "children" errors (like a tree of errors). An example of this is parsing, where you'd like to parse as much as you can and produce all the useful errors you can, so the user can fix all of those at once before they try to parse again. Once. again, there are packages to solve this, and some declined stdlib proposals like [proposal: errors: add With(err, other error) error · Issue #52607 · golang/go](https://github.com/golang/go/issues/52607).
+- The approach above almost completely ignores API evolution concerns. In particular, what if I have a sentinel error, and the code changes, and I now need to add context to it? I'd need to change the type, which breaks the API. See [Don’t just check errors, handle them gracefully | Dave Cheney](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully) for a great description of these problems and solutions. NOTE that this post precedes Go 1.13's error wrapping functions, which can (imo) be used to replace his `errors` library. No one uses my code, and I'm not the smartest man, so I've chosen simplicity of implementation with the possibility of API breakage over more complex but fewer API-breaking error implementations. I want to note this tradeoff explicitly as it's not the correct tradeoff for more public code.
+
+### References
+
+- [Working with Errors in Go 1.13 - The Go Programming Language](https://go.dev/blog/go1.13-errors) - describes the mechanics of wrapping errors.
+- [Wrapping Errors the Right Way - by Hunter Herman](https://errnil.substack.com/p/wrapping-errors-the-right-way) - advocates for only including information the caller doesn't have.
+- [Designing error types in Rust](https://mmapped.blog/posts/12-rust-error-handling.html) is about Rust, but it advocates a couple ideas I really like, in particular the difference between libraries and applications, as well as that it's difficult to "overspecify" errors: "Feel free to introduce distinct error types for each function you implement. I am still looking for Rust code that went overboard with distinct error types."
+- [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
+- [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
+
