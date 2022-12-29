@@ -5,6 +5,8 @@ updated = 2019-11-05
 aliases = [ "2018/09/05/Logging-in-Python.html" ]
 +++
 
+## Setting up logging with the tweaks I want
+
 The [logging](https://docs.python.org/3/library/logging.html) module is rather
 confusing, so I use it with code similar to the following.
 
@@ -129,7 +131,7 @@ except MyError as e:
     raise
 ```
 
-# Logging Function Calls
+## Logging Function Calls
 
 Sometimes when debugging, it can be helpful to log all calls, arguments, and results of a function. I have a little decorator to do this. Just decorate the function at definition, and all of that will be logged. This function was inspired by David Beazley's talk [The Fun of Reinvention](https://youtu.be/5nXmq1PsoJ0). As a side note, David Beazley is a mad genius and this talk is a brilliant testament to that.
 
@@ -169,14 +171,146 @@ def log_calls(logger, message='', sep=' '):
     return wrap
 ```
 
-# Formatting [requests](http://docs.python-requests.org/en/master/) calls
+## Formatting [requests](http://docs.python-requests.org/en/master/) calls
 
 I love the `requests` library, but oddly, it doesn't offer a nice way to print most parts of requests and responses. See my [pocket_backup](https://github.com/bbkane/Random-Scripts/blob/master/pocket_backup.py) for a decent set of functions to deal with this. I need to turn my experiences with `requests` into their own blog post...
 
-# Opening the log
+## Opening the last log file
 
 This alias automatically opens the last log.
 
 ```bash
 alias view_last_log='vim -R -c "set syn=config" $(ls -t logs/*log | head -n1)'
 ```
+
+## Turn up Azure Logging
+
+This turns up logging enough that you can see the details for each HTTP request/response.
+
+Information from [Usage patterns with the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?tabs=pip) and [Configure logging in the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-logging).  
+
+```python
+#!/usr/bin/env python
+
+from azure import identity
+from azure.mgmt.dns import DnsManagementClient
+import azure.mgmt.dns.models as dm
+import logging
+import logging.handlers
+import os
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    handlers=(
+        logging.StreamHandler(),
+        # overwrite log file each time
+        logging.handlers.RotatingFileHandler("tmplog.log", mode="w"),
+    )
+)
+logger = logging.getLogger(__name__)
+
+
+def main():
+    logger.debug("starting run")
+    cred = identity.ClientSecretCredential(
+        client_id=os.environ["AZURE_CLIENT_ID"],
+        client_secret=os.environ["AZURE_CLIENT_SECRET"],
+        tenant_id=os.environ["AZURE_TENANT_ID"],
+    )
+
+    subscription_id = "sub-uuid-here"
+    resource_group = "rg-name-here"
+
+    # https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?view=azure-python&tabs=pip#arguments-for-libraries-based-on-azurecore
+    dns_client = DnsManagementClient(
+        credential=cred,
+        subscription_id=subscription_id,
+        logger=logger,
+        logging_enable=True,
+        connection_timeout=100,
+        read_timeout=100,
+        retry_total=3,
+    )
+
+    created_zone = dns_client.zones.create_or_update(
+        resource_group_name=resource_group,
+        zone_name="example.com",
+        parameters=dm.Zone(
+            location="global",
+        ),
+    )
+    logger.info("created zone: %r", created_zone)
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+## Structured Logging!
+
+This also demos setting the log level from an argparse CLI switch:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import argparse
+import logging
+
+import structlog
+
+logger = structlog.get_logger()
+
+
+def parse_args(*args, **kwargs):
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--log-level",
+        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default="NOTSET",
+    )
+    return parser.parse_args(*args, **kwargs)
+
+
+def main():
+    args = parse_args()
+
+    # Default config + file/func/line numbers:
+    # - https://stackoverflow.com/a/72320473/2958070
+    # - https://www.structlog.org/en/stable/getting-started.html#your-first-log-entry
+    structlog.configure(
+        processors=[
+            structlog.contextvars.merge_contextvars,
+            structlog.processors.add_log_level,
+            structlog.processors.CallsiteParameterAdder(
+                {
+                    structlog.processors.CallsiteParameter.FILENAME,
+                    structlog.processors.CallsiteParameter.FUNC_NAME,
+                    structlog.processors.CallsiteParameter.LINENO,
+                }
+            ),
+            structlog.processors.StackInfoRenderer(),
+            structlog.dev.set_exc_info,
+            structlog.processors.TimeStamper(),
+            structlog.dev.ConsoleRenderer(),
+        ],
+        wrapper_class=structlog.make_filtering_bound_logger(
+            logging.getLevelName(args.log_level),
+        ),
+        context_class=dict,
+        logger_factory=structlog.PrintLoggerFactory(),
+        cache_logger_on_first_use=False,
+    )
+
+    logger.info("hello, %s!", "world", key="value!", more_than_strings=[1, 2, 3])
+
+
+if __name__ == "__main__":
+    main()
+
+```
+

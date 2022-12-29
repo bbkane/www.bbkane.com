@@ -8,6 +8,8 @@ aliases = [ "2018/03/14/Short-Python-Snippets.html" ]
 This is just a collection of Python snippits that are too small for their own
 posts. All code is for Python 3.
 
+Also see [Logging-in-Python](../logging-in-python/)
+
 ## Inline Multiline Strings
 
 This is a quick post on inline multiline strings. I like to use the following style:
@@ -273,70 +275,6 @@ print(f"{a}")  # bob
 print(f"{a!r}")  # 'bob'
 print(f"{a=}")  # a='bob'
 print(f"{a = }")  # a = 'bob'
-```
-
-## Turn up Azure Logging
-
-This turns up logging enough that you can see the details for each HTTP request/response.
-
-Information from [Usage patterns with the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?tabs=pip) and [Configure logging in the Azure libraries for Python | Microsoft Learn](https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-logging).  
-
-```python
-#!/usr/bin/env python
-
-from azure import identity
-from azure.mgmt.dns import DnsManagementClient
-import azure.mgmt.dns.models as dm
-import logging
-import logging.handlers
-import os
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    handlers=(
-        logging.StreamHandler(),
-        # overwrite log file each time
-        logging.handlers.RotatingFileHandler("tmplog.log", mode="w"),
-    )
-)
-logger = logging.getLogger(__name__)
-
-
-def main():
-    logger.debug("starting run")
-    cred = identity.ClientSecretCredential(
-        client_id=os.environ["AZURE_CLIENT_ID"],
-        client_secret=os.environ["AZURE_CLIENT_SECRET"],
-        tenant_id=os.environ["AZURE_TENANT_ID"],
-    )
-
-    subscription_id = "sub-uuid-here"
-    resource_group = "rg-name-here"
-
-    # https://learn.microsoft.com/en-us/azure/developer/python/sdk/azure-sdk-library-usage-patterns?view=azure-python&tabs=pip#arguments-for-libraries-based-on-azurecore
-    dns_client = DnsManagementClient(
-        credential=cred,
-        subscription_id=subscription_id,
-        logger=logger,
-        logging_enable=True,
-        connection_timeout=100,
-        read_timeout=100,
-        retry_total=3,
-    )
-
-    created_zone = dns_client.zones.create_or_update(
-        resource_group_name=resource_group,
-        zone_name="example.com",
-        parameters=dm.Zone(
-            location="global",
-        ),
-    )
-    logger.info("created zone: %r", created_zone)
-
-
-if __name__ == "__main__":
-    main()
-
 ```
 
 ## Debug Python CLI in VS Code
