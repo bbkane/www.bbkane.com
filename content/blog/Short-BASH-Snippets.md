@@ -66,13 +66,16 @@ make_print_color() {
 ### Generate pretty print functions and use them
 
 ```bash
+# https://unix.stackexchange.com/a/269085/185953
 make_print_color "red" "$(tput setaf 1)"
 make_print_color "green" "$(tput setaf 2)"
 make_print_color "yellow" "$(tput setaf 3)"
+make_print_color "blue" "$(tput setaf 4)"
 
 print_red "Always"
 print_green "Seeing"
-print_yellow "in Color!"
+print_yellow "in"
+print_blue "Color!"
 
 # print to stderr: https://stackoverflow.com/a/2990533/2958070
 print_red "Error!" >&2
