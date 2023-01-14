@@ -1,8 +1,8 @@
 +++
-title = "Useful Checklists"
+title = "Checklists And Sayings"
 date = 2019-08-25
 updated = 2020-12-17
-aliases = [ "2019/08/25/Useful-Checklists.html" ]
+aliases = [ "2019/08/25/Useful-Checklists.html", "blog/useful-checklists" ]
 +++
 
 These are fairly small lists that I want to read every once in a while.
@@ -60,3 +60,5 @@ These are from various places and may be misremembered.
 - Men's lives are measured in works, not years! - a probably misremembered quote like this in Westminster Cathedral
 - If you don't make mistakes, you're not working on hard enough problems. - Frank Wilczek
 - The goal of refactoring is to increase the number of constraints that guide your program through your problem space. - paraphrased from [Jonathon Blow](https://www.youtube.com/watch?v=2J-HIh3kXCQ)
+- If you’re overthinking, write. If you’re underthinking, read. - [Alex & Books](https://twitter.com/alexandbooks_/status/1446883211393503232?lang=en)
+- Write code. Not too much. Mostly functions. - [Brandon.me](https://www.brandons.me/blog/write-code-not-too-much-mostly-functions)
