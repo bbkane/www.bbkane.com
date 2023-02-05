@@ -4,7 +4,7 @@ date = 2023-02-05
 updated = 2023-02-05
 +++
 
-Our hospital gave us a PDF with this information for our child. The information is great, but the PDF font is small so I've copied it into my blog. There was no source for this information in the PDF, just this list :)
+Our hospital gave us a PDF with this information for our child. The information is great, but the PDF font is small so I've copied it into my blog. There was no source for this information in the PDF, just this list. I used [ocrmypdf](https://pypi.org/project/ocrmypdf/) to make the text selectable (and there's definitely still spelling mistakes and such)
 
 ## 6-9 Months
 
