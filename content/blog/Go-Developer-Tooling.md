@@ -4,9 +4,8 @@ date = 2023-02-18
 updated = 2023-02-18
 +++
 
-# Go Developer Tooling
-
-My Go repos use several tools to make development easier. I develop on a Mac, so install instructions are MacOS-focused.
+My [Go repos](https://github.com/bbkane/) use several tools to make development
+easier. I develop on a Mac, so install instructions are MacOS-focused.
 
 See [example-go-cli](https://github.com/bbkane/example-go-cli) for a repo using these tools.
 
