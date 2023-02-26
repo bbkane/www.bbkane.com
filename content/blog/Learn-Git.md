@@ -76,3 +76,21 @@ git checkout -b newbranch # switch to a new branch
 git branch -f master HEAD~3 # make master point to some older commit
 ```
 
+# Delete a local remote-tracking branch
+
+From [StackOverflow](https://stackoverflow.com/a/23961231/2958070):
+
+```bash
+$ git branch -a
+  helpcolumns
+* master
+  remotes/origin/bbkane/issue46
+  remotes/origin/helpcolumns
+  remotes/origin/master
+  remotes/origin/searchFuncPtr
+
+$ git fetch origin --prune
+From https://github.com/bbkane/warg
+ - [deleted]         (none)     -> origin/bbkane/issue46
+ - [deleted]         (none)     -> origin/searchFuncPtr
+```
