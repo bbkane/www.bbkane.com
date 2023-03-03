@@ -245,3 +245,10 @@ This can be combined with `find` to run recursively:
 ```bash
 find . -name '*.py' -print0 | xargs -0 perl -pi -w -e 's/"2022-04-01"/"2022-04-01-preview"/g;'
 ```
+
+It's also possible to [ignore files](https://stackoverflow.com/a/29744243/2958070) (NOTE: this works on MacOS)
+
+```bash
+find . -type f -not -path '*/\.git\/*' -not -path '\./rename.sh' -print0 \
+    | xargs -0 perl -pi -w -e 's/example-python-cli/new-project-name/g;'
+```
