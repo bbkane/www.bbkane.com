@@ -123,93 +123,13 @@ When a test depends on a data file, Go will read it from a file path relative to
 
 ### Golden Files
 
-Sometimes, I want to test that a function outputs the correct bytes - like a file, an HTTP response, or the `--help` output from the CLI parsing library I'm writing. In these cases, it's helpful to make the tests take an `-update` flag, and write the bytes to a file when it is passed. Then I can manually read those files to ensure correctness, commit them, and make the test check the bytes generated to the file when the `-update` flag is not passed. An example:
+Sometimes, I want to test that a function outputs the correct bytes - like a file, an HTTP response, or the `--help` output from the CLI parsing library I'm writing. In these cases, it's helpful to make the tests read an environmental variable, and write the bytes to a file when it is passed. Then I can manually read those files to ensure correctness, commit them, and make the test check the bytes generated to the file when the environmental variable is not set. My usage of this term comes from [Advanced Testing in Go (Hashimoto)](https://www.youtube.com/watch?v=8hQG7QlcLBk), but I've also seen it called "snapshot" testing.
 
-```go
-package main_test
+#### Golden File Example (logos)
 
-import (
-	"bytes"
-	"flag"
-	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"testing"
+See [logos](https://github.com/bbkane/logos/blob/fcff1df203a5fdee193269be19de53383c7ac5e2/logos_ext_test.go) for an example. I still haven't decided whether to turn this into a library or simply copy-paste it wherever.
 
-	"github.com/stretchr/testify/require"
-)
-
-func Write(w io.Writer) error {
-	_, err := w.Write([]byte("hola\n"))
-	return err
-}
-
-var update = flag.Bool("update", false, "update golden files")
-
-func TestWrite(t *testing.T) {
-	var actualBuffer bytes.Buffer
-	actualErr := Write(&actualBuffer)
-	require.Nil(t, actualErr)
-
-	golden := filepath.Join("testdata", t.Name()+".golden.txt")
-	if *update {
-		mkdirErr := os.MkdirAll("testdata", 0700)
-		require.Nil(t, mkdirErr)
-		writeErr := ioutil.WriteFile(golden, actualBuffer.Bytes(), 0600)
-		require.Nil(t, writeErr)
-		t.Logf("Wrote: %v\n", golden)
-	}
-
-	expectedBytes, readErr := ioutil.ReadFile(golden)
-	require.Nil(t, readErr)
-
-	require.Equal(t, expectedBytes, actualBuffer.Bytes())
-}
-```
-
-When running this test the first time, I get the following error:
-
-```
-$ go test golden_test.go
---- FAIL: TestWrite (0.00s)
-    golden_test.go:37:
-        	Error Trace:	golden_test.go:37
-        	Error:      	Expected nil, but got: &fs.PathError{Op:"open", Path:"testdata/TestWrite.golden.txt", Err:0x2}
-        	Test:       	TestWrite
-FAIL
-FAIL	command-line-arguments	0.095s
-FAIL
-```
-
-However, I can then use the `-update` flag to write the file (I'm also using the `-test.v` flag to show the log I have)
-
-```
-$ go test golden_test.go -test.v -update
-=== RUN   TestWrite
-    golden_test.go:32: Wrote: testdata/TestWrite.golden.txt
---- PASS: TestWrite (0.00s)
-PASS
-ok  	command-line-arguments	0.090s
-```
-
-Then manually inspect it to ensure the function is correct:
-
-```
-$ cat testdata/TestWrite.golden.txt
-hola
-```
-
-Then run the test again to see it pass:
-
-```
-$ go test golden_test.go
-ok  	command-line-arguments	0.096s
-```
-
-FOr a more real-world example, see warg
-
-### Code examples
+### Example Tests
 
 Code examples can be added to tests and also show up in the docs! See [the Go blog](https://go.dev/blog/examples) for more details, or see my example below:
 
