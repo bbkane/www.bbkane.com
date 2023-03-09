@@ -97,7 +97,12 @@ imperative code with plain old data types.
   architectures but I really liked these talks.
 - [Against unnecessary databases](https://beepb00p.xyz/unnecessary-db.html) - This seems obvious in hindsight. However, I often get too eager to transform my data as I'm ingesting it and pay the price (difficult to understand, change, and test) later.
 - [WTF Dial](https://wtfdial.com/) Ben B Johnson wrote this app and an (incomplete) series of blog posts about how it works. I really like it because there's very little library usage. He's implementing things "by hand". I've learned a lot by reading the blog posts and studying the source code.
-- [Contributing to Complex Projects](https://mitchellh.com/writing/contributing-to-complex-projects) desribes somes useful steps to familiarize myself with giant projects. Super helpful!!
+- [Contributing to Complex Projects](https://mitchellh.com/writing/contributing-to-complex-projects) desribes somes useful steps to familiarize myself with giant projects. Super helpful; doing this can feel overwhelming.
+- [The Grug Brained Developer](https://grugbrain.dev/) - This is an *excellent* list of somewhat disconnected advice about how to manage complexity in code, tests, and what works and what doesn't work, even though it looks nice on paper.
+- [GopherCon 2021: Arish Labroo - How we Go at Zillow - YouTube](https://www.youtube.com/watch?v=9Q1RMueVHAg) talks about productionalizing Go binaries to run HTTP services - timeouts, shutdowns, tracing, health checks, etc. Instead of going into the details about these aspects, Arish zooms out and focuses on how Zillow re-uses implementations with [google/wire: Compile-time Dependency Injection for Go](https://github.com/google/wire) to glue it all together. I really need to deepdive into this with some prototypes instead of only watching the talk.
+- [How I build a feature](https://simonwillison.net/2022/Jan/12/how-i-build-a-feature/) describes how Simon Wilson manages to maintain his dozens of projects with "**perfect commit**—one that bundles together the implementation, the tests, the documentation and a link to an external issue thread.". It's really inspired me to adopt much better (e2e/integration/snapshot) testing for my own projects to make them more maintainable. I should be able to automatically update dependencies and run the test to confirm everything works gosh darn it!
+- [John Carmack: Best programming setup and IDE | Lex Fridman Podcast Clips - YouTube](https://www.youtube.com/watch?app=desktop&v=tzr7hRXcwkw) - In this interivew with Lex Friedman, John Carmack really makes a good case for getting really familiar with IDEs and debuggers instead of using text editors like Vim without language-aware tools. It has inspired me to be much more aggressive about learning the ins and outs of what VS Code (especially the debugger) can offer me. These days I have a hard time memorizing NeoVim's shortcuts and endlessly updating plugin ecosystem anyway. Also see [Why an IDE?](https://matklad.github.io/2020/11/11/yde.html).
+- [What the heck is the event loop anyway? | Philip Roberts | JSConf EU - YouTube](https://www.youtube.com/watch?v=8aGhZQkoFbQ) is **THE BEST** explanation I've found on how async/await works. I need to refer back to it when I do anything somewhat complicated with async/await.
 
 ### Examples
 
@@ -110,7 +115,7 @@ whatever they're doing, I want to emulate it!
 - Python's [requests](https://3.python-requests.org/) library - `requests`
   optimizes for the common case (making a single HTTP request), but provides
   mechanisms for TCP connection reuse, auto-adding headers, authorization, and
-  many other conveniences for dealing with HTTP.
+  many other conveniences for dealing with HTTP. [encode/httpx: A next generation HTTP client for Python. 🦋](https://github.com/encode/httpx/) is an async/await library that's very similar and maturing nicely. Hopefully one day it'll [reach 1.0](https://github.com/encode/httpx/issues/947).
 - [SQLite3](https://www.sqlite.org/index.html) - SQLite3 runs everywhere, has
   insanely good docs, and is so useful it might be [the most used library in the
   world](https://www.sqlite.org/mostdeployed.html).
@@ -118,5 +123,5 @@ whatever they're doing, I want to emulate it!
   provides a relatively simple way to parse command line arguments for Go
   programs. It exposes a powerful yet readable fluent-style API that makes it
   fairly easy to do what you want to do.
-
-TODO: add blurbs about `trio`, `httpx`, `FastAPI`
+- [python-trio/trio: Trio – a friendly Python library for async concurrency and I/O](https://github.com/python-trio/trio) is a really innovative async/await framework for Python. Most of the innovations are described in [Notes on structured concurrency, or: Go statement considered harmful — njs blog](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/).
+- [tiangolo/fastapi: FastAPI framework, high performance, easy to learn, fast to code, ready for production](https://github.com/tiangolo/fastapi) is one of the newer Python libraries that are "IDE ready" - very well type-hinted to make it easy for IDEs to inspect and offer auto-completion for.
