@@ -238,7 +238,9 @@ perl -pi -w -e 's/search/replace/g;' *.php
 - -e means execute the following line of code.
 - -i means edit in-place
 - -w write warnings
-- -p loop
+- -p loop through lins and print
+
+See [Perl 101 - Command-line Switches](https://perl101.org/command-line-switches.html) for other useful Perl switches.
 
 This can be combined with `find` to run recursively:
 
