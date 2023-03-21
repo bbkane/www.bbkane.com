@@ -219,6 +219,18 @@ git clean -xd --force
 ```bash
 diff -qr -x '.git' folder1/ folder2/
 ```
+
+## Cross-platform colored diff
+
+A colleague got this from somewhere on StackOverflow:
+
+```bash
+function vdiff() {
+    # colored diff
+    diff $@ | sed 's/^-\([^-]*\)/\x1b[31;1m-\1/;s/^+\([^+]*\)/\x1b[32;1m+\1/;s/^@/\x1b[36;1m@/;s/$/\x1b[0m/'
+}
+```
+
 ## Customize `dig`
 
 Unfortunately, there's no way to use multiple name servers
