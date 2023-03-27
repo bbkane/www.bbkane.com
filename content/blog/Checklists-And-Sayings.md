@@ -62,3 +62,15 @@ These are from various places and may be misremembered.
 - The goal of refactoring is to increase the number of constraints that guide your program through your problem space. - paraphrased from [Jonathon Blow](https://www.youtube.com/watch?v=2J-HIh3kXCQ)
 - If you’re overthinking, write. If you’re underthinking, read. - [Alex & Books](https://twitter.com/alexandbooks_/status/1446883211393503232?lang=en)
 - Write code. Not too much. Mostly functions. - [Brandon.me](https://www.brandons.me/blog/write-code-not-too-much-mostly-functions)
+
+## Lessons from maintaining software over time
+
+These are (pretty obvious) lessons slowly being beaten into me as I maintain personal and work projects over years. Some of these are pretty idealistic.
+
+- Iteration speed is key! Being forced to wait for changes to deploy kills my motivation
+- Don't build long-lived systems on new tech without strong justification! The team will forget how the new tech works and it'll be hell to keep up to date. I just got a ticket about some job failing that is built on tech I've never used and there's not that much docs about it.
+- You shouldn't be building systems you don't use regularly. Otherwise the code will rot.
+- Minimize dependencies! Each dependency will probably need be updated and each update will need to be tested against your code. It's probably worth an extra 100 lines of code to do something instead of taking on a dependency. "A little copying is better than a little dependency". Of course, if you're copying that 100 lines of code between projects multiple times, it's probably worth using the same dependency in the projects instead. I still haven't figured out how to keep JavaScript apps maintainable over years.
+- Continuous Integration is a must. Dependencies and any other changes become easier to manage with automatic testing. Ideally, tests/lints should be configured in the Git platform, in a git pre-commit hook, and via editor plugin. Linters should have a "auto-fix" option for things that make sense (like formatting). Linters should be easy to install and keep up to date (they are ALSO dependencies).
+- After a codebase's general architecture has been established, commits should strive to be a ["perfect commit"](https://simonwillison.net/2022/Oct/29/the-perfect-commit/) with tests and docs included. Of course, while still prototyping the architecture, it might not be worth adding tests and docs to interfaces that will change.
+
