@@ -320,6 +320,7 @@ Jenny's mom Julie was taught this recipe from a Puerto-Rican friend.
 - 1 green bell pepper
 - 1 onion
 - 1 head of cilantro
+- 1 whole head of garlic
 - a whole bunch of olive oil
 
 Emulsify everything with olive oil. You'll know it's enough when it's a beautiful bright green
