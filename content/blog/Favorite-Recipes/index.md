@@ -309,4 +309,30 @@ Grandma Howe gave me these recipes specifically for the toppings (not the whole 
 
 # Grandma Howe's Potica
 
-This is such an important and large recipe that I put it in [it's own blog post](https://www.bbkane.com/2018/07/10/Grandma-Howe's-Povitica-Recipe.html).
+This is such an important and large recipe that I put it in [its own blog post](https://www.bbkane.com/2018/07/10/Grandma-Howe's-Povitica-Recipe.html).
+
+# Nai Nai's Pork Shoulder
+
+Jenny's mom Julie was taught this recipe from a Puerto-Rican friend.
+
+## Sofrito
+
+- 1 green bell pepper
+- 1 onion
+- 1 head of cilantro
+- 1 whole head of garlic
+- a whole bunch of olive oil
+
+Emulsify everything with olive oil. You'll know it's enough when it's a beautiful bright green
+
+## Pork
+
+Stab pork, shoulder multiple times and insert cloves of garlic (a whole head, as much as you can).
+
+Rub down with Adobo powder and rub down with Saizon and rub down with Sofrito from steps above.
+
+Put in oven bag and bake for an hour at 350 in instant pot / oven.
+
+![adobo](./adobo.jpg)
+
+![sazon](./sazon.jpg)
