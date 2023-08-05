@@ -6,7 +6,7 @@ command = "zola build"
 
 [build.environment]
 # Set the version name that you want to use and Netlify will automatically use it.
-ZOLA_VERSION = "0.16.1"
+ZOLA_VERSION = "0.17.2"
 
 # The magic for deploying previews of branches.
 # We need to override the base url with whatever url Netlify assigns to our
@@ -18,20 +18,20 @@ command = "zola build --base-url $DEPLOY_PRIME_URL"
 
 # https://docs.netlify.com/routing/headers/
 [[headers]]
-  for = "/*"
-  [headers.values]
-    # https://infosec.mozilla.org/guidelines/web_security#content-security-policy
-    # NOTE: this is probably blocking counter.dev - turn that into a src script?
-    # Content-Security-Policy = "default-src https:; frame-ancestors 'none'; object-src 'none'"
+for = "/*"
+[headers.values]
+# https://infosec.mozilla.org/guidelines/web_security#content-security-policy
+# NOTE: this is probably blocking counter.dev - turn that into a src script?
+# Content-Security-Policy = "default-src https:; frame-ancestors 'none'; object-src 'none'"
 
-    # https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
-    Permissions-Policy = "interest-cohort=()"
+# https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
+Permissions-Policy = "interest-cohort=()"
 
-    # https://infosec.mozilla.org/guidelines/web_security#x-content-type-options
-    X-Content-Type-Options = "nosniff"
+# https://infosec.mozilla.org/guidelines/web_security#x-content-type-options
+X-Content-Type-Options = "nosniff"
 
-    # https://infosec.mozilla.org/guidelines/web_security#x-frame-options
-    X-Frame-Options = "DENY"
+# https://infosec.mozilla.org/guidelines/web_security#x-frame-options
+X-Frame-Options = "DENY"
 
-    # https://infosec.mozilla.org/guidelines/web_security#x-xss-protection
-    X-XSS-Protection = "1; mode=block"
+# https://infosec.mozilla.org/guidelines/web_security#x-xss-protection
+X-XSS-Protection = "1; mode=block"
