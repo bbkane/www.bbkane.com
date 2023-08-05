@@ -1,6 +1,6 @@
 +++
 title = "Ben's Corner Blog"
 sort_by = "date"
-template = "blog.html"
+template = "blog-index.html"
 page_template = "blog-page.html"
 +++
