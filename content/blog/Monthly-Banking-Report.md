@@ -1,6 +1,6 @@
 +++
 title = "Monthly Banking Report"
-date = 2023-08-01
+date = 2023-08-05
 +++
 
 After [commenting on Hacker News](https://news.ycombinator.com/item?id=36987282), a few people asked me how I use [Polars](https://www.pola.rs/) to process my banking CSVs. While I don't feel comfortable open-sourcing the repo because the code contains information about the businesses I frequent to categorize the results, I can explain the data transformation pipeline between CSVs -> HTML report.
