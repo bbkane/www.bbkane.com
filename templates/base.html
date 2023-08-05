@@ -50,7 +50,9 @@
           <a href="{{ config.extra.stackoverflow_url }}"> StackOverflow</a>
         </span>
         <span class="credits left">Site:
-          <a href="{{ config.extra.site_github_repo_url }}">Repo</a> |
+          <a
+            href="{{ config.extra.site_github_repo_url }}/tree/master/content/{% block page_relative_path %}{% endblock page_relative_path %}">Page
+            Source</a> |
           <a href="/blog/">Blog</a> |
           <a href="/atom.xml">RSS</a>
         </span>

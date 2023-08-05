@@ -4,7 +4,10 @@
 
 {% block title %}Blog Index{% endblock title %}
 
+{% block page_relative_path %}{{ section.relative_path }}{% endblock page_relative_path %}
+
 {% block content %}
+
 <h1 class="title">
   {{ section.title }}
 </h1>

@@ -2,6 +2,8 @@
 
 {% block title %}Home{% endblock title %}
 
+{% block page_relative_path %}{{ section.relative_path }}{% endblock page_relative_path %}
+
 {% block content %}
 <h1>{{ section.title }}</h1>
 {{ section.content | safe }}

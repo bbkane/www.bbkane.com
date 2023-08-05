@@ -2,6 +2,8 @@
 
 {% block title %}{{ page.title }}{% endblock title %}
 
+{% block page_relative_path %}{{ page.relative_path }}{% endblock page_relative_path %}
+
 {% block content %}
 <h1>{{ page.title }}</h1>
 {% if page.toc %}
