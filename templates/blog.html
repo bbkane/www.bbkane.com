@@ -2,13 +2,16 @@
 <!-- https://www.getzola.org/documentation/templates/overview/ -->
 <!-- section.html - applied: blog directory - vars: section vars -->
 
+{% block title %}Blog Index{% endblock title %}
+
 {% block content %}
 <h1 class="title">
   {{ section.title }}
 </h1>
 
 {% for page in section.pages %}
-<h3><a href="{{ page.permalink | safe }}">{{ page.title }}</a> {{ page.updated | default(value=page.date) }} | {{ page.word_count }}
+<h3><a href="{{ page.permalink | safe }}">{{ page.title }}</a> {{ page.updated | default(value=page.date) }} | {{
+  page.word_count }}
   words
 </h3>
 <p>{{ page.content | striptags | truncate(length=200) }}</p>
