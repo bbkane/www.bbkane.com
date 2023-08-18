@@ -69,5 +69,3 @@ whatever they're doing, I want to emulate it!
 - [python-trio/trio: Trio – a friendly Python library for async concurrency and I/O](https://github.com/python-trio/trio) is a really innovative async/await framework for Python. Most of the innovations are described in [Notes on structured concurrency, or: Go statement considered harmful — njs blog](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/).
 - [tiangolo/fastapi: FastAPI framework, high performance, easy to learn, fast to code, ready for production](https://github.com/tiangolo/fastapi) is one of the newer Python libraries that are "IDE ready" - very well type-hinted to make it easy for IDEs to inspect and offer auto-completion for.
 - [WTF Dial](https://wtfdial.com/) Ben B Johnson wrote this app and an (incomplete) series of blog posts about how it works. I really like it because there's very little library usage. He's implementing things "by hand". I've learned a lot by reading the blog posts and studying the source code.
-- 
-
