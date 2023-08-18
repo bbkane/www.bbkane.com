@@ -1,7 +1,7 @@
 +++
-title = "Stretches For Knee Pain"
+title = "Exercises For Knee Pain"
 date = 2023-08-08
-updated = 2023-08-19
+updated = 2023-08-18
 +++
 
 I started going to the gym a lot more Dec 2022 to lower my A1c, and in April, I got some persistent knee pain, especially when doing squats and lunges. I got a lot of advice, and, as of Aug 2023, a couple things have helped:
@@ -43,3 +43,13 @@ Some of these are from [12 Stretches to Improve Flexibility](https://www.webmd.c
 - Frog pose
 - Hip hinges
 - table-top diagonal stretch into the hip Christian showed me
+
+# Christian's Pre-workout Warmup
+
+- 30 second jump rope
+- 10 Shoulder rotations w/ rope
+- 10 Overhead squats w/ rope
+- 10 Hip hinges 
+- 3 Roll Outs to Plank (a push up is optional)
+- 3 Lunges while pushing your knee away and looking the opposite direction
+- 10 Lateral lunges 
