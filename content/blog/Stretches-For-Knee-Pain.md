@@ -1,7 +1,7 @@
 +++
 title = "Stretches For Knee Pain"
-date = "2023-08-08"
-updated = "2023-08-19"
+date = 2023-08-08
+updated = 2023-08-19
 +++
 
 I started going to the gym a lot more Dec 2022 to lower my A1c, and in April, I got some persistent knee pain, especially when doing squats and lunges. I got a lot of advice, and, as of Aug 2023, a couple things have helped:
