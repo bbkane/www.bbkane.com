@@ -261,10 +261,17 @@ writer.writerows([s._asdict() for s in students])
 ```python
 from subprocess import run
 
-res = run(["echo", "hi"], capture_output=True, encoding="utf-8", text=True)
+result = subprocess.run(
+    args=["echo", "hi"],
+    check=True,
+    encoding="utf-8",
+    stdout=subprocess.PIPE,
+    text=True,
+)
+print(result.stdout)
 ```
 
-If you trust the input, it's also possible to use string interpolation to run a bash script with Python variables - see [this](https://stackoverflow.com/a/51663133/2958070)
+If you also need to capture `stderr`, you can replace `stdout=subprocess.PIPE` with `capture_output=True`.
 
 ## Useful debug f-strings
 
