@@ -52,10 +52,8 @@ I've tried to categorize these links, but naturally there's some overlap :)
 - [How To Survive Your Project's First 100,000 Lines](https://verdagon.dev/blog/first-100k-lines) - a very nice checklist of specific tips on scaling a project.
 - [Writing Python like Rust · Questions Nobody Asked..](https://oatzy.github.io/2020/05/10/writing-python-like-rust.html) - a short blog post to make Python code much easier to read about - type hints, structs, etc.
 - [Make invalid states unrepresentable - GeekLaunch](https://geeklaunch.io/blog/make-invalid-states-unrepresentable/) - make code harder to misuse with Rust's type system.
-
 - [Types as Sets](https://guide.elm-lang.org/appendix/types_as_sets.html): Types as Sets (unfortunately relegated to an appendix) really helped me understand how you can use types to force your data structures to be correct- to "make invalid states unrepresentable". Also see [this Handmade Hero QA](https://guide.handmadehero.org/code/day376/#8204) for a great overlapping explanation of discriminated unions in C/C++ and perhaps [What the Heck are Algebraic Data Types? ( for Programmers )](http://merrigrove.blogspot.com/2011/12/another-introduction-to-algebraic-data.html). If you're intrigued and want to really explore the math behind this, check out [The algebra (and calculus!) of algebraic data types](https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types) for an interesting exploration.
 - [The Worst API Ever Made](https://caseymuratori.com/blog_0025): This is a rather hilarious post that really emphasizes how, when architecting a program, you should write the usage code first, so your users don't hate their experience with your API.
-
 
 # Examples
 
