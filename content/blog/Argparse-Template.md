@@ -118,7 +118,10 @@ def main():
                 case "declare":
                     random_fact = "The sky is blue" if args.include_random_fact else "boring..."
                     print(f"Mood: {args.mood}. I declare: {random_fact}")
-
+                case _:
+                    raise SystemExit(f"Unknown subcommand: {args.conversation_subcommand_name!r}")
+        case _:
+            raise SystemExit(f"Unknown command: {args.subcommand_name!r}")
 
 if __name__ == "__main__":
     main()
