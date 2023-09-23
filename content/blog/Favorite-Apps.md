@@ -20,25 +20,27 @@ Some apps have expanded to their own blog posts... Here's a non-exhaustive list
 
 ## CLI
 
-- ripgrep - grep++
 - entr - run commands when file changes
 - httpie - curl++
+- ocrmypdf ( https://pypi.org/project/ocrmypdf/ )
+- rclone - rsync for cloud (OneDrive)
+- ripgrep - grep++
+- t-rec - alternative to VHS to record terminal GIFs - https://github.com/sassman/t-rec-rs
+- tfswitch - manage terraform
 - tokei - count lines of code
 - tree - file tree
-- rclone - rsync for cloud (OneDrive)
-- tfswitch - manage terraform
 - volta - manage NodeJS versions
-- ocrmypdf ( https://pypi.org/project/ocrmypdf/ )
 
 https://github.com/Homebrew/homebrew-cask-fonts and `brew cask install font-ia-writer-mono`
 
 ## GUI
 
-- rectangleapp (GUI) - resize windows
-- KeepingYouAwake (GUI) - prevent mac from sleeping - https://github.com/newmarcel/KeepingYouAwake
-- MeetingBar (GUI) - put meetings in Mac status bar and let you join them by clicking it :)
-- itsycal (GUI) - calendar in the menu bar
-- copyq (GUI) - cross-platform clipboard manager
+- KeepingYouAwake - prevent mac from sleeping - https://github.com/newmarcel/KeepingYouAwake
+- MeetingBar - put meetings in Mac status bar and let you join them by clicking it :)
+- copyq - cross-platform clipboard manager
+- itsycal - calendar in the menu bar
+- rectangleapp - resize windows
+- scrcpy - mirror Android phone
 
 ## Android
 
