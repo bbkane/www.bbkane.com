@@ -53,9 +53,32 @@ As an altarnative, also consider [Mermaid](https://mermaid-js.github.io/mermaid/
 ## graphviz
 
 [graphviz](https://www.graphviz.org/) and its associated layout tools dot and
-neato are tools to generate graph images from text input files. So I don't
-really use them like I use the previous tools, but I figure they're worth a
-mention.
+neato are tools to generate graph images from text input files.
+
+I recently used an [online version](https://dreampuf.github.io/GraphvizOnline/) to [diagram](https://bit.ly/45Y0Wuy) one of my wife's romance shows:
+
+```
+digraph {
+    mel [label="Mel (NP)"]
+    doc [label="Doc"]
+    jack [label="Jack (Tavern)"]
+    char [label="Charmaine"]
+    hope [label="Hope (Mayor)"]
+    charmom [label="Charmaine's Mom"]
+    
+    jack -> char [label="Was Friends with Benefits"]
+    char -> jack [label="Pregnant with Jack's Twins"]
+    doc -> hope [label="Married"]
+    hope -> jack [label="Close to (basically adopted)"]
+    jack -> mel [label="Loves"]
+    mel -> doc [label="Works for"]
+    doc -> charmom [dir=both label="slept together"]
+    charmom -> char [label="Mother to"]
+    hope -> char [label="doesn't like but housing"]
+}
+```
+
+![graphviz.svg](./graphviz.svg)
 
 ## Excalidraw
 
