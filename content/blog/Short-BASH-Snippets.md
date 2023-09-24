@@ -266,3 +266,32 @@ It's also possible to [ignore files](https://stackoverflow.com/a/29744243/295807
 find . -type f -not -path '*/\.git\/*' -not -path '\./rename.sh' -print0 \
     | xargs -0 perl -pi -w -e 's/example-python-cli/new-project-name/g;'
 ```
+
+## Clean unwanted Homebrew formulas
+
+Show dependency graph (optional)
+
+```bash
+brew deps --installed --graph
+```
+
+Show formulas that nothing depends on (and how many dependencies they have) - https://stackoverflow.com/a/55445034/2958070
+
+```bash
+brew leaves | xargs brew deps --formula --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"
+```
+
+Then uninstall something:
+
+```bash
+brew uninstall [thing]
+```
+
+brew will refuse to uninstall the formula if another formula depends on it.
+
+Run https://docs.brew.sh/Manpage#autoremove---dry-run to uninstall dependencies that are no longer needed.
+
+```bash
+brew autoremove
+```
+
