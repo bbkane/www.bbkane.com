@@ -168,3 +168,67 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 - [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
 - [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
 
+# Creating a new Go project
+
+Some steps to take for new projects
+
+- Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
+- Erase the git history
+- Commit
+- Replace all references to it with the new name
+- Update README
+- Create repo on GitHub and push this to it
+- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
+- Add feature
+- update demo.gif in repo
+- Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
+
+if a the project is a CLI (not a library): 
+
+- `go install go.bbkane.com/cli@latest` to test
+- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
+- Push a tag to build
+- `brew install bbkane/tap/cli`
+
+# Code updates across repos
+
+I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. Some examples:
+
+- a backwards incompatible `warg` update that requires callers to update
+- a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc.
+
+One thing that I'm not worried about is dependency updates. dependabot can take care of that.
+
+I'm not sure of the best way to do this yet, but I can probably mix and match these.
+
+## Ideas
+
+### Spreadsheet
+
+Make the change to example-go-cli first to let it bake. Make an issue to track it.
+
+Add the issue to an "issues" spreadsheet row and put an `X` when completed for each project (projects in columns).
+
+|                                                           | fling | Grabbit | ...  |
+| --------------------------------------------------------- | ----- | ------- | ---- |
+| update to latest warg                                     | x     | x       |      |
+| fix `cli version` to work for go install and brew install |       | x       |      |
+| ...                                                       |       |         |      |
+
+### [git-xargs](https://blog.gruntwork.io/introducing-git-xargs-an-open-source-tool-to-update-multiple-github-repos-753f9f3675ec)
+
+Make the change to example-go-cli first to let it bake. Make an issue to track it.
+
+Use `git-xargs` to open PRs to all repos.
+
+I'm worried about git-xargs making changes I haven't tested. Could potentially also open a testing issue
+
+### Issues
+
+figure out a way to open a maintenance issue against each repo and track it that way.
+
+## Notes
+
+There's a lot of YAML here, so the more structured my YAML is, the easier it'll be to make automated changes.
+
+I don't think I want to follow up a change to `example-go-cli` with immediate changes to all repos unless its automated. That would kill my sense of fun. Instead, use the trackign methods above and then do some amount of maintenance on a schedule or just when I decide to add a feature.
