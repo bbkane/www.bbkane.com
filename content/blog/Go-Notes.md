@@ -183,12 +183,16 @@ Some steps to take for new projects
 - update demo.gif in repo
 - Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
 
-if a the project is a CLI (not a library): 
+if a the project is a CLI, not a library: 
 
 - `go install go.bbkane.com/cli@latest` to test
 - Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
-- Push a tag to build
+- Push a tag to build with `git tagit`
 - `brew install bbkane/tap/cli`
+
+If the project is a library, not a CLI:
+
+- Delete the `.goreleasor.yml` file
 
 # Code updates across repos
 
@@ -201,9 +205,11 @@ One thing that I'm not worried about is dependency updates. dependabot can take 
 
 I'm not sure of the best way to do this yet, but I can probably mix and match these.
 
+TODO: update this now that I have git-xargs-tasks repo. Move most of this to that...
+
 ## Ideas
 
-### Spreadsheet
+### [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
 
 Make the change to example-go-cli first to let it bake. Make an issue to track it.
 
@@ -215,7 +221,7 @@ Add the issue to an "issues" spreadsheet row and put an `X` when completed for e
 | fix `cli version` to work for go install and brew install |       | x       |      |
 | ...                                                       |       |         |      |
 
-### [git-xargs](https://blog.gruntwork.io/introducing-git-xargs-an-open-source-tool-to-update-multiple-github-repos-753f9f3675ec)
+### https://github.com/bbkane/git-xargs-tasks
 
 Make the change to example-go-cli first to let it bake. Make an issue to track it.
 
