@@ -63,6 +63,7 @@ These are from various places and may be misremembered.
 - If you’re overthinking, write. If you’re underthinking, read. - [Alex & Books](https://twitter.com/alexandbooks_/status/1446883211393503232?lang=en)
 - Write code. Not too much. Mostly functions. - [Brandon.me](https://www.brandons.me/blog/write-code-not-too-much-mostly-functions)
 - Prioritize impact over output
+- Focus is what you say "no" to - paraphrased from [Steve Jobs](https://www.goodreads.com/quotes/629613-people-think-focus-means-saying-yes-to-the-thing-you-ve)
 
 ## Lessons from maintaining software over time
 
