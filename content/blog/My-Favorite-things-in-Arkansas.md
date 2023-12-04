@@ -16,6 +16,8 @@ TODO: add pics
 - [Corky's Ribs & BBQ](https://goo.gl/maps/VNqdW3eydJn3Xu4B9) - Dry ribs, extra dry rub
 - [Eat My Catfish](https://goo.gl/maps/xxWbY7hpyLuiMTMc8) - great for crawfish when in season
 - [Whole Hog Cafe](https://goo.gl/maps/YSQT6rcXMUcNrjG38) - BBQ, great ribs
+- [Moe's Southwest Grill](https://locations.moes.com/ar/north-little-rock/4834-north-hills-blvd) - generic Southwest Burrito place that I really crave at times for some reason. I don't know why.
+- [Santa Coyote](https://santo-coyote.com/) - I really like the Pollo Tropical!
 
 ## Parks
 
