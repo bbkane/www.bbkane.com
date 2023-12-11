@@ -303,3 +303,15 @@ Expecially useful for getting the right images in blog Markdown image links. `im
 imgcat -H 400px -r -p index.assets/*
 ```
 
+## Curl tips
+
+[Mastering curl: interactive text guide](https://antonz.org/mastering-curl/) is an EXCELLENT blog post, but my current favorite tip is how to send an HTTP request to another IP (the below example also only shows the headers).
+
+```bash
+curl \
+    --head \
+    --request GET \
+    --connect-to www.linkedin.com:443:www.linkedin.cn:443 \
+    https://www.linkedin.com/
+```
+
