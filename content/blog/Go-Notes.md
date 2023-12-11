@@ -177,7 +177,8 @@ Some steps to take for new projects
 - Commit
 - Replace all references to it with the new name
 - Update README
-- Create repo on GitHub and push this to it
+- Create repo on GitHub and push the code.
+- Add the `go` topic to the repo
 - Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
 - Add feature
 - update demo.gif in repo
@@ -194,47 +195,44 @@ If the project is a library, not a CLI:
 
 - Delete the `.goreleasor.yml` file
 
-# Code updates across repos
+# Code updates across Go repos
 
-I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. Some examples:
+I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. I'm tracking these in [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0), because the grid format makes it easy to see which changes are applied to which projects.
 
-- a backwards incompatible `warg` update that requires callers to update
-- a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc.
+One thing that I'm not worried about is dependency updates, which can be automated with dependabot once a project has good enough tests.
 
-One thing that I'm not worried about is dependency updates. dependabot can take care of that.
+There are generally two types of changes:
 
-I'm not sure of the best way to do this yet, but I can probably mix and match these.
+## Changes that can be automated
 
-TODO: update this now that I have git-xargs-tasks repo. Move most of this to that...
+For example: a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc. that can be scripted with a shell script.
 
-## Ideas
+I'm using [git-xargs-tasks](https://github.com/bbkane/git-xargs-tasks) to automate running the shell script against all my repos with [git-xargs](https://github.com/gruntwork-io/git-xargs). I recently used this to add YAML linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.).
 
-### [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
+## Changes that must be done manually
 
-Make the change to example-go-cli first to let it bake. Make an issue to track it.
+For example: a backwards incompatible `warg` update that requires callers to update
 
-Add the issue to an "issues" spreadsheet row and put an `X` when completed for each project (projects in columns).
+I haven't figured out a structured way of doing this yet, but that's coming real soon (I'm currently working on a backwards incompatible change with warg), so my current thoughts are:
 
-|                                                           | fling | Grabbit | ...  |
-| --------------------------------------------------------- | ----- | ------- | ---- |
-| update to latest warg                                     | x     | x       |      |
-| fix `cli version` to work for go install and brew install |       | x       |      |
-| ...                                                       |       |         |      |
+- update [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
+- update [example-go-cli](https://github.com/bbkane/example-go-cli) with the change and test
+- write a detailed issue that describes how to do the change
+- add that issue to all repos (perhaps with a label)
+- make the change to different projects as I get time/motivation and close the issue. Maybe before I add a feature to a project I close the change issue or before I start another manual change.
 
-### https://github.com/bbkane/git-xargs-tasks
+TODO: update this section once I have some experience doing this.
 
-Make the change to example-go-cli first to let it bake. Make an issue to track it.
+# Go CI/CD setup
 
-Use `git-xargs` to open PRs to all repos.
+Linter requirements:
 
-I'm worried about git-xargs making changes I haven't tested. Could potentially also open a testing issue
+- must run
+  - from local CLI
+  - from pre-commit (via lefthook)
+  - on GitHub Actions
+- Must be easy to install in all of these places
+- Should have an automated way to fix problems found
+- Pretty quick runtime
 
-### Issues
-
-figure out a way to open a maintenance issue against each repo and track it that way.
-
-## Notes
-
-There's a lot of YAML here, so the more structured my YAML is, the easier it'll be to make automated changes.
-
-I don't think I want to follow up a change to `example-go-cli` with immediate changes to all repos unless its automated. That would kill my sense of fun. Instead, use the trackign methods above and then do some amount of maintenance on a schedule or just when I decide to add a feature.
+TODO: get a nice table with that shows how to run from CLI and how to fix for each of my linters
