@@ -25,6 +25,8 @@ Next, dive in with [Everything you should know about certificates and PKI but ar
 
 [Ulfheim's Certificate Analysis](https://tls13.ulfheim.net/certificate.html) is a companion site that breaks down a certificate at the byte level.
 
+[TLS, byte by byte](https://bytebybyte.dev/) livestreams a TLS connection with explanations.
+
 [SSL/TLS and PKI History](https://www.feistyduck.com/ssl-tls-and-pki-history/) is a timeline of TLS innovations and attacks. It really helps explain some of the quirks in the protocol. This is so enlightening I might put it in the "General Working Knowledge" section. I highly recommend.
 
 [A Readable Specification of TLS 1.3](https://davidwong.fr/tls13/) is exactly what it says on the tin - explains all details of RFC 8446 in a more readable way. This could be useful to *write* a TLS implementation but is probably too much information for most of your needs.
@@ -43,7 +45,7 @@ Next, dive in with [Everything you should know about certificates and PKI but ar
 
 [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts) - Azure's solution for storing TLS certificates. It's nice, but has some rough edges I should probably blog about in more detail.
 
-[certigo](https://github.com/square/certigo) shows information about a certificate, from a file or by connecting to a server. Like my `easyssl.py` script but not a total hack :)
+[certigo](https://github.com/square/certigo) shows information about a certificate, from a file or by connecting to a server. Like my `easyssl.py` script below but not a total hack :)
 
 [smallstep/cli](https://github.com/smallstep/cli) is a toolkit for working PKI - it actually works with several crytographical technologies, such as JWTS, OAuth, and SSH certificates. See [here](https://smallstep.com/blog/build-a-tiny-ca-with-raspberry-pi-yubikey/) to set up a CA on a Raspberry Pi and a YubiKey with smallstep's tools.
 
@@ -71,7 +73,7 @@ Useful for developing with HTTPS locally.
 
 LetsEncrypt also has an OpenSSL oneliner to create a self-signed cert that also includes SANs at [their docs](https://letsencrypt.org/docs/certificates-for-localhost/#making-and-trusting-your-own-certificates)
 
-[easyssl.py](https://github.com/bbkane/dotfiles/blob/master/bin_common/bin_common/easyssl.py) is a small script I wrote to generate longer OpensSSL (actually LibreSSL cause I'm on MacOS) commands I need most. For example, getting the list of SANs.
+[easyssl.py](https://github.com/bbkane/dotfiles/blob/master/bin_common/bin_common/easyssl.py) is a small script I wrote to generate longer OpensSSL (actually LibreSSL cause I'm on MacOS) commands I need most. For example, getting the list of SANs. It prints out the generated command before running it for easy sharing.
 
 [Creating an OpenSSL CSR](https://www.bbkane.com/blog/creating-an-openssl-csr/) is a blog post I just wrote explaining how to create a CSR to request a certicate from a Certificate Authority. This method has been tested with DigiCert.
 
