@@ -295,3 +295,11 @@ Run https://docs.brew.sh/Manpage#autoremove---dry-run to uninstall dependencies 
 brew autoremove
 ```
 
+## List images in the terminal
+
+Expecially useful for getting the right images in blog Markdown image links. `imgcat` comes from [these iTerm2 docs](https://iterm2.com/documentation-images.html).
+
+```bash
+imgcat -H 400px -r -p index.assets/*
+```
+
