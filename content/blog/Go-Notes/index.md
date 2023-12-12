@@ -5,7 +5,7 @@ updated = 2021-10-02
 aliases = [ "2018/09/04/Go-Notes.html" ]
 +++
 
-These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling.md).
+These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md).
 
 ## Notes on Testing
 

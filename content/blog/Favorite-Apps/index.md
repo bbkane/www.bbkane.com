@@ -10,13 +10,13 @@ Some apps I don't want to forget! Some are useful for specific things I don't ne
 Some apps have expanded to their own blog posts... Here's a non-exhaustive list
 
 - [Diagram Tools](@/blog/Diagram-Tools/index.md)
-- [Getting Started with Podcasts](@/blog/Getting-Started-with-Podcasts.md)
-- [Go Developer Tooling](@/blog/Go-Developer-Tooling.md)
+- [Getting Started with Podcasts](@/blog/Getting-Started-with-Podcasts/index.md)
+- [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md)
 - [How I Take Notes](@/blog/How-I-Take-Notes/index.md)
-- [Learn SQL](@/blog/Learn-SQL.md)
+- [Learn SQL](@/blog/Learn-SQL/index.md)
 - [Mac Menu Bar Meeting Apps](@/blog/Mac-Menu-Bar-Meeting-Apps/index.md)
 - [Password Management](@/blog/Password-Management/index.md)
-- [Tracking Work Faster With Command Line Jira](@/blog/Tracking-Work-Faster-With-Command-Line-Jira.md)
+- [Tracking Work Faster With Command Line Jira](@/blog/Tracking-Work-Faster-With-Command-Line-Jira/index.md)
 
 ## CLI
 

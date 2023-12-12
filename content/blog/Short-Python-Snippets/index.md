@@ -8,7 +8,7 @@ aliases = [ "2018/03/14/Short-Python-Snippets.html" ]
 This is just a collection of Python snippits that are too small for their own
 posts. All code is for Python 3.
 
-Also see [Logging-in-Python](@/blog/Logging-in-Python.md)
+Also see [Logging-in-Python](@/blog/Logging-in-Python/index.md)
 
 ## Inline Multiline Strings
 
@@ -56,7 +56,7 @@ with open('file.json', 'w') as fp:
 
 ## Argparse template
 
-Expanded and moved to [/blog/argparse-template/](@/blog/Argparse-Template.md)
+Expanded and moved to [/blog/argparse-template/](@/blog/Argparse-Template/index.md)
 
 ## Zipping Files
 
