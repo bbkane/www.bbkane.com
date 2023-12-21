@@ -1,9 +1,11 @@
 +++
 title = "Wallpapers From Reddit"
 date = 2015-02-28
-updated = 2016-12-25
+updated = 2023-12-19
 aliases = [ "2015/02/28/Wallpapers-From-Reddit.html" ]
 +++
+
+> Update: 2023-12-19: I've since written [grabbit](https://github.com/bbkane/grabbit) to download my reddit images. It's much easier to install than `reddit_get_top_images`
 
 A while back, I found a nice [script](https://github.com/nagracks/reddit_get_top_images) to download wallpapers from Reddit.
 It originally only downloaded wallpapers from one subreddit at a time, so I made a [fork](https://github.com/bbkane/reddit_get_top_images)

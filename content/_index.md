@@ -11,7 +11,7 @@ I keep notes to myself at my [blog](/blog). Some posts are more polished and up 
 
 ## About me
 
-Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and we're expecting our first child!
+Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and, as of 2023, we have a toddler!
 
 ### Words that define me
 
@@ -23,8 +23,11 @@ I want to:
 - Improve (myself/others/projects)
 - Enjoy (life! I need to make time to do interesting things with people I love)
 
-![Us at the Beach](Ben-Jen-at-beach.jpg)
-
-## Analytics
+## Site analytics
 
 See site analytics at [GoatCounter](https://www-bbkane-com.goatcounter.com/) or [Counter.dev](https://counter.dev/dashboard.html?user=bbkane&token=MEzACRAJKeLPGaij).
+
+---
+
+![Us at the Beach](Ben-Jen-at-beach.jpg)
+

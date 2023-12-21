@@ -5,7 +5,7 @@ updated = 2021-10-02
 aliases = [ "2018/09/04/Go-Notes.html" ]
 +++
 
-These are things I want to remember in Go
+These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md).
 
 ## Notes on Testing
 
@@ -168,3 +168,71 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 - [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
 - [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
 
+# Creating a new Go project
+
+Some steps to take for new projects
+
+- Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
+- Erase the git history
+- Commit
+- Replace all references to it with the new name
+- Update README
+- Create repo on GitHub and push the code.
+- Add the `go` topic to the repo
+- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
+- Add feature
+- update demo.gif in repo
+- Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
+
+if a the project is a CLI, not a library: 
+
+- `go install go.bbkane.com/cli@latest` to test
+- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
+- Push a tag to build with `git tagit`
+- `brew install bbkane/tap/cli`
+
+If the project is a library, not a CLI:
+
+- Delete the `.goreleasor.yml` file
+
+# Code updates across Go repos
+
+I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. I'm tracking these in [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0), because the grid format makes it easy to see which changes are applied to which projects.
+
+One thing that I'm not worried about is dependency updates, which can be automated with dependabot once a project has good enough tests.
+
+There are generally two types of changes:
+
+## Changes that can be automated
+
+For example: a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc. that can be scripted with a shell script.
+
+I'm using [git-xargs-tasks](https://github.com/bbkane/git-xargs-tasks) to automate running the shell script against all my repos with [git-xargs](https://github.com/gruntwork-io/git-xargs). I recently used this to add YAML linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.).
+
+## Changes that must be done manually
+
+For example: a backwards incompatible `warg` update that requires callers to update
+
+I haven't figured out a structured way of doing this yet, but that's coming real soon (I'm currently working on a backwards incompatible change with warg), so my current thoughts are:
+
+- update [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
+- update [example-go-cli](https://github.com/bbkane/example-go-cli) with the change and test
+- write a detailed issue that describes how to do the change
+- add that issue to all repos (perhaps with a label)
+- make the change to different projects as I get time/motivation and close the issue. Maybe before I add a feature to a project I close the change issue or before I start another manual change.
+
+TODO: update this section once I have some experience doing this.
+
+# Go CI/CD setup
+
+Linter requirements:
+
+- must run
+  - from local CLI
+  - from pre-commit (via lefthook)
+  - on GitHub Actions
+- Must be easy to install in all of these places
+- Should have an automated way to fix problems found
+- Pretty quick runtime
+
+TODO: get a nice table with that shows how to run from CLI and how to fix for each of my linters

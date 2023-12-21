@@ -9,6 +9,8 @@ easier. I develop on a Mac, so install instructions are MacOS-focused.
 
 See [example-go-cli](https://github.com/bbkane/example-go-cli) for a repo using these tools.
 
+Also see [Go Notes](@/blog/Go-Notes/index.md).
+
 ## [golangci-lint](https://golangci-lint.run/)
 
 Run various correctness checks on source code.

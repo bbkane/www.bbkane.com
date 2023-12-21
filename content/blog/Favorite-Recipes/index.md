@@ -336,3 +336,20 @@ Put in oven bag and bake for an hour at 350 in instant pot / oven.
 ![adobo](./adobo.jpg)
 
 ![sazon](./sazon.jpg)
+
+## Mom's Potato Pancakes
+
+Make the batter (for 3 people)
+
+- beat 3 eggs
+- add a cup of milk (trial and error)
+- add vegetable oil (1/4 cup)
+- add 1/2 - 1tsp salt
+- add 1 cup flour
+- add 1/2-1tsp baking powder
+- shred 2-3 potatoes
+- whisk it all together
+
+Cook
+
+- fry in pan with hot oil and cook till brown
