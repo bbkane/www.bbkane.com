@@ -96,7 +96,7 @@ I want something that can collapse headers since Typora can't
 
 I didnt' really like Logseq because it feels a bit sluggish and was based on blocks, not paragraphs of text. - also not sure how to collapse stuff - I should give it a try and use it like it wants to be used
 
-I really like Obsidian (in the few min I've tried it) but I don't want to pay the annual license fee and not sure you can control how you paste images, though that's not a dealbreaker - oh, looks like LI won't pay for it - https://linkedin-randd.slack.com/archives/CV02EGRMJ/p1702401854468789 . So... in that case I wont' use it, even though I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
+I really like Obsidian (in the few min I've tried it) but I'm wary of the annual license fee and not sure you can control how you paste images, though that's not a dealbreaker. I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
 
 Foam doesnt' allow me to paste images in WYSIWYG
 
