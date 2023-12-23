@@ -21,7 +21,7 @@ Some posts I'm proud of and keep returning to:
 
 ## About me
 
-Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and, as of 2022, we have a toddler!
+Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike and I love my wife and son!
 
 ### Words that define me
 
