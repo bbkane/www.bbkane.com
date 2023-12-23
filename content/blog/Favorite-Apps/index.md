@@ -25,6 +25,7 @@ Some apps have expanded to their own blog posts... Here's a non-exhaustive list
 - ocrmypdf ( https://pypi.org/project/ocrmypdf/ )
 - rclone - rsync for cloud (OneDrive)
 - ripgrep - grep++
+- sshuttle - proxy DNS requests
 - t-rec - alternative to VHS to record terminal GIFs - https://github.com/sassman/t-rec-rs
 - tfswitch - manage terraform
 - tokei - count lines of code
