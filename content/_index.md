@@ -14,7 +14,6 @@ Some posts I'm proud of and keep returning to:
 - [Azure Functions With Terraform](@/blog/Azure-Functions-With-Terraform/index.md)
 - [Checklists and Sayings](@/blog/Checklists-And-Sayings/index.md)
 - [Go Notes](@/blog/Go-Notes/index.md)
-- [How I Take Notes](@/blog/How-I-Take-Notes/index.md)
 - [Learn SSL](@/blog/Learn-SSL/index.md)
 - [LinkedIn Recruiters Over Time](@/blog/LinkedIn-Recruiters-Over-Time/index.md)
 - [Short BASH snippets](@/blog/Short-BASH-Snippets/index.md) and [Short Python Snippets](@/blog/Short-Python-Snippets/index.md)
