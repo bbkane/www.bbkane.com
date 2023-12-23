@@ -9,9 +9,20 @@ Welcome to my corner of the Internet!
 
 I keep notes to myself at my [blog](/blog). Some posts are more polished and up to date than others. Enjoy!
 
+Some posts I'm proud of and keep returning to:
+
+- [Azure Functions With Terraform](@/blog/Azure-Functions-With-Terraform/index.md)
+- [Checklists and Sayings](@/blog/Checklists-And-Sayings/index.md)
+- [Go Notes](@/blog/Go-Notes/index.md)
+- [How I Take Notes](@/blog/How-I-Take-Notes/index.md)
+- [Learn SSL](@/blog/Learn-SSL/index.md)
+- [LinkedIn Recruiters Over Time](@/blog/LinkedIn-Recruiters-Over-Time/index.md)
+- [Short BASH snippets](@/blog/Short-BASH-Snippets/index.md) and [Short Python Snippets](@/blog/Short-Python-Snippets/index.md)
+- [Software Engineering Ideas That Influence Me](@/blog/Software-Engineering-Ideas-That-Influence-Me/index.md)
+
 ## About me
 
-Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and, as of 2023, we have a toddler!
+Hello, I'm Ben. I like to tour through random technology, I'm a [Christian](https://www.kingjamesbibleonline.org/Micah-6-8/), I like to hike, I got married in 2020, and, as of 2022, we have a toddler!
 
 ### Words that define me
 
