@@ -1,23 +1,44 @@
 +++
-title = "Go Notes"
-date = 2018-09-04
-updated = 2021-10-02
+title = "Go Code Notes"
+date = 2023-12-27
 aliases = [ "2018/09/04/Go-Notes.html" ]
+
 +++
 
-These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md).
+These are notes on writing good Go Code. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [Go Project Notes](@/blog/Go-Project-Notes/index.md)
 
-## Notes on Testing
+# Notes on testing
 
 Some notes on testing in Go. A lot of these notes came from [Advanced Testing in Go (Hashimoto)](https://www.youtube.com/watch?v=8hQG7QlcLBk) ([transcipt](https://about.sourcegraph.com/go/advanced-testing-in-go)).
 
-### Testing Private and Public APIs
+## Types of tests
+
+Copied from [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) except where noted.
+
+- **Unit tests** - Your unit  tests make sure that a certain unit (your *subject under test*) of your  codebase works as intended. Unit tests have the narrowest scope of all the  tests in your test suite. The number of unit tests in your test suite will  largely outnumber any other type of test.
+- **Integration tests** - test the integration of your application with all the parts  that live outside of your application.
+- **Contract tests** - make sure that the implementations on the consumer and provider side still stick to the defined contract. (also see [Working without mocks](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/working-without-mocks)).
+- **UI tests** - testing UI code
+- **End-to-End tests** - Testing your deployed application via its user interface. As they are complicated, they can be flaky and slow. (overlaps with acceptance tests)
+- **Acceptance tests** - test that your software works correctly from a *user's* perspective, not just from a technical perspective - also see [Introduction to acceptance tests](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/intro-to-acceptance-tests)
+- **Fuzz tests** - See [Go Fuzzing](https://go.dev/doc/security/fuzz/) - a type of automated testing which continuously manipulates inputs to a program to find bugs. Relies on asserting properties about the code under test.
+
+## Types of test doubles
+
+Copied from [Working without mocks](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/working-without-mocks) (and this whole online book is excellent).
+
+- **Stubs** return the same canned data every time they are called
+- **Spies** are like stubs but also record how they were called so the test can assert that the SUT calls the dependencies in specific ways.
+- **Mocks** are like a superset of the above, but they only respond with specific data to specific invocations. If the SUT calls the dependencies with the wrong arguments, it'll typically panic.
+- **Fakes** are like a genuine version of the dependency but implemented in a way more suited to fast running, reliable tests and local development. Often, your system will have some abstraction around persistence, which will be implemented with a database, but in your tests, you could use an in-memory fake instead.
+
+## Testing private and public APIs
 
 Test files for a package's publicly visible API should be named `<package>_ext_test.go` and start with `package <package>_test`.
 
 Test files for a package's internal API should be named `<package>_int_test.go` and start with `package <package>`
 
-### Comparing Values Naming Convention
+## Comparison naming convention
 
 Go's `testing` library wants you to do a lot of comparisons. The naming convention I want to use for these comparisons (taken from `testify`) is to call the value that I expect `expectedXXX` and always put it on the left side of the comparison,  and the value that I actually got `actualXXX`, and always put it on the right side of the comparison:
 
@@ -27,19 +48,16 @@ if expectedThing != actualThing {
 }
 ```
 
-### Degrees of Failure
+## Degrees of failure
 
 The `testing` library has a couple ways to fail:
 
-`Fail` marks the current test as failed, but continues the execution of the current test.
+- `Fail` marks the current test as failed, but continues the execution of the current test.
+- `Error/Errorf` is equivalent to `Log/Logf` followed by `Fail`.
+- `FailNow` marks the current test as failed, and stops execution of the current test.
+- `Fatal/Fatalf` is equivalent to `Log/Logf` followed by `FailNow`.
 
-`Error/Errorf` is equivalent to `Log/Logf` followed by `Fail`.
-
-`FailNow` marks the current test as failed, and stops execution of the current test.
-
-`Fatal/Fatalf` is equivalent to `Log/Logf` followed by `FailNow`.
-
-### testify
+## [`testify`](https://github.com/stretchr/testify)
 
 `testify` is super nice for comparing things because it writes most of my `if` statements for me. I can do:
 
@@ -51,11 +69,11 @@ assert.Equal(t, expectedValue, actualValue)
 require.Equal(t, expectedValue, actualValue)
 ```
 
-###  Table Driven Tests
+##  Table driven tests
 
 Test the same logic on different data!
 
-Here's a simple example - note that in lieu of testing what's in the potential error, I simply assert that it's nil or not nil. For this particular, this is "enough" to satisfy me. Other tests might require more detailed comparisons.
+Here's a simple example - note that in lieu of testing what's in the potential error, I simply assert that it's nil or not nil. For this particular test, this is "enough" to satisfy me. Other tests might require more detailed comparisons.
 
 ```go
 package main
@@ -117,19 +135,19 @@ FAIL	github.com/bbkane/hello_testing	0.173s
 FAIL
 ```
 
-### Data Files
+## Data files
 
 When a test depends on a data file, Go will read it from a file path relative to the test. I like to stick my files for a test in a `testdata/TestName.xxx` file right next to the test. Then, within the test, I can `ioutil.Readfile('testdata/TestName.xxx')` to get the data. If each sub test in a table-driven test, needs a file, then I use `testdata/TestName/SubTestName.xxx`.
 
-### Golden Files
+## Golden files
 
 Sometimes, I want to test that a function outputs the correct bytes - like a file, an HTTP response, or the `--help` output from the CLI parsing library I'm writing. In these cases, it's helpful to make the tests read an environmental variable, and write the bytes to a file when it is passed. Then I can manually read those files to ensure correctness, commit them, and make the test check the bytes generated to the file when the environmental variable is not set. My usage of this term comes from [Advanced Testing in Go (Hashimoto)](https://www.youtube.com/watch?v=8hQG7QlcLBk), but I've also seen it called "snapshot" testing.
 
-#### Golden File Example (logos)
+### Golden file example (`logos`)
 
 See [logos](https://github.com/bbkane/logos/blob/fcff1df203a5fdee193269be19de53383c7ac5e2/logos_ext_test.go) for an example. I still haven't decided whether to turn this into a library or simply copy-paste it wherever.
 
-### Example Tests
+## Example tests
 
 Code examples can be added to tests and also show up in the docs! See [the Go blog](https://go.dev/blog/examples) for more details, or see my example below:
 
@@ -144,9 +162,11 @@ func ExampleExample() {
 }
 ```
 
-## Errors
+# Errors
 
-To some extent these error creation/handling ideas are tested in `warg` and other code, but I still have yet to prove other ideas. In particular, when prototyping I can get quite far eschewing these ideas and just using `fmt.Errorf` for everything, and this code can ossify in my project as it matures.
+To some extent these error creation/handling ideas are tested in `warg` and other code, but I still have yet to prove other ideas. In particular, when prototyping I can get quite far eschewing these ideas and just using `fmt.Errorf` for everything, but `fmt.Errorf` errors can ossify in my project as it matures.
+
+## Guidelines
 
 - An error should consist of a unique (to the repo) message and optionally more information specific to the problem. The message should be unique because Go errors do not include file information such as line numbers, so you need to grep for the error. Example: `ChoiceNotFound{Msg: "choice not found", Choices: []string{"a", "b", "c"}}`.
 - Errors should not include information the caller already knows. Example: in `ChoiceNotFound` above, the error does not need to contain the choice sent to the function that returns it because the caller already knows it.
@@ -154,85 +174,16 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 - Errors that do need to include extra information should not jam that into `fmt.Errorf`, but instead use a struct with an `Error()` method so the caller can retrieve the extra info.
 - Propagate errors by wrapping them - either with `fmt.Errorf` (if you don't need to add more unique context), or with a struct using an `Unwrap` method (if you do need more unique context).
 
-### Unsolved Problems / Tradeoffs
+## Unsolved problems and tradeoffs
 
 - I wish errors had more file information like line numbers for debugging purposes. There ARE packages to add this, but I haven't chosen one.
 - Error wrapping allows you to produce errors with one wrapped "child" error (like a chain of errors), but sometimes you'd like to produce an error with more than one "children" errors (like a tree of errors). An example of this is parsing, where you'd like to parse as much as you can and produce all the useful errors you can, so the user can fix all of those at once before they try to parse again. Once. again, there are packages to solve this, and some declined stdlib proposals like [proposal: errors: add With(err, other error) error · Issue #52607 · golang/go](https://github.com/golang/go/issues/52607).
 - The approach above almost completely ignores API evolution concerns. In particular, what if I have a sentinel error, and the code changes, and I now need to add context to it? I'd need to change the type, which breaks the API. See [Don’t just check errors, handle them gracefully | Dave Cheney](https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully) for a great description of these problems and solutions. NOTE that this post precedes Go 1.13's error wrapping functions, which can (imo) be used to replace his `errors` library. No one uses my code, and I'm not the smartest man, so I've chosen simplicity of implementation with the possibility of API breakage over more complex but fewer API-breaking error implementations. I want to note this tradeoff explicitly as it's not the correct tradeoff for more public code.
 
-### References
+## References
 
 - [Working with Errors in Go 1.13 - The Go Programming Language](https://go.dev/blog/go1.13-errors) - describes the mechanics of wrapping errors.
 - [Wrapping Errors the Right Way - by Hunter Herman](https://errnil.substack.com/p/wrapping-errors-the-right-way) - advocates for only including information the caller doesn't have.
 - [Designing error types in Rust](https://mmapped.blog/posts/12-rust-error-handling.html) is about Rust, but it advocates a couple ideas I really like, in particular the difference between libraries and applications, as well as that it's difficult to "overspecify" errors: "Feel free to introduce distinct error types for each function you implement. I am still looking for Rust code that went overboard with distinct error types."
 - [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
 - [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
-
-# Creating a new Go project
-
-Some steps to take for new projects
-
-- Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
-- Erase the git history
-- Commit
-- Replace all references to it with the new name
-- Update README
-- Create repo on GitHub and push the code.
-- Add the `go` topic to the repo
-- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
-- Add feature
-- update demo.gif in repo
-- Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
-
-if a the project is a CLI, not a library: 
-
-- `go install go.bbkane.com/cli@latest` to test
-- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
-- Push a tag to build with `git tagit`
-- `brew install bbkane/tap/cli`
-
-If the project is a library, not a CLI:
-
-- Delete the `.goreleasor.yml` file
-
-# Code updates across Go repos
-
-I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. I'm tracking these in [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0), because the grid format makes it easy to see which changes are applied to which projects.
-
-One thing that I'm not worried about is dependency updates, which can be automated with dependabot once a project has good enough tests.
-
-There are generally two types of changes:
-
-## Changes that can be automated
-
-For example: a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc. that can be scripted with a shell script.
-
-I'm using [git-xargs-tasks](https://github.com/bbkane/git-xargs-tasks) to automate running the shell script against all my repos with [git-xargs](https://github.com/gruntwork-io/git-xargs). I recently used this to add YAML linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.).
-
-## Changes that must be done manually
-
-For example: a backwards incompatible `warg` update that requires callers to update
-
-I haven't figured out a structured way of doing this yet, but that's coming real soon (I'm currently working on a backwards incompatible change with warg), so my current thoughts are:
-
-- update [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
-- update [example-go-cli](https://github.com/bbkane/example-go-cli) with the change and test
-- write a detailed issue that describes how to do the change
-- add that issue to all repos (perhaps with a label)
-- make the change to different projects as I get time/motivation and close the issue. Maybe before I add a feature to a project I close the change issue or before I start another manual change.
-
-TODO: update this section once I have some experience doing this.
-
-# Go CI/CD setup
-
-Linter requirements:
-
-- must run
-  - from local CLI
-  - from pre-commit (via lefthook)
-  - on GitHub Actions
-- Must be easy to install in all of these places
-- Should have an automated way to fix problems found
-- Pretty quick runtime
-
-TODO: get a nice table with that shows how to run from CLI and how to fix for each of my linters
