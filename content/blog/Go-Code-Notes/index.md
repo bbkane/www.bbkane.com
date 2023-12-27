@@ -1,11 +1,11 @@
 +++
-title = "Go Notes"
-date = 2018-09-04
-updated = 2021-10-02
+title = "Go Code Notes"
+date = 2023-12-27
 aliases = [ "2018/09/04/Go-Notes.html" ]
+
 +++
 
-These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md).
+These are notes on writing good Go Code. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [Go Project Notes](@/blog/Go-Project-Notes/index.md)
 
 # Notes on testing
 
@@ -171,96 +171,3 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 - [Designing error types in Rust](https://mmapped.blog/posts/12-rust-error-handling.html) is about Rust, but it advocates a couple ideas I really like, in particular the difference between libraries and applications, as well as that it's difficult to "overspecify" errors: "Feel free to introduce distinct error types for each function you implement. I am still looking for Rust code that went overboard with distinct error types."
 - [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
 - [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
-
-# START OF GO PROJECT NOTES
-
- # Motivation
-
-Simon Willison has a lot of projects - > 100 of them I think. To manage them, he uses some custom tooling, custom libraries, and  a maintenance strategy he calls "the perfect commit" (TODO link) - each commit contains code changes, docs, and tests.
-
-I don't have Simon's number of side projects, but I DO have a wife and toddler and I'm not as smart as him anyway, I've started adopting similar techniques (though using Go, not Python) to keep my side projects maintainable and fun during my limited opportunities to hack on them.
-
-See Checklists and Sayings (TODO; Link) for more exposition on this in general. Below are some notes for more Go-specific tools and workflows on projects.
-
-# Creating a new Go project
-
-Before starting, ask these questions:
-
-- Will I use this or will I learn a lot from it?
-- Is Go the right language? For small stuff Python works great!
-
-Steps to take for new projects. I could use cookiecutter (TODO: get link) or something to make this faster, but I find maintaining cookiecutter code difficult, so I prefer to manully copy example-go-cli and update the right thing by hand.
-
-- Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
-- Erase the git history
-- Commit
-- Replace all references to it with the new name
-- Update README
-- Create repo on GitHub and push the code.
-- Add the `go` topic to the repo
-- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
-- Update CHANGELOG - TODO: ensure go-example-cli has a changelog
-- Add feature
-- update demo.tape and update demo.gif with vhs TODO link (`vhs < ./demo.tape`)
-- Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
-
-If a the project is a CLI, not a library: 
-
-- `go install go.bbkane.com/cli@latest` to test
-- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
-- Push a tag to build with `git tagit`
-- `brew install bbkane/tap/cli`
-
-If the project is a library, not a CLI:
-
-- Delete the `.goreleasor.yml` file
-
-# Code changes across Go repos
-
-I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. I track most of these in [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0), because the grid format makes it easy to see which changes are applied to which projects.
-
-## Dependency updates
-
-Once a project has enough tests for my satisfaction, use GitHub's Dependabot
-
-## Easily automated changes
-
-For example: a change to`.gitignore`, `.golangci.yml`, `.goreleaser.yml`, etc. that can be scripted with a shell script and/or `yq`  TODO link.
-
-I'm using [git-xargs-tasks](https://github.com/bbkane/git-xargs-tasks) to automate running the shell script against all my repos with [git-xargs](https://github.com/gruntwork-io/git-xargs). I recently used this to add YAML linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.).
-
-## Changes that must be done manually
-
-For example: a backwards incompatible `warg` update that requires callers to update:
-
-- update [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0)
-- update [example-go-cli](https://github.com/bbkane/example-go-cli) with the change and test
-- write a detailed issue that describes how to do the change
-- add that issue to all repos (perhaps with a label)
-- make the change to different projects as I get time/motivation and close the issue. Maybe before I add a feature to a project I close the change issue or before I start another manual change.
-
-# Quality / Release tooling
-
-- Must have:
-  - easily install and run:
-    - from editor
-    - from CLI / pre-commit (via lefthook TODO link)
-    - on GitHub Actions
-  
-- Should have:
-  - Automatic fixes
-  - Quick runtime
-
-
-See example-go-cli TODO link GitHub Action files for current implementation there
-
-| Tool - TODO link | MacOS Local Install  | Editor Integration         | CLI command                             | Automatic Fix                          |
-| ---------------- | -------------------- | -------------------------- | --------------------------------------- | -------------------------------------- |
-| `golang-ci-lint` | Homebrew             | VS Code - TODO get setting | `golangci-lint run`                     | `golangci-lint run --fix`              |
-| `go test`        | Homebrew (with `go`) | VS Code Testing tab        | `go test`                               | None                                   |
-| `yamllint`       | Homebrew             | None                       | `yamllint .`                            | `yq -i -P 'sort_keys(..)' [file].yaml` |
-| `goreleaser`     | Homebrew             | None                       | `goreleaser release --snapshot --clean` | None                                   |
-
-# Other Tooling
-
-TODO panicparse and gotestsum
