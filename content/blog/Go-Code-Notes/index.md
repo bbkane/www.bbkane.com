@@ -13,7 +13,24 @@ Some notes on testing in Go. A lot of these notes came from [Advanced Testing in
 
 ## Types of tests
 
-TODO: copy from "Learn Go With Tests"- unit test, integration tests, acceptance tests, etc.
+Copied from [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) except where noted.
+
+- **Unit tests** - Your unit  tests make sure that a certain unit (your *subject under test*) of your  codebase works as intended. Unit tests have the narrowest scope of all the  tests in your test suite. The number of unit tests in your test suite will  largely outnumber any other type of test.
+- **Integration tests** - test the integration of your application with all the parts  that live outside of your application.
+- **Contract tests** - make sure that the implementations on the consumer and provider side still stick to the defined contract. (also see [Working without mocks](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/working-without-mocks)).
+- **UI tests** - testing UI code
+- **End-to-End tests** - Testing your deployed application via its user interface. As they are complicated, they can be flaky and slow. (overlaps with acceptance tests)
+- **Acceptance tests** - test that your software works correctly from a *user's* perspective, not just from a technical perspective - also see [Introduction to acceptance tests](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/intro-to-acceptance-tests)
+- **Fuzz tests** - See [Go Fuzzing](https://go.dev/doc/security/fuzz/) - a type of automated testing which continuously manipulates inputs to a program to find bugs. Relies on asserting properties about the code under test.
+
+## Types of test doubles
+
+Copied from [Working without mocks](https://quii.gitbook.io/learn-go-with-tests/testing-fundamentals/working-without-mocks) (and this whole online book is excellent).
+
+- **Stubs** return the same canned data every time they are called
+- **Spies** are like stubs but also record how they were called so the test can assert that the SUT calls the dependencies in specific ways.
+- **Mocks** are like a superset of the above, but they only respond with specific data to specific invocations. If the SUT calls the dependencies with the wrong arguments, it'll typically panic.
+- **Fakes** are like a genuine version of the dependency but implemented in a way more suited to fast running, reliable tests and local development. Often, your system will have some abstraction around persistence, which will be implemented with a database, but in your tests, you could use an in-memory fake instead.
 
 ## Testing private and public APIs
 
@@ -35,15 +52,12 @@ if expectedThing != actualThing {
 
 The `testing` library has a couple ways to fail:
 
-`Fail` marks the current test as failed, but continues the execution of the current test.
+- `Fail` marks the current test as failed, but continues the execution of the current test.
+- `Error/Errorf` is equivalent to `Log/Logf` followed by `Fail`.
+- `FailNow` marks the current test as failed, and stops execution of the current test.
+- `Fatal/Fatalf` is equivalent to `Log/Logf` followed by `FailNow`.
 
-`Error/Errorf` is equivalent to `Log/Logf` followed by `Fail`.
-
-`FailNow` marks the current test as failed, and stops execution of the current test.
-
-`Fatal/Fatalf` is equivalent to `Log/Logf` followed by `FailNow`.
-
-## `testify` TODO: link
+## [`testify`](https://github.com/stretchr/testify)
 
 `testify` is super nice for comparing things because it writes most of my `if` statements for me. I can do:
 
@@ -59,7 +73,7 @@ require.Equal(t, expectedValue, actualValue)
 
 Test the same logic on different data!
 
-Here's a simple example - note that in lieu of testing what's in the potential error, I simply assert that it's nil or not nil. For this particular, this is "enough" to satisfy me. Other tests might require more detailed comparisons.
+Here's a simple example - note that in lieu of testing what's in the potential error, I simply assert that it's nil or not nil. For this particular test, this is "enough" to satisfy me. Other tests might require more detailed comparisons.
 
 ```go
 package main
@@ -151,6 +165,8 @@ func ExampleExample() {
 # Errors
 
 To some extent these error creation/handling ideas are tested in `warg` and other code, but I still have yet to prove other ideas. In particular, when prototyping I can get quite far eschewing these ideas and just using `fmt.Errorf` for everything, but `fmt.Errorf` errors can ossify in my project as it matures.
+
+## Guidelines
 
 - An error should consist of a unique (to the repo) message and optionally more information specific to the problem. The message should be unique because Go errors do not include file information such as line numbers, so you need to grep for the error. Example: `ChoiceNotFound{Msg: "choice not found", Choices: []string{"a", "b", "c"}}`.
 - Errors should not include information the caller already knows. Example: in `ChoiceNotFound` above, the error does not need to contain the choice sent to the function that returns it because the caller already knows it.
