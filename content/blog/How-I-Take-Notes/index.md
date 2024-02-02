@@ -129,3 +129,4 @@ https://alternativeto.net/software/beaver-notes/about/ - not in Homebrew and I g
 
 So... overall I'm not sure what's up with that.
 
+https://github.com/marktext/marktext - looks really good and I intend to play more with it when I have times. Looks like it doesn't support folding but is otherwise similar to Typora
