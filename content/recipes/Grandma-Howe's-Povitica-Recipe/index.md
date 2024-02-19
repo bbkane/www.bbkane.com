@@ -2,7 +2,7 @@
 title = "Grandma Howe's Povitica Recipe"
 date = 2018-07-10
 updated = 2018-07-11
-aliases = [ "2018/07/10/Grandma-Howe's-Povitica-Recipe.html" ]
+aliases = [ "2018/07/10/Grandma-Howe's-Povitica-Recipe.html", "blog/grandma-howe-s-povitica-recipe/" ]
 +++
 
 This isn't my usual computery blog post, but it might be the most technical.

@@ -1,6 +1,7 @@
 +++
 title = "Ben's Corner"
 template = "index.html"
+aliases = [ "blog/favorite-recipes/" ]
 +++
 
 Welcome to my corner of the Internet!

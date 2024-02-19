@@ -1,7 +1,9 @@
 # The URL the site will be built for
 base_url = "https://www.bbkane.com/"
 title = "Ben's Corner"
-generate_feed = true
+
+# 2024-02-18 - I've never really used RSS and I think it was broken last I checked...
+generate_feed = false
 feed_filename = "atom.xml"
 minify_html = false
 
