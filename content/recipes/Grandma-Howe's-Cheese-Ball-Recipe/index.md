@@ -2,7 +2,7 @@
 title = "Grandma Howe's Cheese Ball Recipe"
 date = 2018-07-10
 updated = 2019-03-10
-aliases = [ "2018/07/10/Grandma-Howe's-Cheese-Ball-Recipe.html" ]
+aliases = [ "2018/07/10/Grandma-Howe's-Cheese-Ball-Recipe.html" , "blog/grandma-howe-s-cheese-ball-recipe/"]
 +++
 
 

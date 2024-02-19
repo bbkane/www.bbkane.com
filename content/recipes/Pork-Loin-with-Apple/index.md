@@ -2,7 +2,7 @@
 title = "Pork Loin with Apple"
 date = 2018-07-31
 updated = 2019-03-10
-aliases = [ "2018/07/31/Pork-Loin-with-Apple.html" ]
+aliases = [ "2018/07/31/Pork-Loin-with-Apple.html", "blog/pork-loin-with-apple/" ]
 +++
 
 NOTE (Sun Mar 10 - 2019-03-10 23:18:54 PDT) : I've moved this recipe to the Favorite Recipes post. I'll be removing this page after some time has passed.
