@@ -220,6 +220,8 @@ git clean -xd --force
 diff -qr -x '.git' folder1/ folder2/
 ```
 
+[Meld](https://yousseb.github.io/meld/) is also a FANTASTIC GUI app for graphically diffing directory contents.
+
 ## Cross-platform colored diff
 
 A colleague got this from somewhere on StackOverflow:
@@ -265,6 +267,12 @@ It's also possible to [ignore files](https://stackoverflow.com/a/29744243/295807
 ```bash
 find . -type f -not -path '*/\.git\/*' -not -path '\./rename.sh' -print0 \
     | xargs -0 perl -pi -w -e 's/example-python-cli/new-project-name/g;'
+```
+
+Here's another `find` example to format YAML files:
+
+```bash
+find . \( -name '*.yaml' -o -name '*.yml' \) -exec yq -i -P 'sort_keys(..)' {} \;
 ```
 
 ## Clean unwanted Homebrew formulas
