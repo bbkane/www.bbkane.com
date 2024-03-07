@@ -49,6 +49,7 @@ popular ones:
 - GitHub also highlights a workflow method [in one of their
   guides](https://guides.github.com/introduction/flow/).
 
+# Git Notes
 
 ## Forking and Syncing with GitHub
 
@@ -76,7 +77,7 @@ git checkout -b newbranch # switch to a new branch
 git branch -f master HEAD~3 # make master point to some older commit
 ```
 
-# Delete a local remote-tracking branch
+## Delete a local remote-tracking branch
 
 From [StackOverflow](https://stackoverflow.com/a/23961231/2958070):
 
@@ -94,3 +95,20 @@ From https://github.com/bbkane/warg
  - [deleted]         (none)     -> origin/bbkane/issue46
  - [deleted]         (none)     -> origin/searchFuncPtr
 ```
+
+## Git blame with Log Ranges
+
+From [Git Tips 1: Oldies but Goodies](https://blog.gitbutler.com/git-tips-1-theres-a-git-config-for-that/#git-blame-and-log-with-line-ranges)
+
+```bash
+git blame -L 28,43 path/to/file
+```
+
+or
+
+```bash
+git log -L28,43:gitbutler-ui/src/lib/vbranches/types.ts
+```
+
+See the post for more options, like looking for code that moved.
+
