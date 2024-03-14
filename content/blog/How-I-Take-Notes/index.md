@@ -62,8 +62,9 @@ bases, portals, graphs, wikis, Google searches, emails, and instant messages.
 - usable with Vim for quick edits
 - easy to learn markup language
 - viewable online
+- (Feb 2024) - it'd be super nice to to be able to collapse headers or code blocks
 
-## My System
+## My system
 
 The system I've landed on is:
 
@@ -84,49 +85,82 @@ As for note organization, I have a gigantic `notes.md` file for notes that don't
 
 I've used this system for the past couple of years at this point, trying new alternatives occasionally (I found Typora less than a year ago). The only feature I wish I had was better browsing capability, maybe with tags or something.
 
-## Things to Try
+## Things to try
 
 - It might be fun to convert my notes into a static site similar to this blog. [Zola](https://www.getzola.org/) offers [search](https://www.getzola.org/documentation/content/search/), which might be fun to play with.
 
-## Things I did try
+## Things I have tried
 
-I took a few hours and tried a buncha note apps I found online (Dec 2023). Here are my notes on that...
+I took a few hours and tried a buncha note apps I found online (Dec 2023). Here are my notes on that... I was crunching through these so these are VERY fast, incomplete, and qute possibly incorrect notes.
 
 I want something that can collapse headers since Typora can't
 
-I didnt' really like Logseq because it feels a bit sluggish and was based on blocks, not paragraphs of text. - also not sure how to collapse stuff - I should give it a try and use it like it wants to be used
+Sources:
 
-I really like Obsidian (in the few min I've tried it) but I'm wary of the annual license fee and not sure you can control how you paste images, though that's not a dealbreaker. I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
+- [Selfhosted obsidian alternative : selfhosted](https://www.reddit.com/r/selfhosted/comments/12zm2ba/selfhosted_obsidian_alternative/).
+- [Open Source Obsidian Alternatives: 25+ Note-taking Tools | AlternativeTo](https://alternativeto.net/software/obsidian/?license=opensource)
+
+### NO - [Beaver Notes](https://alternativeto.net/software/beaver-notes/about/)
+
+not in Homebrew and I get this message:
+
+![image-20231220155414753](index.assets/image-20231220155414753.png)
+
+So... I'm scared of this app
+
+### NO - [cherrytree](https://alternativeto.net/software/cherrytree/about/)
+
+uses db and It hink it's building it... have to run it from the CLI, can't open my markdown folder I don't think. Default font size really small. It Does open images inline
+
+### NO - Foam
 
 Foam doesnt' allow me to paste images in WYSIWYG
 
-https://www.reddit.com/r/selfhosted/comments/12zm2ba/selfhosted_obsidian_alternative/
+### NO - Logseq
 
-Let's try open source Trilium - can't colllapse stuff and sems complicated, but I don't hate it - it also stores stuff in a sqlite DB, so there's some lockin I don't like
+I didnt' really like Logseq because it feels a bit sluggish and was based on blocks, not paragraphs of text. - also not sure how to collapse stuff - I should give it a try and use it like it wants to be used
 
-Let's try Silverbullet - not sure what's going on with images, but can't  fold text, so not really better than Typora other than being open source
+### MAYBE - [MarkText](https://github.com/marktext/marktext)
 
-https://github.com/outline/outline looks neat but they want me to log in with and don't let me make an email or anything so I don't want to do that.
+looks really good and I intend to play more with it when I have times. Looks like it doesn't support folding but is otherwise similar to Typora **AND OPEN SOURCE**
+
+### NO - Obsidian
+
+I really like Obsidian (in the few min I've tried it) but I'm wary of the annual license fee and not sure you can control how you paste images, though that's not a dealbreaker. I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
+
+### NO - [Outline](https://github.com/outline/outline)
+
+Looks neat but they want me to log in with and don't let me make an email or anything so I don't want to do that.
+
+### NO - [QOwnNotes](https://github.com/pbek/QOwnNotes)
+
+ I don't think this showes images inline - it doesn't - [Show inline image preview in editor · Issue #1254 · pbek/QOwnNotes](https://github.com/pbek/QOwnNotes/issues/1254)
+
+### NO - Roam
 
 Roam costs money to even try
 
-https://alternativeto.net/software/obsidian/?license=opensource
+### NO - Silverbullet
 
-Zettlr - I think I tried this... ooh it let's me paste images in and collapse stuff... trying to open bkane_notes... ok, it took forever and I can't really filter notes either. I think mabye becasue it's turnnign headers into outline items - I turned that off , but it does seem slow on large bodies of text - https://github.com/Zettlr/Zettlr/issues/4646 The sidebar at the right is nice. So it's really slow but might work
+Let's try Silverbullet - not sure what's going on with images, but can't  fold text, so not really better than Typora other than being open source
 
-https://github.com/standardnotes/app - can't paste images, at least in the web demo
+### NO - [SiYuan](https://github.com/siyuan-note/siyuan)
 
-https://alternativeto.net/software/cherrytree/about/ - uses db and It hink it's building it... have to run it from the CLI, can't open my markdown folder I don't think. Default font size really small. It Does open images inline
+also works with blocks and I can't seem to figure out how to open my folder? 
 
-https://alternativeto.net/software/qownnotes/about/ - I don't think this showes images inline - it doesn't - https://github.com/pbek/QOwnNotes/issues/1254
+### NO - [standardnotes](https://github.com/standardnotes/app)
 
-https://alternativeto.net/software/siyuan/about/ - also works with blocks and I can't seem to figure out how to open my folder? 
+Can't paste images, at least in the web demo
 
-https://alternativeto.net/software/vnote/about/ - works, but doesn't seem better than Typora - can't collapse headers.it also adds a whole buncha `vs.json` files and a `conf` dir and other stuff.. that's just too much man. It also opens really slowly
+### NO - Trilium
 
-https://alternativeto.net/software/beaver-notes/about/ - not in Homebrew and I get this message:
-![image-20231220155414753](index.assets/image-20231220155414753.png)
+Let's try open source Trilium - can't colllapse stuff and sems complicated, but I don't hate it - it also stores stuff in a sqlite DB, so there's some lockin I don't like
 
-So... overall I'm not sure what's up with that.
+### NO - [VNote](https://github.com/vnotex/vnote)
 
-https://github.com/marktext/marktext - looks really good and I intend to play more with it when I have times. Looks like it doesn't support folding but is otherwise similar to Typora
+works, but doesn't seem better than Typora - can't collapse headers.it also adds a whole buncha `vs.json` files and a `conf` dir and other stuff.. that's just too much man. It also opens really slowly
+
+### MAYBE - Zettlr
+
+Zettlr - I think I tried this... ooh it let's me paste images in and collapse stuff... trying to open bkane_notes... ok, it took forever and I can't really filter notes either. I think mabye becasue it's turnnign headers into outline items - I turned that off , but it does seem slow on large bodies of text - [Zettlr crashing upon opening new Workspace for the first time · Issue #4646 · Zettlr/Zettlr](https://github.com/Zettlr/Zettlr/issues/4646). The sidebar at the right is nice. So it's really slow but might work
+
