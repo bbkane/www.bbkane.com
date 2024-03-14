@@ -63,6 +63,7 @@ bases, portals, graphs, wikis, Google searches, emails, and instant messages.
 - easy to learn markup language
 - viewable online
 - (Feb 2024) - it'd be super nice to to be able to collapse headers or code blocks
+- Easy table support
 
 ## My system
 
@@ -120,13 +121,36 @@ Foam doesnt' allow me to paste images in WYSIWYG
 
 I didnt' really like Logseq because it feels a bit sluggish and was based on blocks, not paragraphs of text. - also not sure how to collapse stuff - I should give it a try and use it like it wants to be used
 
+### NO - [MarkEdit](https://github.com/MarkEdit-app/MarkEdit)
+
+No support for image pasting. Otherwise looks REALLY nice and fast. 
+
+I would make an issue for it, but I think they really want popovers for this kind of thing. From [the wiki]([Why MarkEdit · MarkEdit-app/MarkEdit Wiki · GitHub](https://github.com/MarkEdit-app/MarkEdit/wiki/Why-MarkEdit):
+
+> However, there're several situations we do need to preview, such as 
+> tables, embedded LaTex formulas, or Mermaid diagrams, we have built 
+> popover previews for that. Well, if previewing the entire document as 
+> HTML is still something you want so badly, it's perfectly to [build your own](https://github.com/MarkEdit-app/MarkEdit/wiki/Text-Processing#markedit-actions) or leverage tools like [markserv](https://github.com/markserv/markserv).
+
+I need inline images, so this won't work. Also not cross-platform.
+
+Not maintained, requires preview window.
+
 ### MAYBE - [MarkText](https://github.com/marktext/marktext)
 
 looks really good and I intend to play more with it when I have times. Looks like it doesn't support folding but is otherwise similar to Typora **AND OPEN SOURCE**
 
+Hmm the Command Palette to open a file doesn't seem to consider the folder name. And my blog uses a bunch of `index.md` files inside differently-named folders, so I effectively can't find them. Not that Typora has a command palette either.
+
+It auto-removes whitespace.
+
+NOTE - [Looking for contributions, developers and maintainers · Issue #1290 · marktext/marktext](https://github.com/marktext/marktext/issues/1290) - seems the lead MarkText dev abandoned the project and the focus shifted to [marktext/muya: 📄 Future markdown editor for web browser applications development](https://github.com/marktext/muya), which is not an executable, more a library. The commit history still works. Let's shake things up, give it a try.
+
+The outline view shows plain text, not Markdown
+
 ### NO - Obsidian
 
-I really like Obsidian (in the few min I've tried it) but I'm wary of the annual license fee and not sure you can control how you paste images, though that's not a dealbreaker. I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
+I really like Obsidian (in the few min I've tried it) but I'm wary of the annual license fee (I'd prefer a one time fee) and not sure you can control how you paste images, though that's not a dealbreaker. I REALLY LIKE the editor and can deal with the images. Would also work with Readwise
 
 ### NO - [Outline](https://github.com/outline/outline)
 
@@ -163,4 +187,3 @@ works, but doesn't seem better than Typora - can't collapse headers.it also adds
 ### MAYBE - Zettlr
 
 Zettlr - I think I tried this... ooh it let's me paste images in and collapse stuff... trying to open bkane_notes... ok, it took forever and I can't really filter notes either. I think mabye becasue it's turnnign headers into outline items - I turned that off , but it does seem slow on large bodies of text - [Zettlr crashing upon opening new Workspace for the first time · Issue #4646 · Zettlr/Zettlr](https://github.com/Zettlr/Zettlr/issues/4646). The sidebar at the right is nice. So it's really slow but might work
-

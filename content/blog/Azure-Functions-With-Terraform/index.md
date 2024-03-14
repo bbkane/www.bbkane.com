@@ -57,8 +57,6 @@ brew tap azure/functions
 brew install azure-functions-core-tools@4
 ```
 
-
-
 ## Azure Resources
 
 ### Providers and Variables
@@ -72,7 +70,6 @@ I'm also directly putting my subscription ID directly in the code. A potentially
 ```
 export ARM_SUBSCRIPTION_ID=<your subscription id>
 ```
-
 
 ```terraform
 terraform {
@@ -256,8 +253,6 @@ Next, let's assign the correct identities permissions for the app.
 First, we need a way to limit who can trigger our function.  For that, our app needs access to user infomation. This terraform config registers an app that users will authenticate to. We have to hardcode the `redirect_uri` here because the functon app we create will need to refer to this resource. If we also have this ad app resource refer to the function app resource, it'll create a reference cyle and Terraform will understandably refuse to work.
 
 Unfortunately, these app permission ids are stored as random looking UUIDS that are best uncovered by making a resource with Terraform, making a change in the portal, running `terraform plan` to see what changed, and then backporting those changes to the Terraform code. To be honest, we're lucky Terraform offers an interface into creating these. ARM/Bicep templates don't seem to (NOTE: I would be very happy to be wrong about this). It's a very odd rough edge to Azure considering Auth is a difficult topic in general and used for every Azure resource - you'd think they'd put a lot of effort into making good tools to manage that complexity. Anyhoo..
-
-
 
 ```terraform
 # https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application
@@ -530,8 +525,8 @@ Function Runtime Version: 4.0.1.16815
 
 Functions:
 
-	createkv: [GET,POST] http://localhost:7071/api/createkv
-	... SNIP ...
+    createkv: [GET,POST] http://localhost:7071/api/createkv
+    ... SNIP ...
 ```
 
 And we can curl our endpoint in a new terminal.
@@ -552,8 +547,6 @@ One bug before we continue - if you save this code to a Git repo, and then clone
 This is due to [a known bug](https://github.com/Azure/azure-functions-core-tools/issues/2050#issuecomment-977228097) and the workaround is to create a `local.settings.json` file with (at least) the following content:
 
 ```json
-
-
 {
   "IsEncrypted": false,
   "Values": {
@@ -960,7 +953,7 @@ Withing that block, we first retrieve the function settings. When run locally, t
 
 We next inspect the request parameters we need from the user and exit if they don't exist.
 
-We create a `DefaultAzureCredential	` and exclude the auth sources I don't care about:
+We create a `DefaultAzureCredential    ` and exclude the auth sources I don't care about:
 
 ```python
         # https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python
