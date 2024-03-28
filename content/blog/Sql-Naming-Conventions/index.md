@@ -13,6 +13,8 @@ Some sources:
 - [Database, Table and Column Naming Conventions? - Stack Overflow](https://stackoverflow.com/questions/7662/database-table-and-column-naming-conventions)
 - [styleguide | Style guides for Google-originated open-source projects](https://google.github.io/styleguide/go/decisions#initialisms) - borrowing stuff from Go's style guide too, particularly around how to case `ID`.
 - [SQL Server Naming Standards - SQL_server_standards.pdf](https://www.isbe.net/Documents/SQL_server_standards.pdf) - I'm taking heavy inspiration from this. The main thing I'm changing is the prefix notation and not copying the parts I don't care about (variable naming, etc.)
+- [How I Write SQL, Part 1: Naming Conventions](https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/)
+- [My Notes on GitLab Postgres Schema Design – Shekhar Gulati](https://shekhargulati.com/2022/07/08/my-notes-on-gitlabs-postgres-schema-design/)
 
 TL;DR prefix table:
 
@@ -31,7 +33,34 @@ All prefixes are two letters
 
 Why? `snake_case` would have underscores in the table names, and I want to reserve those underscores for other things, like join tables, indexes, etc. No one seems to use `camelCase`, so I won't either. Also, `PascalCase` results in shorter names.
 
-Tables should be a singular down, because pluralization is hard.
+NOTE: the SQL standard specifies that names are NOT case sensitive unless quoted. I can't find this in the SQLite docs, but from some experiments, SQLite columns and table names in queries are case insensitive even if quoted:
+
+<details>
+
+```sql
+CREATE TABLE Var (
+    VarID INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL
+) STRICT;
+
+-- these all insert into the table
+INSERT INTO Var(Name) VALUES ('bare - pascal case');
+INSERT INTO var(name) VALUES ('bare - lowercase');
+INSERT INTO "var"("name") VALUES ('bare - "');
+SELECT * FROM Var;
+```
+
+Run with:
+
+```bash
+sqlite3 :memory: < ./run.sql
+```
+
+</details>
+
+Postgres [DOES care about case-sensitivity](https://stackoverflow.com/a/20880247/2958070), so it should not use PascalCase.
+
+Tables should be a singular noun, because pluralization is hard.
 
 Examples from envelope:
 
