@@ -323,3 +323,20 @@ curl \
     https://www.linkedin.com/
 ```
 
+## Copy to Clipboard From Tmux
+
+Enter command mode: `Ctrl` + `b`, `:`
+
+Type: `set -g mouse off`
+
+This will break scrolling
+
+Select the text to copy it
+
+Paste it in notes or wherever
+
+Enter command mode: `Ctrl` + `b`, `:`
+
+Type: `set -g mouse on`
+
+Scrolling works again
