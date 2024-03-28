@@ -73,3 +73,9 @@ Let's move on.
 
 we have Si ⊆ Si+1.
 
+Induction refresher
+
+https://math.libretexts.org/Courses/Mount_Royal_University/MATH_1150%3A_Mathematical_Reasoning/3%3A_Number_Patterns/3.1%3A_Proof_by_Induction
+
+https://www.youtube.com/watch?v=LJpouCMAAfE
+
