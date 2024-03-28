@@ -12,7 +12,7 @@ Some sources:
 
 - [Database, Table and Column Naming Conventions? - Stack Overflow](https://stackoverflow.com/questions/7662/database-table-and-column-naming-conventions)
 - [styleguide | Style guides for Google-originated open-source projects](https://google.github.io/styleguide/go/decisions#initialisms) - borrowing stuff from Go's style guide too, particularly around how to case `ID`.
-- [SQL Server Naming Standards - SQL_server_standards.pdf](https://www.isbe.net/Documents/SQL_server_standards.pdf) - I'm taking heavy inspiration from this. The main thing I'm changing is the prefix notation
+- [SQL Server Naming Standards - SQL_server_standards.pdf](https://www.isbe.net/Documents/SQL_server_standards.pdf) - I'm taking heavy inspiration from this. The main thing I'm changing is the prefix notation and not copying the parts I don't care about (variable naming, etc.)
 
 TL;DR prefix table:
 
