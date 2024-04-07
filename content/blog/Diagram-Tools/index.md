@@ -15,6 +15,8 @@ quickly prototype schemas for SQL databases. It's really helped me out at times.
 
 ![](./quickdbd.png)
 
+Similar apps include [dbdiagrams.io](https://dbdiagram.io/home) and [drawDB](https://github.com/drawdb-io/drawdb).
+
 ## [PlantUML](http://plantuml.com/)
 
 PlantUML is a textual description to diagram generator that features several
