@@ -43,6 +43,7 @@ https://github.com/Homebrew/homebrew-cask-fonts and `brew cask install font-ia-w
 - itsycal - calendar in the menu bar
 - rectangleapp - resize windows
 - scrcpy - mirror Android phone
+- flameshot - take screenshots (keyboard shortcut: Cmd + Shift + X)
 
 ## Android
 
