@@ -28,14 +28,15 @@ A wise man once said "A quiche is a canvas for the soul" (or maybe that was me).
 
 ## Instructions
 
-- Par-bake at 450 degrees F until the pie crust is firm and lightly tan
+- Par-bake at 450 degrees F until the pie crust is firm and lightly tan, then set aside
   - Currently we prefer a spring-form pan lined with parchment paper
 - While par-baking, cut pork into pinkie-sized strips and coat with soy sauce and corn starch
 - Pan-fry pork till fully cooked and set aside
 - If mushrooms are dried, reconstitute with hot water (preferably a half day before)
 - Cut wood ear, shiitake mushrooms, and bamboo into thin long strips
 - Mince cilantro and chop down green onions into small circlets. Grate ginger
-- Combine all dry ingredients except sesame seeds and mix in eggs, white pepper, soy sauce, and sesame oil. Set a bit of cheese aside for topping
+- Combine all dry ingredients except sesame seeds and mix in eggs, white pepper, soy sauce, and sesame oil. Set a bit of cheese aside for topping. 
+- Place filling into pie crust.
 - Top with cheese and sesame seeds
 - Bake at 350 for 35 min, covered with tinfoil.
 - Remove foil and bake another 10 min, or until slightly browned at top
