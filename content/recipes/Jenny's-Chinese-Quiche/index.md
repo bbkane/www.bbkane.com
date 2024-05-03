@@ -40,6 +40,6 @@ A wise man once said "A quiche is a canvas for the soul" (or maybe that was me).
 - Bake at 350 for 35 min, covered with tinfoil.
 - Remove foil and bake another 10 min, or until slightly browned at top
 
----
+## Pictures
 
 ![1000009552](chinese-quiche.jpg)
