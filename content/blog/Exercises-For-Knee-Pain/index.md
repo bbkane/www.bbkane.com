@@ -10,6 +10,8 @@ I started going to the gym a lot more Dec 2022 to lower my A1c, and in April, I 
 - learning how to squat correctly
 - doing stretches to improve my overall lower body flexibility, reducing stress on the knee when exercising.
 
+I'm also going to add some random health notes here...
+
 # Stretches from Daniel
 
 Mini band side lateral walk,2 to 15 steps, knees follow tes, feet straight, small squat, glut medial
@@ -51,30 +53,39 @@ I'm trying to hold them from 20-30s
 - 30 second jump rope
 - 10 Shoulder rotations w/ rope
 - 10 Overhead squats w/ rope
-- 10 Hip hinges 
+- 10 Hip hinges
 - 3 Roll Outs to Plank (a push up is optional)
 - 3 Lunges while pushing your knee away and looking the opposite direction
-- 10 Lateral lunges 
+- 10 Lateral lunges
 
 # Medbridge Stretches
 
-Half Kneeling Hip Flexor Stretch with Chair 
+Half Kneeling Hip Flexor Stretch with Chair
 
 ![](./hip-flexor.jpg)
 
-Quadricep Stretch with Chair 
+Quadricep Stretch with Chair
 
 ![](./quad-with-chair.jpg)
 
-Hook Active Hamstring Stretch 
+Hook Active Hamstring Stretch
 
 ![](./lay-down-hamstring.jpg)
 
-Single Leg Balance with Alternating Floor REaches 
+Single Leg Balance with Alternating Floor REaches
 
 ![](./leg-balance.jpg)
 
-Single Leg Balance with Clock Reach 
+Single Leg Balance with Clock Reach
 
 ![](./leg-reach.jpg)
 
+# Behavioural ways to eat less
+
+From https://youtu.be/Kdar5_AWotI
+
+about 1h in
+
+- Don't eat processed food
+- Don't drink while eating (makes you chew more slowly)
+- Concentrate on food - no phone or TV
