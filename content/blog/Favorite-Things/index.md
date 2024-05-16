@@ -67,3 +67,10 @@ I've had a version of this jacket (model number: `WM3200`) for the last decade a
 
 I bought a few of these (model number TSB89104US) at Computer Central a few years ago (2019?) and I'm on my second one. They're the perfect size for a laptop, notebook, and a change of clothes.
 
+### [Ginger and Turmeric Sachets – Bushwick Tea](https://bushwicktea.com/products/ginger-and-turmeric-teas-sachet?variant=44073116106944)
+
+Since I've started intermittent fasting (I'm trying to fast between 7PM and
+11AM), this stuff has been great as a healthy appetite suppressant. I can
+really tell a hunger difference when I drink it vs when I don't. I also love
+that it's non-caffeinated so I don't have to worry about developing a caffeine
+dependency.
