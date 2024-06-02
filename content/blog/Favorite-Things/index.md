@@ -67,3 +67,10 @@ I've had a version of this jacket (model number: `WM3200`) for the last decade a
 
 I bought a few of these (model number TSB89104US) at Computer Central a few years ago (2019?) and I'm on my second one. They're the perfect size for a laptop, notebook, and a change of clothes.
 
+### [STL 2.0 | Gerber](https://www.gerbergear.com/en-us/shop/featured/sale/stl-20-22-41122)
+
+This little knife is fantastic for opening boxes and such, while still feeling more fun than a box cutter. I love how small and thin it is.
+
+### [Waterproof Slimfold Bifold Wallet](https://vbaxstore.com/shop/bifold-wallet/waterproof-slimfold-bifold-wallet/)
+
+I've been using this wallet for several years and bought a few for friends as well. It's super slim and light and has room for 8-ish cards plus some cash. It's currently (2024-06-02) [$15 on Amazon](https://www.amazon.com/gp/product/B074MJT7F7/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1).
