@@ -74,3 +74,11 @@ This little knife is fantastic for opening boxes and such, while still feeling m
 ### [Waterproof Slimfold Bifold Wallet](https://vbaxstore.com/shop/bifold-wallet/waterproof-slimfold-bifold-wallet/)
 
 I've been using this wallet for several years and bought a few for friends as well. It's super slim and light and has room for 8-ish cards plus some cash. It's currently (2024-06-02) [$15 on Amazon](https://www.amazon.com/gp/product/B074MJT7F7/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1).
+
+### [Ginger and Turmeric Sachets – Bushwick Tea](https://bushwicktea.com/products/ginger-and-turmeric-teas-sachet?variant=44073116106944)
+
+Since I've started intermittent fasting (I'm trying to fast between 7PM and
+11AM), this stuff has been great as a healthy appetite suppressant. I can
+really tell a hunger difference when I drink it vs when I don't. I also love
+that it's non-caffeinated so I don't have to worry about developing a caffeine
+dependency.
