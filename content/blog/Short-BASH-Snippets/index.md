@@ -323,6 +323,16 @@ curl \
     https://www.linkedin.com/
 ```
 
+If you're only connecting to one domain and you're not changing ports, you can also leave things blank...
+
+```bash
+curl \
+    --head \
+    --request GET \
+    --connect-to ::www.linkedin.com: \
+    https://www.linkedin.com/
+```
+
 ## Copy to Clipboard From Tmux
 
 Enter command mode: `Ctrl` + `b`, `:`
