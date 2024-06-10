@@ -3,6 +3,8 @@ title = "Argparse Template"
 date = 2023-08-29
 +++
 
+## Subcommand Skeleton
+
 Python's [`argparse`](https://docs.python.org/3/library/argparse.html) library is super flexible. I want to use it to design CLIs like the [`azure-cli`](https://learn.microsoft.com/en-us/cli/azure/), with the following structure (imagine a `conversation-generator` CLI):
 
 ```
@@ -37,7 +39,6 @@ import argparse
 import logging
 import sys
 
-import shtab
 
 __author__ = "Benjamin Kane"
 __version__ = "0.1.0"
@@ -126,3 +127,90 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Simple Skeleton
+
+This is if I don't need subcommands, but instead I just need to parse a few flags
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import argparse
+import logging
+import sys
+
+__author__ = "Benjamin Kane"
+__version__ = "0.1.0"
+__doc__ = f"""
+<description>
+Examples:
+    {sys.argv[0]}
+Help:
+Please see Benjamin Kane for help.
+Code at <repo>
+"""
+
+logger = logging.getLogger(__name__)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+
+    parser.add_argument(
+        "--log-level",
+        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default="INFO",
+        help="log level",
+    )
+
+    return parser
+
+
+def main():
+
+    parser = build_parser()
+    args = parser.parse_args()
+
+    logging.basicConfig(
+        format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
+        level=logging.getLevelName(args.log_level),
+    )
+
+    logger.debug("debug")
+    logger.info("info")
+    logger.warning("warning")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+## Extras
+
+###  `stdin` or a file
+
+If I want to use either `stdin` or a file for an argument, I can use this:
+
+```python
+# Use a file or stdin for an argument
+# https://stackoverflow.com/a/11038508/2958070
+parser.add_argument(
+    "infile",
+    nargs="?",
+    type=argparse.FileType("r"),
+    default=sys.stdin,
+    help="Use a file or stdin",
+)
+```
+
+Later (after parsing) I can read the contents like this:
+
+```python
+with args.infile:
+    pass
+```
+
