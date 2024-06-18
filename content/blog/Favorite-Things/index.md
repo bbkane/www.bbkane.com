@@ -73,7 +73,7 @@ This little knife is fantastic for opening boxes and such, while still feeling m
 
 ### [Waterproof Slimfold Bifold Wallet](https://vbaxstore.com/shop/bifold-wallet/waterproof-slimfold-bifold-wallet/)
 
-I've been using this wallet for several years and bought a few for friends as well. It's super slim and light and has room for 8-ish cards plus some cash. It's currently (2024-06-02) [$15 on Amazon](https://www.amazon.com/gp/product/B074MJT7F7/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1).
+I've been using this wallet for several years and bought a few for friends as well. It's super slim and light and has room for 8-ish cards plus some cash. It's currently (2024-06-02). [$15 on Amazon](https://www.amazon.com/gp/product/B074MJT7F7/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1).
 
 ### [Ginger and Turmeric Sachets – Bushwick Tea](https://bushwicktea.com/products/ginger-and-turmeric-teas-sachet?variant=44073116106944)
 
@@ -82,3 +82,7 @@ Since I've started intermittent fasting (I'm trying to fast between 7PM and
 really tell a hunger difference when I drink it vs when I don't. I also love
 that it's non-caffeinated so I don't have to worry about developing a caffeine
 dependency.
+
+### [DreamSky Small Digital Alarm Clock ](https://www.dreamsky4u.com/item/300065.html)
+
+I love this little alarm clock. It's compact, the font is huge (before lasik, this was important to see across the room), you can dim the display, and you can set it to use military time. Right now it's [$15 on Amazon](https://www.amazon.com/dp/B07FN8HL5S?ref_=pe_386300_442618370_TE_sc_as_ri_0&th=1).
