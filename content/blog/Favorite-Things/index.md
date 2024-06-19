@@ -49,6 +49,8 @@ https://github.com/Homebrew/homebrew-cask-fonts and `brew cask install font-ia-w
 
 - [Simple Solitaire Collection | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/en/packages/de.tobiasbielefeld.solitaire/)
 - [Clima | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/es/packages/co.prestosole.clima/) - it's REALLY hard to find a weather app that isn't slow or riddled with ads, but Clima fills that niche for me.
+- [RedReader | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/packages/org.quantumbadger.redreader/) - Simple and fast Reddit app
+- [Fossify Contacts | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/packages/org.fossify.contacts/) - I love this contacts ap because it lets me sort contacts by date added and easily manage groups of contacts
 
 
 ## Favorite Purchases
