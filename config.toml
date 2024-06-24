@@ -2,9 +2,6 @@
 base_url = "https://www.bbkane.com/"
 title = "Ben's Corner"
 
-# 2024-02-18 - I've never really used RSS and I think it was broken last I checked...
-generate_feed = false
-feed_filename = "atom.xml"
 minify_html = false
 
 # Whether to automatically compile all Sass files in the sass directory
