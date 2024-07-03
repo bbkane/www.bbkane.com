@@ -4,13 +4,11 @@ date = 2023-12-27
 aliases = [ "blog/go-notes/"]
 +++
 
-These are things I want to remember in Go. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [Go Code Notes](@/blog/Go-Code-Notes/index.md).
+> Engineering is programming integrated over time - [Titus Winters](https://abseil.io/blog/20171004-cppcon-plenary)
 
  # Motivation
 
-Simon Willison has a lot of projects - more than 100 of them I think. To manage them, he uses some custom tooling, custom libraries, and  a maintenance strategy he calls "[the perfect commit](https://simonwillison.net/2022/Jan/12/how-i-build-a-feature/)"  - each commit contains code changes, docs, and tests.
-
-I don't have Simon's number of side projects, but I DO have a wife and toddler and I'm not as smart as him anyway. I've started adopting similar techniques (though using Go, not Python) to keep my side projects maintainable and fun during my limited time and energy to hack on them.
+I'm managing [enough Go side projects](https://github.com/bbkane/) now that they have "weight" - I'm duplicating and modifying config files for each repo, writing a buncha READMEs, and setting up dependency management. I need to keep my side projects maintainable (over years) and fun during my limited time and energy to hack on them, or I'm going to run out of steam.
 
 In particular, I want the following qualities from my Go projects:
 
@@ -23,9 +21,10 @@ In particular, I want the following qualities from my Go projects:
   - Confident refactoring (especially automatic dependency upgrades). Mostly accomplished with automatic tests
   - Similar code / config between projects. Accomplished with linters/formatters and scripted/manual changes
   - Quick iteration times!
-  - Good tooling (see below)
 
-See [Checklists and Sayings](@/blog/Checklists-And-Sayings/index.md) for more exposition on codebases in general.
+A lot of this is directly inspired by Simon Willerson's [How I build a feature](https://simonwillison.net/2022/Jan/12/how-i-build-a-feature/) blog post. That man manages like 100 open source projects, and I've learned a lot from his process. Also see [Checklists and Sayings](@/blog/Checklists-And-Sayings/index.md) for more exposition on codebases in general, and [Go Code Notes](@/blog/Go-Code-Notes/index.md) for more code-focused things.
+
+For an up-to-date example of how I integrate the following code and tools into a project, see [example-go-cli](https://github.com/bbkane/example-go-cli).
 
 # Creating a new Go project
 
@@ -34,7 +33,7 @@ Before starting, ask these questions:
 - Will I use this or will I learn a lot from it?
 - Is Go the right language? For small stuff Python works great!
 
-Steps to take for new projects. I could use [cookiecutter](https://github.com/cookiecutter/cookiecutter) or similar tools to make this faster, but I find maintaining cookiecutter code difficult, so (at least for now) I prefer to manully copy example-go-cli and update the right thing by hand.
+Once committed to starting a project, here's what I do:
 
 - Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
 - Erase the git history
@@ -43,10 +42,10 @@ Steps to take for new projects. I could use [cookiecutter](https://github.com/co
 - Update README
 - Create repo on GitHub and push the code.
 - Add the `go` topic to the repo
-- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com)
+- Update [go.bbkane.com](https://github.com/bbkane/go.bbkane.com) to include the new project
 - Update CHANGELOG.md
 - Add feature
-- update demo.tape and update demo.gif with [vhs](https://github.com/charmbracelet/vhs) (`vhs < ./demo.tape`)
+- update demo.tape and update demo.gif with [vhs](https://github.com/charmbracelet/vhs): `vhs < ./demo.tape`
 - Update [bbkane/bbkane](https://github.com/bbkane/bbkane).
 
 If a the project is a CLI, not a library:
@@ -60,22 +59,24 @@ If the project is a library, not a CLI:
 
 - Delete the `.goreleasor.yml` file
 
+I could use [cookiecutter](https://github.com/cookiecutter/cookiecutter) or similar tools to make this faster, but I find maintaining cookiecutter code difficult, so (at least for now) I prefer to manully copy example-go-cli and update the right thing by hand.
+
 # Multi-repo changes
 
 I occasionally need to update something across all the [Go projects](https://github.com/search?q=owner%3Abbkane+topic%3Ago&type=repositories) I maintain. I track most of these in my [Go Project Update Tracker Spreadsheet](https://docs.google.com/spreadsheets/d/1R0c6VFFU_vLC45zgs_53rcWDHWRxt4S6UxdxBkFgPpo/edit#gid=0), because the grid format makes it easy to see which changes are applied to which projects.
 
 ## Dependency updates
 
-Once a project has enough tests for my satisfaction, let [Dependabot](https://docs.github.com/en/code-security/dependabot) make PRs with dependency updates.
+Once a project has enough tests for my satisfaction, I set up [Dependabot](https://docs.github.com/en/code-security/dependabot) to make PRs with dependency updates.
 
 ## Scripted changes
 
-Some changes can be scripted - especially for config files. I try to keep similar `.gitignore`, `.golangci.yml`, `.goreleaser.yml` files in my projects (among others), and I can (fairly) easily script changes to those with two amazing tools:
+Some changes can be scripted - especially for config files. I try to keep similar `.gitignore`, `.golangci.yml`, `.goreleaser.yml` files in my projects (among others). I can fairly easily script changes to those with two amazing tools:
 
 -  [`git-xargs`](https://github.com/gruntwork-io/git-xargs) lets you run a shell script against multiple repos and opens GitHub PRs with the results of the shell script
 - [`yq`](https://github.com/mikefarah/yq) lets you make targeted changes to YAML files. Something like, "change the property at this path to this"
 
-For example,  I recently used added YAML formatting and linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.). Note that for this to work well, I also need to keep my config files similarly formatted for easy diffs.
+For example,  I [recently](https://github.com/bbkane/git-xargs-tasks/tree/master/2023-10-29-format-yaml) added YAML formatting and linting to all the YAML files I'm using in each repo (sorted keys, comment formatting, etc.).
 
 Another big win is I can keep the  change scripts around for inspiration later! I keep all my changes in my [git-xargs-tasks](https://github.com/bbkane/git-xargs-tasks) and I refer back to previous changes for examples/inspiration when writing new changes.
 
@@ -89,7 +90,7 @@ Some changes are impossible or aren't worth the effort to script. For example: a
 - add that issue to all repos (perhaps with a label)
 - make the change to different projects as I get time/motivation and close the issue. Maybe before I add a feature to a project I close the change issue or before I start another manual change.
 
-# Quality / Release tooling
+# Useful Tooling
 
 I use several tools to keep my code working and maintainable. Requirements for this tooling are:
 
@@ -106,8 +107,6 @@ I use several tools to keep my code working and maintainable. Requirements for t
 ## [golangci-lint](https://golangci-lint.run/)
 
 Run various correctness checks on source code. I love it because it's a binary distribution of a lot of other lints
-
-![demo gif](https://golangci-lint.run/demo.svg)
 
 MacOS [Install](https://golangci-lint.run/usage/install/#macos):
 
@@ -156,7 +155,7 @@ goreleaser release --snapshot --fail-fast --clean
 
 ## [Lefthook](https://github.com/evilmartians/lefthook)
 
-Install/Run/Uninstall pre-commit hooks that mimic CI.
+Install/Run/Uninstall pre-commit hooks that mimic CI. It's much faster to run these locally than to wait the minute or so for GitHub actions to run.
 
 ![image-20240703114457438](index.assets/image-20240703114457438.png)
 
@@ -176,7 +175,7 @@ No VS Code integration.
 
 ## [VHS](https://github.com/charmbracelet/vhs)
 
-Script demo GIF creation!
+Script demo GIF creation! These really make my READMEs pop.
 
 ![image-20240703114529437](index.assets/image-20240703114529437.png)
 
@@ -194,7 +193,7 @@ vhs < demo.tape
 
 ## [yamllint](https://github.com/adrienverge/yamllint)
 
-Most of my configs are YAML, and many of them are very similar from repo to repo, so I find it super useful to ensure they're all formatted similarly.
+Most of my configs are YAML, and many of them are very similar from repo to repo, so I find it super useful to ensure they're all formatted similarly. This makes diffs easy.
 
 ![screenshot](https://raw.githubusercontent.com/adrienverge/yamllint/master/docs/screenshot.png)
 
