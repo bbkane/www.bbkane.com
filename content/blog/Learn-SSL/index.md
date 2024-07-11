@@ -19,13 +19,11 @@ Next, dive in with [Everything you should know about certificates and PKI but ar
 
 [Automated Certificate Management Environment (ACME) Explained](https://sectigo.com/resource-library/what-is-acme-protocol) explains how to prove you own a domain to most (all?) public Certificate Authorities so they will issue you a certificate.
 
+[nicanorflavier/ssl-certificate-chain-guide](https://github.com/nicanorflavier/ssl-certificate-chain-guide) describes a typical certificate chain setup for most users. "leaf" certs, intermediate certs, and root certs. Unfortunately, sometimes the "chain" is actually a graph... [Path Building vs Path Verifying: The Chain of Pain](https://medium.com/@sleevi_/path-building-vs-path-verifying-the-chain-of-pain-9fbab861d7d6) goes into details about how that works.
+
 ## More Specialized Knowledge
 
-[The Illustrated TLS Connection](https://tls.ulfheim.net/) is a super interesting breakdown of the byte-level communications between a client and a server. I haven't needed to use WireShark for analyzing TLS connections, but if I do, I'm headed here first.
-
-[Ulfheim's Certificate Analysis](https://tls13.ulfheim.net/certificate.html) is a companion site that breaks down a certificate at the byte level.
-
-[TLS, byte by byte](https://bytebybyte.dev/) livestreams a TLS connection with explanations.
+[The Illustrated TLS Connection](https://tls12.xargs.org/#client-hello) , [Ulfheim's Certificate Analysis](https://tls13.ulfheim.net/certificate.html), and [TLS, byte by byte](https://bytebybyte.dev/) describe TLS and certificates at a byte-level - what each byte of a connection or certificate means.
 
 [SSL/TLS and PKI History](https://www.feistyduck.com/ssl-tls-and-pki-history/) is a timeline of TLS innovations and attacks. It really helps explain some of the quirks in the protocol. This is so enlightening I might put it in the "General Working Knowledge" section. I highly recommend.
 
@@ -33,13 +31,13 @@ Next, dive in with [Everything you should know about certificates and PKI but ar
 
 ### Security
 
+[How CT Works : Certificate Transparency](https://certificate.transparency.dev/howctworks/) explains what Certificate Transparency is and why it's needed for publicly trusted Certificate Authorities. [Merkle Town](https://ct.cloudflare.com/) analyzes public CT logs to show which CAs, algorithms, and logs are most popular. [Certificate Transparency: The Gift That Keeps Giving](https://blog.rapid7.com/2018/01/04/certificate-transparency-the-gift-that-keeps-giving/) demonstrates how hackers can incorporate public CT logs into their attacks. [Certificate Search](https://crt.sh/) is a portal to search public Certificate Transparency logs.
+
 [RedHat](https://www.redhat.com/sysadmin/pki-protection) explains some options to protect against SSL's vulnerability to rogue CAs.
 
-[Certificate Search](https://crt.sh/) is a portal to search public Certificate Transparency logs.
-
-[Certificate Transparency: The Gift That Keeps Giving](https://blog.rapid7.com/2018/01/04/certificate-transparency-the-gift-that-keeps-giving/) demonstrates how hackers can incorporate public Certificate Transparency logs into their attacks.
-
 [Caveats and pitfalls of cookie domains](https://xebia.com/blog/caveats-and-pitfalls-of-cookie-domains/) is not directly related to TLS, but covers how cookies (potentially login cookies) interact with domains. Check your how your site configures cookies before setting up domains and issuing TLS certificates for them.
+
+[Google Online Security Blog: Sustaining Digital Certificate Security - Entrust Certificate Distrust](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html) is a precedent-setting post - Google Chrome will not trust the Entrust Certificate Authority after October 2024. It's a fantastic post that really demonstrates the technical-social facets of TLS. Also see [HackerNews comments](https://news.ycombinator.com/item?id=40812833) and  [Entrust's response](https://www.entrust.com/blog/2024/07/thoughts-on-the-google-chrome-announcement-and-our-commitment-to-the-public-tls-certificate-business/).
 
 ## Tools to work with SSL
 
