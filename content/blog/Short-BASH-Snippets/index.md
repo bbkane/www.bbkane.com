@@ -335,18 +335,27 @@ curl \
 
 ## Copy to Clipboard From Tmux
 
-Enter command mode: `Ctrl` + `b`, `:`
+- Enter command mode: `Ctrl` + `b`, `:`
+- Type: `set -g mouse off`
+- This will break scrolling
+- Select the text to copy it
+- Paste it in notes or wherever
+- Enter command mode: `Ctrl` + `b`, `:`
+- Type: `set -g mouse on`
+- Scrolling works again
 
-Type: `set -g mouse off`
+## Search file types with `ripgrep`
 
-This will break scrolling
+From https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#manual-filtering-file-types :
 
-Select the text to copy it
+Search for C file extensions with regex:
 
-Paste it in notes or wherever
+```bash
+rg 'int main' -g '*.{c,h}'
+```
 
-Enter command mode: `Ctrl` + `b`, `:`
+Search for C file extension with `--type`:
 
-Type: `set -g mouse on`
-
-Scrolling works again
+```bash
+rg 'int main' --type c
+```
