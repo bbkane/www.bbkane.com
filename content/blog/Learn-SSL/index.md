@@ -39,6 +39,8 @@ Next, dive in with [Everything you should know about certificates and PKI but ar
 
 [Google Online Security Blog: Sustaining Digital Certificate Security - Entrust Certificate Distrust](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html) is a precedent-setting post - Google Chrome will not trust the Entrust Certificate Authority after October 2024. It's a fantastic post that really demonstrates the technical-social facets of TLS. Also see [HackerNews comments](https://news.ycombinator.com/item?id=40812833) and  [Entrust's response](https://www.entrust.com/blog/2024/07/thoughts-on-the-google-chrome-announcement-and-our-commitment-to-the-public-tls-certificate-business/).
 
+https://doubleagent.net/onavo-facebook-ssl-mitm-technical-analysis/ describes how Meta (Facebook) intercepted competitors' app traffic (SnapChat, etc.) and are being sued for this breach of trust.
+
 ## Tools to work with SSL
 
 [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts) - Azure's solution for storing TLS certificates. It's nice, but has some rough edges I should probably blog about in more detail.
