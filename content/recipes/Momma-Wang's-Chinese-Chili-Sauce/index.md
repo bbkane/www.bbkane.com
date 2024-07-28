@@ -8,6 +8,8 @@ date = 2024-02-26
 - [2 cups Korean  (Gochugaru) red chili flakes](https://www.amazon.com/dp/B005G8IDTQ) (picture below)
 - 1 cup regular chili flakes
 - 1 1/2 cups flax seed
+- 1/4 cup minced garlic
+- 1/4 cup minced onion
 - 1/2 cup white sesame seeds
 - 1/2 cup black sesame seeds
 - 2 Tbsp salt
