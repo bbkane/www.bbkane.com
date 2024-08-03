@@ -108,9 +108,9 @@ func TestAddOne(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			actualSum, actualErr := AddOne(tt.a)
 			if tt.expectedErr {
-				require.NotNil(t, actualErr)
+				require.Error(t, actualErr)
 			} else {
-				require.Nil(t, actualErr)
+				require.NoError(t, actualErr)
 			}
 			require.Equal(t, tt.expectedSum, actualSum)
 		})
