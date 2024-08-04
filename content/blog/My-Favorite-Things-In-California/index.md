@@ -35,6 +35,7 @@ TODO: flesh this out, add pics and such.
 - Jubba Somali Restaurant
 - Zeni
 - Clay Pot @ Zhen Wei Guan
+- Katana Sushi
 
 # Places
 
