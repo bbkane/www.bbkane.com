@@ -47,6 +47,9 @@ TODO: flesh this out, add pics and such.
   - Lands End
   - Golden Gate
   - LinkedIn?
+  - Fort Point
+  - Pier 39 (and the other piers)
+  - Palace of Modern Art
 - Hwy 1 Trip
   - Garrapata
   - Point Lobos
