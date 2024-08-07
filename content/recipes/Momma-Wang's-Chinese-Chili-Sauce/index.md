@@ -16,7 +16,7 @@ date = 2024-02-26
 - 2 Tbsp sugar
 - A lot of peanuts
 - 1 cup fermented black soybeans
-- A lot of oil
+- A lot of oil (usually vegetable oil, but whatever's on hand)
 
 ## Optional Ingredients
 
