@@ -208,6 +208,27 @@ Run locally:
 goreleaser release --snapshot --fail-fast --clean
 ```
 
+## Format `go.mod` with [go-modtool](https://github.com/shoenig/go-modtool)
+
+Organically, my `go.mod` file seems to end up with multiple random `require` stanzas... So I found [go-modtool](https://github.com/shoenig/go-modtool), which organizes them much better.
+
+MacOS Install:
+
+```bash
+go install github.com/shoenig/go-modtool@latest
+```
+
+Run locally:
+
+```bash
+# group stanzas
+go-modtool -w fmt go.mod
+# sort lines in stanzas
+go mod tidy
+```
+
+Slightly unfortunately, it doesn't sort lines in each stanza, so I have to run a `go mod tidy` to do that. I probably won't put this in CI, and instead just run it occasionally.
+
 # Creating a new Go project
 
 ## Is it necessary?
