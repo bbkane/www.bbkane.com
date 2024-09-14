@@ -187,3 +187,10 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 - [Designing error types in Rust](https://mmapped.blog/posts/12-rust-error-handling.html) is about Rust, but it advocates a couple ideas I really like, in particular the difference between libraries and applications, as well as that it's difficult to "overspecify" errors: "Feel free to introduce distinct error types for each function you implement. I am still looking for Rust code that went overboard with distinct error types."
 - [command center: Error handling in Upspin](https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html) talks about Rob Pike's approach to errors in Upspin. Among other things, it talks about the tension between using errors to signal to users and to help programmers debug, as well as "operational traces" vs the more conventional stack traces other languages use. It also highlights that different projects *should* handle errors differently. Also see [Failure is your Domain | Middlemost Systems](https://middlemost.com/failure-is-your-domain/) for more thoughts on this blog post, as well as comparisonts to other ways to handle errors.
 - [Error Handling in Rust - Andrew Gallant's Blog](https://blog.burntsushi.net/rust-error-handling/#the-short-story) - another Rust post, but it talks about error combinators, which might be useful to implement for some projects.
+
+# Tools
+
+## Generate Call graphs with [`crabviz`](https://github.com/chanhx/crabviz)
+
+This might not be strictly more useful than "Show call heirarchy", but I'm having a lot of fun with the VS Code extension!
+
