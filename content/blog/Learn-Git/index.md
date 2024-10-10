@@ -114,7 +114,7 @@ See the post for more options, like looking for code that moved.
 
 ## Merge a repo into a subdirectory into another repo
 
-This is from https://stackoverflow.com/a/76831513/2958070 . I was able to
+This is from [StackOverflow](https://stackoverflow.com/a/76831513/2958070). I was able to
 follow the steps exactly, except for needing to use absolute paths instead of
 relative ones.
 
