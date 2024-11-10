@@ -112,3 +112,89 @@ git log -L28,43:gitbutler-ui/src/lib/vbranches/types.ts
 
 See the post for more options, like looking for code that moved.
 
+## Merge a repo into a subdirectory into another repo
+
+This is from [StackOverflow](https://stackoverflow.com/a/76831513/2958070). I was able to
+follow the steps exactly, except for needing to use absolute paths instead of
+relative ones.
+
+### Fix up repo1
+
+```bash
+cd path/to/repo1
+mkdir repo1
+# move all non-hidden files and folders into `repo1/`
+mv * repo1/
+# move all hidden files and folders into `repo1/`
+mv .* repo1/
+# Now move the .git dir back to where it belongs, since it was moved by the
+# command just above
+mv repo1/.git .
+# commit all these changes into this repo
+git add -A
+git status
+git commit -m "Move all files & folders into a subdir"
+```
+
+```bash
+cd path/to/new_repo
+
+# --------------------------------------------------------------------------
+# 1. Merge repo1, with all files and folders and git history, into new_repo
+# --------------------------------------------------------------------------
+
+# Add repo1 as a local "remote" named `repo1`
+# - Note: this assumes that new_repo, repo1, and repo2 are all at the same
+#   directory level and inside the same parent folder. If this is *not* the
+#   case, no problem. Simply change `"../repo1"` below to the proper
+#   relative *or* absolute path to that repo! Ex: `"path/to/repo1"`.
+git remote add repo1 "../repo1"
+# View all of your remotes.
+# - You'll now see `repo1` as a remote which points to the local "URL"
+#   of "../repo1"
+git remote -v
+
+# Fetch all of repo1's files and history into new_repo's .git dir.
+# - Note that `repo1` here is the name of the remote alias that you just
+#   added above.
+git fetch repo1
+# View the new locally-stored, remote-tracking hidden branch that was just
+# created for you.
+# - `git branch -r` will now show a new hidden branch named `repo1/main` or
+#   `repo1/master` or whatever your main branch was named there.
+git branch -r
+
+# Assuming that your new hidden branch that you just fetched is called
+# `repo1/main`, let's merge that into our currently-checked-out branch now.
+# - This merges repo1's files and folders and git history into new_repo.
+# - change `repo1/main` to `repo1/some_other_branch` if you want to merge in
+#   `some_other_branch` instead.
+# - Immediately after running this command, you will now see a new folder,
+#   `repo1`, with all of its files and folders within it, created inside
+#   the `new_repo` directory.
+git merge --allow-unrelated-histories repo1/main
+# Since you have independent sub-folders prepared inside repo1 and repo2,
+# there will be no conflicts whatsoever. When the git merge editor opens
+# up, just save and close it to complete the merge. Optionally, add any
+# comments you wish before saving and closing it.
+
+# Now, remove the remote named "repo1", since we no longer need it.
+git remote remove repo1
+# View all remotes to ensure it is now gone
+git remote -v
+
+# See the new commit status. If `repo1` had 100 commits in it, for instance,
+# `git status` will now show this, since `new_repo` now has those 100
+# commits plus this new merge commit in it:
+#
+#       $ git status
+#       On branch main
+#       Your branch is ahead of 'origin/main' by 101 commits.
+#         (use "git push" to publish your local commits)
+#
+#       nothing to commit, working tree clean
+#
+git status
+# Push to a remote, if you have one configured
+git push
+```
