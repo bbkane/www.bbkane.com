@@ -8,15 +8,14 @@ date = 2024-11-09
 ## Wet
 
 - 1-2 tablespooons olive oil
-- Honey
-- 2 eggs
+- Honey to taste
+- 2 eggs (can sub 1 egg with 1 tablespoon brown flax meal and 3 tablespoons of water)
 - 3 bananas
 
 ## Dry
 
-- 2 cups oats
+- 1.5 cups oats
 - Baking soda
-- Honey
 - Salt
 - Cinnamon
 - Ground cloves
@@ -41,3 +40,5 @@ Stir in extras
 Pour batter in silicon bread mold
 
 Bake at 330 degrees F for 1/2 hour or until toothpick comes out clean.
+
+Makes about 2 loaves of bread
