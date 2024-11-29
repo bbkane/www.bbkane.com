@@ -19,4 +19,4 @@ Mix it all together!
 
 Serve with baguette slices or Ritz crackers
 
-![Patti's Olive Dip](./index.assets/Patti's Olive Dip.jpg)
+![Patti's Olive Dip](./index.assets/Pattis-Olive-Dip.jpg)
