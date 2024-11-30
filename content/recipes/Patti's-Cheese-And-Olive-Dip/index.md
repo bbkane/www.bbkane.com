@@ -6,12 +6,12 @@ date = 2024-11-28
 
 # Ingredients
 
-- 8oz cream cheese, softened
+- 16oz cream cheese, softened
 - 1 cup shredded colby jack
 - 1/2 teaspoon garlic powder
 - 1/2 teaspoon Worcestershire sauce
-- 1 cup chopped black olive
-- 1 cup chopped green olives
+- 1/2 cup chopped black olive
+- 1/2 cup chopped green olives
 
 # Instructions
 

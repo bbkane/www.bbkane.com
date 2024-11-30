@@ -23,6 +23,8 @@ Rub down with Adobo powder and rub down with Saizon and rub down with Sofrito fr
 
 Put in oven bag and bake for an hour at 350 in instant pot / oven.
 
-![adobo](./adobo.jpg)
+![adobo](./index.assets/adobo.jpg)
 
-![sazon](./sazon.jpg)
+![sazon](./index.assets/sazon-3003995.jpg)
+
+![Pork-Shoulder](./index.assets/Pork-Shoulder.jpg)
