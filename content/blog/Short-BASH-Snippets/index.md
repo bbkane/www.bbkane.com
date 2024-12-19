@@ -344,7 +344,7 @@ curl \
 - Type: `set -g mouse on`
 - Scrolling works again
 
-## Search file types with `ripgrep`
+## `ripgrep` commands
 
 From https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#manual-filtering-file-types :
 
@@ -358,4 +358,11 @@ Search for C file extension with `--type`:
 
 ```bash
 rg 'int main' --type c
+```
+
+Search for a pattern , excluding `.git`, but including non-git-tracked files as
+well as hidden files. Add another `-u` to also search binary files
+
+```bash
+rg -uu --glob '!/.git/*' example
 ```
