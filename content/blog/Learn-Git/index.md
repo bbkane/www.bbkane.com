@@ -198,3 +198,13 @@ git status
 # Push to a remote, if you have one configured
 git push
 ```
+
+# Apply a patch from one commit onto another
+
+This is useful when you're working on a branch, then the branch gets squashed on top of master but you push further commits onto the branch...
+
+```bash
+git diff <commit-range> > ~/tmp.patch
+git checkout master
+git apply ~/tmp.patch
+```
