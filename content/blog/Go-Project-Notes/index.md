@@ -255,7 +255,7 @@ Slightly unfortunately, it doesn't sort lines in each stanza, so I have to run a
 If a the project is a CLI, not a library:
 
 - `go install go.bbkane.com/cli@latest` to test
-- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets
+- Add `KEY_GITHUB_GORELEASER_TO_HOMEBREW_TAP` to GitHub repo secrets - the URL is `https://github.com/bbkane/<name>/settings/secrets/actions`
 - Push a tag to build with `git tagit`
 - `brew install bbkane/tap/cli`
 
