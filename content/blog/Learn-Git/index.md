@@ -199,7 +199,7 @@ git status
 git push
 ```
 
-# Apply a patch from one commit onto another
+## Apply a patch from one commit onto another
 
 This is useful when you're working on a branch, then the branch gets squashed on top of master but you push further commits onto the branch...
 
@@ -207,4 +207,27 @@ This is useful when you're working on a branch, then the branch gets squashed on
 git diff <commit-range> > ~/tmp.patch
 git checkout master
 git apply ~/tmp.patch
+```
+
+## Move a git tag
+
+Copied from [StackOverflow](https://stackoverflow.com/questions/8044583/how-can-i-move-a-tag-on-a-git-branch-to-a-different-commit)
+
+Remove locally:
+
+```bash
+git tag -d v0.1  
+```
+
+Remove on remote:
+
+```bash
+git push origin --delete v0.1
+```
+
+Then re-add locally and push v0.1 to the most recent commit:
+
+```bash
+git tag -a v0.1
+git push origin --tags
 ```
