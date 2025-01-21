@@ -7,7 +7,7 @@ aliases = [ "2018/09/04/Go-Notes.html" ]
 
 These are notes on writing good Go Code. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [Go Project Notes](@/blog/Go-Project-Notes/index.md)
 
-# Notes on testing
+# Testing
 
 Some notes on testing in Go. A lot of these notes came from [Advanced Testing in Go (Hashimoto)](https://www.youtube.com/watch?v=8hQG7QlcLBk) ([transcipt](https://about.sourcegraph.com/go/advanced-testing-in-go)).
 
@@ -194,3 +194,40 @@ To some extent these error creation/handling ideas are tested in `warg` and othe
 
 This might not be strictly more useful than "Show call heirarchy", but I'm having a lot of fun with the VS Code extension!
 
+## Visualize package imports with [gopkgview](https://github.com/grishy/gopkgview)
+
+I find `gopkgview` useful to see issues (or the lack thereof) with my package imports. As a positive example, here's the import diagram of [`envelope`](https://github.com/bbkane/envelope):
+
+
+
+![image-20250120202741319](./index.assets/image-20250120202741319.png)
+
+I was going for a somewhat layered architecture here, and that's clearly visible:
+
+- the "presentation" layer (`cli` ) imports some helpers (`tableprint`), but uses the `app` package to talk to the storage packages (`sqliteconnect` , `sqlcgen`). The `app` package is the only user of the storage packages
+- the `cli`, `tableprint`, and `app` packages use the shared set of types in the `models` package to interface with each other. For example,  to do a create operation, the `cli` parses `os.Args` and instantiates a `models.CreateXxxArgs` and passes it to the `app` package. The `app` package creates an `Xxx`, then hands it back to `cli`. `cli`, then hands the `Xxx` to `tableprint` to print. 
+
+Now, whether a layered architecture like this is worth the trouble is another conversation (expand below for that tangent), but the point is that I can analyze dependencies quite easily with this tool to investigate architecture issues.
+
+<details>
+
+TODO: move this to its own blog post...
+
+Theoretical benefits I probably won't utilize for this project:
+
+- I'm not planning on switching out another CLI library,  or the sql bits, so I'm not sure they need to be self-contained.
+- This project is small enough that I have confidence in correctness using mostly integration tests, so I don't need a ton of separation between packages for testing
+
+Actual/planned benefits:
+
+- I feel like everything is nicely structured and almost everything "has a home". There are a few helper functions in the `models` package, but 🤷.
+- I can fairly easily insert observability tooling "between" the layers. For example, to log every sql statement, I only have to mess with the app -> sql interface . Similarly, to log all CLI commands, I only have to mess with the CLI -> app interface. I don't need caching, but that would also be straightforward.
+- I wrote this app to use for my projects, but ALSO to get experience with this architecture in a solo project. Projects at work already have an architecture and are always too big (and involve convincing teammates and postponing other work) to change things whenever I want to try a new pattern.
+
+Actual drawbacks
+
+- Large amounts of the code in this project are translating at the layers - to create an `Xxx`, I define CLI flags for it, separately define an app-level `CreateXxxArgs` for it, separately define (actually generate with `sqlc`) a storage layer `CreateXxxArgs` for it, then do the same thing in reverse to fill out the `models.Xxx` struct before passing it to `tableprint`. This makes it a slog to build more commands and especially depressing to prototype them- if I want to add a new command (say `xxx delete`), I'm writing lots of structs and translation code...
+
+Maybe for the next project I'll try the "vertical slice" architecture folks find so freeing...
+
+</details>
