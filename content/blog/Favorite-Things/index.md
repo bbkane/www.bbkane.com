@@ -32,6 +32,7 @@ Some apps have expanded to their own blog posts... Here's a non-exhaustive list
 - tokei - count lines of code
 - tree - file tree
 - volta - manage NodeJS versions
+- [poppler](https://poppler.freedesktop.org/) - can [extract images from PDFs](https://apple.stackexchange.com/a/445704) with `pdfimages -png input.pdf output`
 
 https://github.com/Homebrew/homebrew-cask-fonts and `brew cask install font-ia-writer-mono`
 
