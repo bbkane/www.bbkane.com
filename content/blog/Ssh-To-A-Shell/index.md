@@ -37,6 +37,10 @@ ssh myvm -t '/home/linuxbrew/.linuxbrew/bin/zsh'
 However, I still want to change the directory with `zsh` exiting. Fortunately, someone else [has a solution](https://superuser.com/a/230090): put the following at the end of the VM's `~/.zshrc`:
 
 ```zsh
+# this is not set automatically, and Homebrew looks
+# at $SHELL to provide completions
+export SHELL='/home/linuxbrew/.linuxbrew/bin/zsh'
+
 if [[ $1 == eval ]]
 then
     "$@"
