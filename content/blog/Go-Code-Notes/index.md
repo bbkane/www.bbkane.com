@@ -209,6 +209,8 @@ I was going for a somewhat layered architecture here, and that's clearly visible
 
 Now, whether a layered architecture like this is worth the trouble is another conversation (expand below for that tangent), but the point is that I can analyze dependencies quite easily with this tool to investigate architecture issues.
 
+There's also [modgraphviz](https://pkg.go.dev/golang.org/x/exp/cmd/modgraphviz), which outputs a [graphviz](https://dreampuf.github.io/GraphvizOnline/) graph, but I'm not a huge fan of the auto-layout and filtering options.
+
 <details>
 
 TODO: move this to its own blog post...
