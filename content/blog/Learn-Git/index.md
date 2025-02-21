@@ -5,6 +5,8 @@ updated = 2019-01-26
 aliases = [ "2018/03/26/Learn-Git.html" ]
 +++
 
+# Tutorials
+
 Git is a famously powerful and [famously confusing](https://xkcd.com/1597/) version control system
 used by software engineers everywhere. Increasingly, as other types of work
 begin to look more like software engineering (in my case network and systems
@@ -49,7 +51,7 @@ popular ones:
 - GitHub also highlights a workflow method [in one of their
   guides](https://guides.github.com/introduction/flow/).
 
-# Git Notes
+# Random Notes
 
 ## Forking and Syncing with GitHub
 
@@ -118,7 +120,7 @@ This is from [StackOverflow](https://stackoverflow.com/a/76831513/2958070). I wa
 follow the steps exactly, except for needing to use absolute paths instead of
 relative ones.
 
-### Fix up repo1
+Fix up repo1:
 
 ```bash
 cd path/to/repo1
@@ -231,3 +233,32 @@ Then re-add locally and push v0.1 to the most recent commit:
 git tag -a v0.1
 git push origin --tags
 ```
+
+## Remove parts of a repo!
+
+I'm splitting the tech bits of my `journal` repo into a `techjournal` repo.
+
+First, search for non-tech things (like notes about food). From [StackOverflow](https://stackoverflow.com/a/2928721):
+
+```bash
+git log -p --all -S food -- projects | vim -
+```
+
+This search is case-sensitive, so I ran it with `Food` too, and it lets me double-check that the tech notes don't have food content.
+
+Next install `git-filter-repo` to filter out the folders I don't specify:
+
+```bash
+brew install git-filter-repo
+```
+
+Do a fresh clone of my `journal` repo and use that as this is a destructive operation.
+
+Then, modify their [example](https://github.com/newren/git-filter-repo?tab=readme-ov-file#simple-example-with-comparisons) to save only the tech notes:
+
+```bash
+git filter-repo --path projects/ --path tech.md --path showdowns/ --path old/tech/ --path tech.assets
+```
+
+And... that's it. This saves the history of those paths. Unfortunately, this doesn't preserve history beyond file moves (so If I, in the past, move notes into `old`, the previous commit information of those files is lost after the move.) I'd like to preserve more history than that, but I'm not sure it's possible and I feel like I could sync hours I'd rather spend on something else trying to.
+
