@@ -7,6 +7,8 @@ Converted from the PDF sent my [my church](https://www.getgreaterlife.org/) . Pa
 
 # February
 
+<details>
+
 | Date       | Old Testament  | New Testament | Optional for Study & Reference                                                                 |
 |------------|----------------|---------------|-------------------------------------------------------------------------------------------------|
 | Mon 2/3    | Genesis 1-3    | Matthew 1     | Psalm 104; Colossians 1:15-17                                                                   |
@@ -36,7 +38,11 @@ Converted from the PDF sent my [my church](https://www.getgreaterlife.org/) . Pa
 | Thurs 2/27 | Exodus 27-29   | Matthew 17    |                                                                                                 |
 | Fri 2/28   | Exodus 30-32   | Matthew 18    | Acts 7:36-41; Revelation 13:8; 17:8; 20:15                                                      |
 
+</details>
+
 # March
+
+<details>
 
 | Date      | Old Testament         | New Testament | Optional for Study & Reference                |
 |-----------|------------------------|---------------|-----------------------------------------------|
@@ -72,7 +78,11 @@ Converted from the PDF sent my [my church](https://www.getgreaterlife.org/) . Pa
 | Sun 3/30  | Catch-up/ Reflection/ Free Study       |               |                                               |
 | Mon 3/31  | Deuteronomy 16-18      | Mark 13       | Acts 3:22                                     |
 
+</details>
+
 # April
+
+<details>
 
 | Date      | Old Testament         | New Testament | Optional for Study & Reference                |
 |-----------|------------------------|---------------|-----------------------------------------------|
@@ -106,3 +116,5 @@ Converted from the PDF sent my [my church](https://www.getgreaterlife.org/) . Pa
 | Mon 4/28  | 1 Samuel 22-25         |               |                                               |
 | Tues 4/29 | 1 Samuel 26-28         | Luke 8        |                                               |
 | Wed 4/30  | 1 Samuel 29-31         | Luke 9        |                                               |
+
+</details>
