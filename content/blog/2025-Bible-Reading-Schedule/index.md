@@ -3,7 +3,7 @@ title = "2025 Bible Reading Schedule"
 date = 2025-02-07
 +++
 
-Converted from the PDF sent my [my church](https://www.getgreaterlife.org/) . Paste from the PDF into the AI with the prompt "Please turn this into a markdown table." Then manually combine the Holiday reading into Optional column.
+Converted from [the PDF](./2025-Bible-Reading-Plan.pdf) sent my [my church](https://www.getgreaterlife.org/). I have copy-pasted from the PDF into the AI with the prompt "Please turn this into a markdown table.", then manually combined the Holiday reading into Optional column.
 
 # February
 
