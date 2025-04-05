@@ -233,3 +233,120 @@ Actual drawbacks
 Maybe for the next project I'll try the "vertical slice" architecture folks find so freeing...
 
 </details>
+
+# Doc comment syntax examples
+
+From [Go Doc Comments - The Go Programming Language](https://golang.org/doc/comment#syntax), a large doc with lots of great advice, none of which I seem to miss remembering more than how to make links and lists work in the weird "almost markdown" comment syntax. I'm mostly copying the code examples and not the larger explanation.
+
+## Notes
+
+```go
+// TODO(user1): refactor to use standard library context
+// BUG(user2): not cleaned up
+var ctx context.Context
+```
+
+## Deprecations
+
+```go
+// Reset zeros the key data and makes the Cipher unusable.
+//
+// Deprecated: Reset can't guarantee that the key will be entirely removed from
+// the process's memory.
+func (c *Cipher) Reset()
+```
+
+## Headings
+
+```go
+// Package strconv implements conversions to and from string representations
+// of basic data types.
+//
+// # Numeric Conversions
+//
+// The most common numeric conversions are [Atoi] (string to int) and [Itoa] (int to string).
+...
+package strconv
+```
+
+## Links
+
+```go
+// Package json implements encoding and decoding of JSON as defined in
+// [RFC 7159]. The mapping between JSON and Go values is described
+// in the documentation for the Marshal and Unmarshal functions.
+//
+// For an introduction to this package, see the article
+// “[JSON and Go].”
+//
+// [RFC 7159]: https://tools.ietf.org/html/rfc7159
+// [JSON and Go]: https://golang.org/doc/articles/json_and_go.html
+package json
+```
+
+## Doc links
+
+```go
+package bytes
+
+// ReadFrom reads data from r until EOF and appends it to the buffer, growing
+// the buffer as needed. The return value n is the number of bytes read. Any
+// error except [io.EOF] encountered during the read is also returned. If the
+// buffer becomes too large, ReadFrom will panic with [ErrTooLarge].
+func (b *Buffer) ReadFrom(r io.Reader) (n int64, err error) {
+    ...
+}
+```
+
+NOTE: When referring to other packages, “pkg” can be either a full import path or the assumed package name of an existing import. The assumed package name is either the identifier in a renamed import or else [the name assumed by goimports](https://pkg.go.dev/golang.org/x/tools/internal/imports#ImportPathToAssumedName). There are a few more caveats, see [here](https://go.dev/doc/comment#doclinks) if this isn't rendering correctly.
+
+## Lists
+
+```go
+package url
+
+// PublicSuffixList provides the public suffix of a domain. For example:
+//   - the public suffix of "example.com" is "com",
+//   - the public suffix of "foo1.foo2.foo3.co.uk" is "co.uk", and
+//   - the public suffix of "bar.pvt.k12.ma.us" is "pvt.k12.ma.us".
+//
+// Implementations of PublicSuffixList must be safe for concurrent use by
+// multiple goroutines.
+//
+// An implementation that always returns "" is valid and may be useful for
+// testing but it is not secure: it means that the HTTP server for foo.com can
+// set a cookie for bar.com.
+//
+// A public suffix list implementation is in the package
+// golang.org/x/net/publicsuffix.
+type PublicSuffixList interface {
+    ...
+}
+```
+
+NOTE: nested lists are not supported
+
+## Code Blocks
+
+```go
+package sort
+
+// Search uses binary search...
+//
+// As a more whimsical example, this program guesses your number:
+//
+//  func GuessingGame() {
+//      var s string
+//      fmt.Printf("Pick an integer from 0 to 100.\n")
+//      answer := sort.Search(100, func(i int) bool {
+//          fmt.Printf("Is your number <= %d? ", i)
+//          fmt.Scanf("%s", &s)
+//          return s != "" && s[0] == 'y'
+//      })
+//      fmt.Printf("Your number is %d.\n", answer)
+//  }
+func Search(n int, f func(int) bool) int {
+    ...
+}
+```
+
