@@ -3,7 +3,9 @@ title = "2025 Bible Reading Schedule"
 date = 2025-02-07
 +++
 
-Converted from [the PDF](./2025-Bible-Reading-Plan.pdf) sent my [my church](https://www.getgreaterlife.org/). I have copy-pasted from the PDF into the AI with the prompt "Please turn this into a markdown table.", then manually combined the Holiday reading into Optional column.
+Converted from [the PDF](./2025-Bible-Reading-Plan.pdf) sent my [my church](https://www.getgreaterlife.org/). I have copy-pasted from the PDF into the AI with the prompt:
+
+>  Please turn the following into a markdown table, but combine the last two columns ("Optional for Study & Reference" and "Optional for Holidays & Special Observances") into one column called "Optional for Study & Reference".
 
 # February
 
@@ -118,3 +120,163 @@ Converted from [the PDF](./2025-Bible-Reading-Plan.pdf) sent my [my church](http
 | Wed 4/30  | 1 Samuel 29-31         | Luke 9        |                                               |
 
 </details>
+
+# May
+
+<details>
+
+| Date       | Old Testament         | New Testament                              | Optional for Study & Reference                                                                                     |
+|------------|------------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| Thurs 5/1  | 2 Samuel 1-3           | Luke 10                                    |                                                                                                                     |
+| Fri 5/2    | 2 Samuel 4-7           |  | Matthew 2:6; 2 Corinthians 6:18; Hebrews 1:5; Revelation 21:7 |
+| Sat 5/3    | 2 Samuel 8-11          |                                            |                                                                                                                     |
+| Sun 5/4    | 2 Samuel 12-14         | Luke 11                                    |                                                                                                                     |
+| Mon 5/5    | 2 Samuel 15-18         |                                            |                                                                                                                     |
+| Tues 5/6   | 2 Samuel 19-21         | Luke 12                                    | Romans 15:9                                                                                                          |
+| Wed 5/7    | 2 Samuel 22-24         | Luke 13                                    | Matthew 22:17–21; Romans 13:1–7; Hebrews 2:13                                                                        |
+| Thurs 5/8  | 1 Kings 1-3            | Luke 14                                    |                                                                                                                     |
+| Fri 5/9    | 1 Kings 4-6            | Luke 15                                    |                                                                                                                     |
+| Sat 5/10   | 1 Kings 7-8            |                                            |                                                                                                                     |
+| Sun 5/11   | Catch-up/ Reflection/ Free Study |                             | Mother's Day reading: Exodus 20:12; Proverbs 31:25-28; Isaiah 66:13                                                |
+| Mon 5/12   | 1 Kings 9-11           | Luke 16                                    |                                                                                                                     |
+| Tues 5/13  | 1 Kings 12-14          | Luke 17                                    |                                                                                                                     |
+| Wed 5/14   | 1 Kings 15-17          | Luke 18                                    |                                                                                                                     |
+| Thurs 5/15 | 1 Kings 18-20          | Luke 19                                    | Romans 11:3-4                                                                                                        |
+| Fri 5/16   | 1 Kings 21-22          | Luke 20                                    |                                                                                                                     |
+| Sat 5/17   | 2 Kings 1-3            | Luke 21                                    | Luke 9:54; Revelation 20:9; Matthew 17:1-8                                                                           |
+| Sun 5/18   | 2 Kings 4-7            |                                            |                                                                                                                     |
+| Mon 5/19   | 2 Kings 8-10           | Luke 22                                    |                                                                                                                     |
+| Tues 5/20  | 2 Kings 11-13          | Luke 23                                    |                                                                                                                     |
+| Wed 5/21   | 2 Kings 14-17          |                                            |                                                                                                                     |
+| Thurs 5/22 | 2 Kings 18-20          | Luke 24                                    | Acts 4:24                                                                                                            |
+| Fri 5/23   | 2 Kings 21-23          | John 1                                     |                                                                                                                     |
+| Sat 5/24   | 2 Kings 24-25          | John 2                                     |                                                                                                                     |
+| Sun 5/25   | Catch-up/ Reflection/ Free Study |                             |                                                                                                                     |
+| Mon 5/26   | 1 Chronicles 1-4       |                                            |                                                                                                                     |
+| Tues 5/27  | 1 Chronicles 5-7       | John 3                                     |                                                                                                                     |
+| Wed 5/28   | 1 Chronicles 8-11      |                                            |                                                                                                                     |
+| Thurs 5/29 | 1 Chronicles 12-14     | John 4                                     |                                                                                                                     |
+| Fri 5/30   | 1 Chronicles 15-18     |                                            |                                                                                                                     |
+| Sat 5/31   | 1 Chronicles 19-21     | John 5                                     |                                                                                                                     |
+
+</details>
+
+# June
+
+<details>
+
+| Date       | Old Testament                    | New Testament | Optional for Study & Reference                               |
+| ---------- | -------------------------------- | ------------- | ------------------------------------------------------------ |
+| Sun 6/1    | 1 Chronicles 22-25               |               | Shavuot (Festival of Weeks) reading: Exodus 23:16; 34:22-35; Leviticus 23:15-22; Numbers 28:26 |
+| Mon 6/2    | 1 Chronicles 26-29               |               |                                                              |
+| Tues 6/3   | 2 Chronicles 1-3                 | John 6        |                                                              |
+| Wed 6/4    | 2 Chronicles 4-6                 | John 7        |                                                              |
+| Thurs 6/5  | 2 Chronicles 7-10                |               |                                                              |
+| Fri 6/6    | 2 Chronicles 11-13               | John 8        |                                                              |
+| Sat 6/7    | 2 Chronicles 14-16               | John 9        |                                                              |
+| Sun 6/8    | Catch-up/ Reflection/ Free Study |               | Pentecost reading: Joel 2:28-32; John 3:5; Acts 2:1-47; 4:31; Acts 11:15; Ephesians 5:18 |
+| Mon 6/9    | 2 Chronicles 17-20               |               |                                                              |
+| Tues 6/10  | 2 Chronicles 21-23               | John 10       |                                                              |
+| Wed 6/11   | 2 Chronicles 24-26               | John 11       |                                                              |
+| Thurs 6/12 | 2 Chronicles 27-30               |               |                                                              |
+| Fri 6/13   | 2 Chronicles 31-33               | John 12       |                                                              |
+| Sat 6/14   | 2 Chronicles 34-36               | John 13       |                                                              |
+| Sun 6/15   | Ezra 1-4                         |               | Father's Day reading: Psalm 68:5; Proverbs 3:11-12; Hebrews 12:7-11; Ephesians 6:1-3; 1 John 3:1 |
+| Mon 6/16   | Ezra 5-7                         | John 14       |                                                              |
+| Tues 6/17  | Ezra 8-10                        | John 15       |                                                              |
+| Wed 6/18   | Nehemiah 1-3                     | John 16       |                                                              |
+| Thurs 6/19 | Nehemiah 4-6                     | John 17       |                                                              |
+| Fri 6/20   | Nehemiah 7-10                    |               |                                                              |
+| Sat 6/21   | Nehemiah 11-13                   | John 18       |                                                              |
+| Sun 6/22   | Catch-up/ Reflection/ Free Study |               |                                                              |
+| Mon 6/23   | Esther 1-3                       | John 19       | Psalm 22:18                                                  |
+| Tues 6/24  | Esther 4-6                       | John 20       |                                                              |
+| Wed 6/25   | Esther 7-10                      |               |                                                              |
+| Thurs 6/26 | Job 1-3                          | John 21       |                                                              |
+| Fri 6/27   | Job 4-6                          | Acts 1        |                                                              |
+| Sat 6/28   | Job 7-9                          | Acts 2        | Joel 2:28-32                                                 |
+| Sun 6/29   | Job 10-12                        | Acts 3        |                                                              |
+| Mon 6/30   | Job 13-16                        |               |                                                              |
+
+</details>
+
+# July
+
+<details>
+
+| Date       | Old Testament                    | New Testament | Optional for Study & Reference                               |
+| ---------- | -------------------------------- | ------------- | ------------------------------------------------------------ |
+| Tues 7/1   | Job 17-19                        | Acts 4        |                                                              |
+| Wed 7/2    | Job 20-22                        | Acts 5        |                                                              |
+| Thurs 7/3  | Job 23-26                        |               | James 5:11                                                   |
+| Fri 7/4    | Job 27-29                        | Acts 6        | Independence Day reading: John 8:32, 36; 1 Peter 2:13-17; Galatians 5:1, 13; 2 Corinthians 3:17; Romans 8:2 |
+| Sat 7/5    | Job 30-32                        | Acts 7        |                                                              |
+| Sun 7/6    | Catch-up/ Reflection/ Free Study |               |                                                              |
+| Mon 7/7    | Job 33-36                        |               |                                                              |
+| Tues 7/8   | Job 37-39                        | Acts 8        |                                                              |
+| Wed 7/9    | Job 40-42                        | Acts 9        |                                                              |
+| Thurs 7/10 | Psalms 1-4                       |               | Ephesians 4:26                                               |
+| Fri 7/11   | Psalms 5-7                       | Acts 10       |                                                              |
+| Sat 7/12   | Psalms 8-10                      | Acts 11       | Matthew 21:16; Hebrews 2:6-8                                 |
+| Sun 7/13   | Psalms 11-14                     |               |                                                              |
+| Mon 7/14   | Psalms 15-17                     | Acts 12       | Acts 2:25-28; Acts 13:35                                     |
+| Tues 7/15  | Psalms 18-21                     |               |                                                              |
+| Wed 7/16   | Psalms 22-24                     | Acts 13       |                                                              |
+| Thurs 7/17 | Psalms 25-27                     | Acts 14       |                                                              |
+| Fri 7/18   | Psalms 28-31                     |               |                                                              |
+| Sat 7/19   | Psalms 32-34                     | Acts 15       | Romans 4:7-8; 1 Peter 3:10-12                                |
+| Sun 7/20   | Catch-up/ Reflection/ Free Study |               |                                                              |
+| Mon 7/21   | Psalms 35-37                     | Acts 16       |                                                              |
+| Tues 7/22  | Psalms 38-41                     |               | Hebrews 10:5-10                                              |
+| Wed 7/23   | Psalms 42-44                     | Acts 17       |                                                              |
+| Thurs 7/24 | Psalms 45-47                     | Acts 18       |                                                              |
+| Fri 7/25   | Psalms 48-51                     |               |                                                              |
+| Sat 7/26   | Psalms 52-54                     | Acts 19       |                                                              |
+| Sun 7/27   | Psalms 55-57                     | Acts 20       |                                                              |
+| Mon 7/28   | Psalms 58-61                     |               | 1 Peter 5:7                                                  |
+| Tues 7/29  | Psalms 62-64                     | Acts 21       |                                                              |
+| Wed 7/30   | Psalms 65-67                     | Acts 22       |                                                              |
+| Thurs 7/31 | Psalms 68-71                     |               | John 2:13-17                                                 |
+
+</details>
+
+# August
+
+<details>
+
+| Date       | Old Testament                    | New Testament | Optional for Study & Reference                               |
+| ---------- | -------------------------------- | ------------- | ------------------------------------------------------------ |
+| Fri 8/1    | Psalms 72-74                     | Acts 23       |                                                              |
+| Sat 8/2    | Psalms 75-77                     | Acts 24       |                                                              |
+| Sun 8/3    | Catch-up/ Reflection/ Free Study |               |                                                              |
+| Mon 8/4    | Psalms 78-80                     | Acts 25       |                                                              |
+| Tues 8/5   | Psalms 81-84                     |               |                                                              |
+| Wed 8/6    | Psalms 85-87                     | Acts 26       |                                                              |
+| Thurs 8/7  | Psalms 88-90                     | Acts 27       |                                                              |
+| Fri 8/8    | Psalms 91-93                     | Acts 28       |                                                              |
+| Sat 8/9    | Psalms 94-97                     |               |                                                              |
+| Sun 8/10   | Psalms 98-100                    |               | Hebrews 3:7-18                                               |
+| Mon 8/11   | Psalms 101-103                   | Romans 1      |                                                              |
+| Tues 8/12  | Psalms 104-107                   | Romans 2      |                                                              |
+| Wed 8/13   | Psalms 108-110                   | Romans 3      | Hebrews 1:1-4, 10-13                                         |
+| Thurs 8/14 | Psalms 111-114                   |               |                                                              |
+| Fri 8/15   | Psalms 115-118                   |               | 1 Corinthians 4:13; Romans 15:11; Hebrews 13:6; Matthew 21:42; 1 Peter 2:4-7 |
+| Sat 8/16   | Psalms 119-120                   |               |                                                              |
+| Sun 8/17   | Catch-up/ Reflection/ Free Study |               |                                                              |
+| Mon 8/18   | Psalms 121-123                   | Romans 4      |                                                              |
+| Tues 8/19  | Psalms 124-126                   | Romans 5      |                                                              |
+| Wed 8/20   | Psalms 127-129                   | Romans 6      |                                                              |
+| Thurs 8/21 | Psalms 130-134                   |               | Acts 7:46; 2:30                                              |
+| Fri 8/22   | Psalms 135-137                   | Romans 7      |                                                              |
+| Sat 8/23   | Psalms 138-140                   | Romans 8      |                                                              |
+| Sun 8/24   | Psalms 141-144                   |               | Romans 3:20                                                  |
+| Mon 8/25   | Psalms 145-147                   | Romans 9      | Acts 4:24; 14:15                                             |
+| Tues 8/26  | Psalms 148-150                   | Romans 10     |                                                              |
+| Wed 8/27   | Proverbs 1-3                     | Romans 11     |                                                              |
+| Thurs 8/28 | Proverbs 4-7                     |               |                                                              |
+| Fri 8/29   | Proverbs 8-10                    | Romans 12     | James 5:20; 1 Peter 4:8                                      |
+| Sat 8/30   | Proverbs 11-13                   | Romans 13     |                                                              |
+| Sun 8/31   | Catch-up/ Reflection/ Free Study |               |                                                              |
+
+</details>
+
