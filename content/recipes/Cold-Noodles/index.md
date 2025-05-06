@@ -13,6 +13,7 @@ date = 2024-06-23
 - 1 tbsp peanut butter
 - 1 tbsp ginger
 - 1 tbsp sugar
+- garlic to taste (1 tbsp?)
 
 Blend everything together
 
