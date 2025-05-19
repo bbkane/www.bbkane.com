@@ -53,6 +53,10 @@ https://github.com/Homebrew/homebrew-cask-fonts and `brew cask install font-ia-w
 - [RedReader | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/packages/org.quantumbadger.redreader/) - Simple and fast Reddit app
 - [Fossify Contacts | F-Droid - Free and Open Source Android App Repository](https://f-droid.org/packages/org.fossify.contacts/) - I love this contacts ap because it lets me sort contacts by date added and easily manage groups of contacts
 
+## Websites
+
+- [Debuggex: Online visual regex tester. JavaScript, Python, and PCRE.](https://www.debuggex.com/) - I really like this because it turns regexes into state diagrams
+
 
 ## Favorite Purchases
 
