@@ -239,10 +239,8 @@ Slightly unfortunately, it doesn't sort lines in each stanza, so I have to run a
 
 ## Steps
 
-- Copy [example-go-cli](https://github.com/bbkane/example-go-cli)
-- Erase the git history
-- Commit
-- Replace all references to it with the new name
+- Run `./rename.py <newname>` in [example-go-cli](https://github.com/bbkane/example-go-cli)
+
 - Update README
 - Create repo on GitHub and push the code.
 - Add the `go` topic to the repo
@@ -262,5 +260,3 @@ If a the project is a CLI, not a library:
 If the project is a library, not a CLI:
 
 - Delete the `.goreleasor.yml` file
-
-I could use [cookiecutter](https://github.com/cookiecutter/cookiecutter) or similar tools to make this faster, but I find maintaining cookiecutter code difficult, so (at least for now) I prefer to manully copy example-go-cli and update the right thing by hand.

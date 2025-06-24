@@ -75,5 +75,5 @@ For reference, see #githubRepo bbkane/warg , especially the CHANGELOG.md, README
 If needed, also update the Go version in this project to go 1.24
 
 Make sure to use `section.CommandMap(warg.VersionCommandMap()),` to add a version command and `warg.GlobalFlagMap(warg.ColorFlagMap()),` to add a `--color` flag.
-
 ```
+
