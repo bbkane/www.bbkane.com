@@ -1,22 +1,73 @@
 +++
 title = "Logging in Python"
 date = 2018-09-05
-updated = 2019-11-05
+updated = 2025-06-24
 aliases = [ "2018/09/05/Logging-in-Python.html" ]
 +++
 
-## Setting up logging with the tweaks I want
+## Setup: Colors + Minimal metadata
 
-The [logging](https://docs.python.org/3/library/logging.html) module is rather
-confusing, so I use it with code similar to the following.
+This is useful for quick scripts where you want pretty logs, but probably not module information or timestamps...
 
-Logging is fun to add when netmiko isn't doing it's ***ing job and I hate
-everything about computers and I seriously consider selling everything, growing
-a mustache, and becoming a sheep farmer in New Zealand.
+![image-20250624050350282](./index.assets/image-20250624050350282.png)
 
-NOTE (2018-07-31): I haven't tested quite all of this logging section rewrite.
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-### Top level code
+import logging
+import sys
+
+logger = logging.getLogger(__name__)
+
+
+class Color:
+    reset = '\x1b[0m'
+    grey = '\x1b[38;21m'
+    blue = '\x1b[38;5;39m'
+    yellow = '\x1b[38;5;226m'
+    red = '\x1b[38;5;196m'
+    bold_red = '\x1b[31;1m'
+
+
+# logic from https://stackoverflow.com/a/75339761
+class ColorLevelFormatter(logging.Formatter):
+
+    _color_levelname = {
+        'DEBUG': f"{Color.grey}DEBUG{Color.reset}",
+        'INFO': f"{Color.blue}INFO{Color.reset}",
+        'WARNING': f"{Color.yellow}WARNING{Color.reset}",
+        'ERROR': f"{Color.red}ERROR{Color.reset}",
+        'CRITICAL': f"{Color.bold_red}CRITICAL{Color.reset}",
+    }
+
+    def __init__(
+            self,
+            fmt: str = "%(levelname)s %(filename)s:%(lineno)s : %(message)s",
+            *args,
+            **kwargs,
+    ):
+        super().__init__(fmt, *args, **kwargs)
+
+    def format(self, record):
+        record.levelname = self._color_levelname[record.levelname]
+        return super().format(record)
+
+
+root_logger = logging.getLogger()
+root_logger.setLevel(logging.DEBUG)
+stdout_handler = logging.StreamHandler(sys.stdout)
+stdout_handler.setFormatter(ColorLevelFormatter())
+root_logger.addHandler(stdout_handler)
+
+logger.debug("Debugging information")
+logger.info("Informational message")
+logger.warning("Warning message")
+logger.error("Error message")
+logger.critical("Critical issue")
+```
+
+## Setup: Log to file + stderr
 
 This is the code driving the program - `main.py` for me usually.
 
@@ -87,9 +138,9 @@ if __name__ == "__main__":
     main()
 ```
 
-### Non top level code
+## How to use a logger
 
-In each file, make a new module level logger at the top (note: we did this for main too above)
+In each file, make a new module level logger at the top 
 
 ```python
 # filename: mymodule.py
