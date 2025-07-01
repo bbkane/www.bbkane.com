@@ -21,3 +21,4 @@ I've been visiting family in the Binghamton, NY area since I was a kid, so here'
 - [Christian Life Church UPC](https://maps.app.goo.gl/za79aQSJ4T6yCaSk9) - really nice little church
 - [Dorchester Park](https://maps.app.goo.gl/g2ior4RppTWsocEG6) - my other aunt took us here and grilled while we went swimming. It was a marvelous day.
 - [Salt Springs State Park](https://maps.app.goo.gl/Xgho3gbvYoQeYg9U9) - This is a really great park in Pennsylvania with beautiful springs and an old growth hemlock forest. Walking in this forest feels kinda like walking on a sponge due to the centuries of accumulated needles.
+- [Otsiningo Park](https://maps.app.goo.gl/43A9yMZ1ECg1KcVm6) - park by the Chenango River with a playground and walking
