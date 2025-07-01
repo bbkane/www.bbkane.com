@@ -77,3 +77,26 @@ If needed, also update the Go version in this project to go 1.24
 Make sure to use `section.CommandMap(warg.VersionCommandMap()),` to add a version command and `warg.GlobalFlagMap(warg.ColorFlagMap()),` to add a `--color` flag.
 ```
 
+# Tue 2025-07-01 Project prompts
+
+Project prompts are stored in in `./github/prompts`
+
+Create with `> Chat: New Prompt file`
+
+Run by clicking copilot, switching to agent, typing `/filename`
+
+Example in acm:
+
+````markdown
+---
+mode: edit
+tools: ['codebase']
+---
+
+Please embed the following YouTub playlists underneath "Courses". On desktop they should be on a grid but on mobile they should be in a list. Please respect the existing color scheme and make sure the page is mobile friendly.
+
+```html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=96xU2QjHec8MFk17&amp;controls=0&amp;list=PLT9WHwcLoiUHgzV4_E5RUVHJGtfNSnV6r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+````
+
