@@ -14,6 +14,7 @@ I've been visiting family in the Binghamton, NY area since I was a kid, so here'
 - [Frank's Italian Restaurant](https://maps.app.goo.gl/ePmUBJtVv3qzjBkd9)  - this could be the other place my aunt took me. They're both on my bookmarks
 - [Moe's Southwest Grill](https://maps.app.goo.gl/PHTYNWzbU1uZ7L2W8) - I love this in Arkansas (the chipolte dressing is really good) and I'm looking forward to trying it in Binghamton
 - [Nirchi's Pizza](https://maps.app.goo.gl/3ezc66Ai42SHpquL6) - Always delicious with many types of pizza
+- [Michelangelo's](https://maps.app.goo.gl/vQG3Kjkw8QBaH7f57) - went here with my uncle's family - I had a delicious lasagna and my wife had the stuffed sole with angel hair pasta. Both were incredible.
 
 # Other
 
