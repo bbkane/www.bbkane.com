@@ -81,7 +81,7 @@ Make sure to use `section.CommandMap(warg.VersionCommandMap()),` to add a versio
 
 Project prompts are stored in in `./github/prompts`
 
-Create with `> Chat: New Prompt file`
+Create with `> Chat: New Prompt file`. Note: if you copy a file instead of using this, Copilot can't fnd the prompt. So always use this.
 
 Run by clicking copilot, switching to agent, typing `/filename`
 
