@@ -218,7 +218,7 @@ Copied from [StackOverflow](https://stackoverflow.com/questions/8044583/how-can-
 Remove locally:
 
 ```bash
-git tag -d v0.1  
+git tag -d v0.1
 ```
 
 Remove on remote:
@@ -262,3 +262,22 @@ git filter-repo --path projects/ --path tech.md --path showdowns/ --path old/tec
 
 And... that's it. This saves the history of those paths. Unfortunately, this doesn't preserve history beyond file moves (so If I, in the past, move notes into `old`, the previous commit information of those files is lost after the move.) I'd like to preserve more history than that, but I'm not sure it's possible and I feel like I could sync hours I'd rather spend on something else trying to.
 
+## Make a fork after cloning someone else's repo
+
+This is useful to easily make a PR to the original repo after you've cloned it and made a change on your branch.
+
+In this example, I'm in the `readline` repo and just committed my change to `bbkane/fix-demo`:
+
+First use `gh` (GitHub's CLI) to create the fork with a new remote name (since origin is taken by the original):
+
+```bash
+gh repo create bbkane/readline --source . --remote bbkane-fork --public
+```
+
+Then push to that:
+
+```bash
+git push bbkane-fork bbkane/fix-demo
+```
+
+NOTE: this did NOT actually give me an easy way to add the changes, but the family calls and I must answer. I'll play with this later... maybe... :)
