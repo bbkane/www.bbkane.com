@@ -107,7 +107,9 @@ not in Homebrew and I get this message:
 
 ![image-20231220155414753](index.assets/image-20231220155414753.png)
 
-So... I'm scared of this app
+So... I'm scared of this app.
+
+Update: 2025-07-07: the Beaver Notes maintainer [opened an issue](https://github.com/bbkane/www.bbkane.com/issues/34) a year ago on my blog's repo asking me to retry Beaver Notes. I haven't yet, but I do want to update this blog post.
 
 ### NO - [cherrytree](https://alternativeto.net/software/cherrytree/about/)
 
@@ -123,13 +125,13 @@ I didnt' really like Logseq because it feels a bit sluggish and was based on blo
 
 ### NO - [MarkEdit](https://github.com/MarkEdit-app/MarkEdit)
 
-No support for image pasting. Otherwise looks REALLY nice and fast. 
+No support for image pasting. Otherwise looks REALLY nice and fast.
 
 I would make an issue for it, but I think they really want popovers for this kind of thing. From [the wiki]([Why MarkEdit · MarkEdit-app/MarkEdit Wiki · GitHub](https://github.com/MarkEdit-app/MarkEdit/wiki/Why-MarkEdit):
 
-> However, there're several situations we do need to preview, such as 
-> tables, embedded LaTex formulas, or Mermaid diagrams, we have built 
-> popover previews for that. Well, if previewing the entire document as 
+> However, there're several situations we do need to preview, such as
+> tables, embedded LaTex formulas, or Mermaid diagrams, we have built
+> popover previews for that. Well, if previewing the entire document as
 > HTML is still something you want so badly, it's perfectly to [build your own](https://github.com/MarkEdit-app/MarkEdit/wiki/Text-Processing#markedit-actions) or leverage tools like [markserv](https://github.com/markserv/markserv).
 
 I need inline images, so this won't work. Also not cross-platform.
@@ -170,7 +172,7 @@ Let's try Silverbullet - not sure what's going on with images, but can't  fold t
 
 ### NO - [SiYuan](https://github.com/siyuan-note/siyuan)
 
-also works with blocks and I can't seem to figure out how to open my folder? 
+also works with blocks and I can't seem to figure out how to open my folder?
 
 ### NO - [standardnotes](https://github.com/standardnotes/app)
 

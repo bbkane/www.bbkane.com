@@ -93,3 +93,7 @@ SELECT * FROM csv_subject;
 ## Advanced SQL
 
 See [this talk](https://youtu.be/xEDZQtAHpX8?t=1660) (the timestamp is to a very useful slide on `OVER`), and the associated [website](https://modern-sql.com/).
+
+## SQLite3 Links
+
+- [https://kerkour.com/sqlite-for-servers](Optimizing SQLite for servers) has some great tips.
