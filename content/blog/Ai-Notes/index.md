@@ -100,3 +100,12 @@ Please embed the following YouTub playlists underneath "Courses". On desktop the
 ```
 ````
 
+---
+
+I'm running into [Agent mode hangs when running terminal command · Issue #254447 · microsoft/vscode](https://github.com/microsoft/vscode/issues/254447)
+
+I'm working around it by using a vanilla bash terminal in VS Code instead of my normal customized `zsh` setup:
+
+```json
+"terminal.integrated.defaultProfile.osx": "bash",
+```
