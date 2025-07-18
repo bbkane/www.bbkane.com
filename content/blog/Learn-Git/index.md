@@ -281,3 +281,15 @@ git push bbkane-fork bbkane/fix-demo
 ```
 
 NOTE: this did NOT actually give me an easy way to add the changes, but the family calls and I must answer. I'll play with this later... maybe... :)
+
+## Revert back to a previous commit with a "patch"
+
+From [Stackoverflow](https://stackoverflow.com/a/21718540/2958070):
+
+```bash
+git revert --no-commit 0d1d7fc3..HEAD
+git commit
+git push
+```
+
+This will revert everything from the HEAD back to the commit hash (excluded), meaning it will recreate that commit state in the working tree as if every commit after 0d1d7fc3 had been walked back. You can then commit the current tree, and it will create a brand new commit essentially equivalent to the commit you "reverted" to
