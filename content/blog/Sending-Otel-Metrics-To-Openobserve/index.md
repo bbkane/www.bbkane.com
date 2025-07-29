@@ -11,7 +11,7 @@ App -> OTEL Collector -> Observability Platform
 
 
 
-<!-- 
+<!--
 
 ```mermaid
 sequenceDiagram
@@ -33,7 +33,7 @@ App -> OpenObserve
 
 
 
-<!-- 
+<!--
 
 ```mermaid
 sequenceDiagram
@@ -41,7 +41,7 @@ sequenceDiagram
     participant OpenObserve
 
     App ->> OpenObserve: Send telemetry data over localhost
-    
+
 ```
 
 -->
@@ -66,6 +66,8 @@ Then head to [http://localhost:5080/web/ingestion/recommended/traces?org_identif
 > HTTP Endpoint: http://localhost:5080/api/default
 > Authorization: Basic cm9vdEBleGFtcGxlLmNvbTpabFhiTXZTMENYSEtubzJ4
 > ```
+
+(NOTE: the authorization header base64 string appears to have changed between OpenObserve 0.14.x and 0.15.x, even with the same password). So make sure to copy it from the link.
 
 # Emit metrics from our code
 
@@ -205,7 +207,7 @@ Next, we need to run our app with the appropriate [exporter  `OTEL_*` env vars](
 
 ```bash
 OTEL_EXPORTER_OTLP_ENDPOINT='http://127.0.0.1:5080/api/default' \
-OTEL_EXPORTER_OTLP_HEADERS='Authorization=Basic cm9vdEBleGFtcGxlLmNvbTpabFhiTXZTMENYSEtubzJ4,organization=default,stream-name=default' \
+OTEL_EXPORTER_OTLP_HEADERS='Authorization=Basic cm9vdEBleGFtcGxlLmNvbTpabFhiTXZTMENYSEtubzJ4' \
 go run .
 ```
 
