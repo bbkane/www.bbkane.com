@@ -280,3 +280,162 @@ Converted from [the PDF](./2025-Bible-Reading-Plan.pdf) sent my [my church](http
 
 </details>
 
+# September
+
+<details>
+
+| Date     | Old Testament       | New Testament   | Optional for Study & Reference |
+|----------|---------------------|-----------------|--------------------------------|
+| Mon 9/1  | Proverbs 14-17      |                 |                                |
+| Tue 9/2  | Proverbs 18-20      | Romans 14       |                                |
+| Wed 9/3  | Proverbs 21-23      | Romans 15       | Isaiah 11:1, 10                |
+| Thu 9/4  | Proverbs 24-27      | Matthew 16:27; Romans 2:6; 12:20 | |
+| Fri 9/5  | Proverbs 28-31      |                 |                                |
+| Sat 9/6  | Ecclesiastes 1-3    | Romans 16       |                                |
+| Sun 9/7  | Ecclesiastes 4-6    | 1 Corinthians 1 |                                |
+| Mon 9/8  | Ecclesiastes 7-9    | 1 Corinthians 2 |                                |
+| Tue 9/9  | Ecclesiastes 10-12  | 1 Corinthians 3 | Psalms 94:11                   |
+| Wed 9/10 | Song of Solomon 1-3 | 1 Corinthians 4 |                                |
+| Thu 9/11 | Song of Solomon 4-6 | 1 Corinthians 5 |                                |
+| Fri 9/12 | Song of Solomon 7-8, Isaiah 1 | 1 Corinthians 6 |                  |
+| Sat 9/13 | Isaiah 2-4          | 1 Corinthians 7 |                                |
+| Sun 9/14 | Catch-up/ Reflection/ Free Study |     |                                |
+| Mon 9/15 | Isaiah 5-7          | 1 Corinthians 8 |                                |
+| Tue 9/16 | Isaiah 8-10         | 1 Corinthians 9 |                                |
+| Wed 9/17 | Isaiah 11-13        | 1 Corinthians 10|                                |
+| Thu 9/18 | Isaiah 14-16        | 1 Corinthians 11|                                |
+| Fri 9/19 | Isaiah 17-19        | 1 Corinthians 12|                                |
+| Sat 9/20 | Isaiah 20-22        | 1 Corinthians 13|                                |
+| Sun 9/21 | Isaiah 23-25        | 1 Corinthians 14|                                |
+| Mon 9/22 | Isaiah 26-29        |                 | Rosh Hashanah (Day of Trumpets): Exodus 12:2; Leviticus 23:23-25 |
+| Tue 9/23 | Isaiah 30-32        | 1 Corinthians 15|                                |
+| Wed 9/24 | Isaiah 33-35        | 1 Corinthians 16|                                |
+| Thu 9/25 | Isaiah 36-39        |                 |                                |
+| Fri 9/26 | Isaiah 40-42        | 2 Corinthians 1 |                                |
+| Sat 9/27 | Isaiah 43-45        | 2 Corinthians 2 |                                |
+| Sun 9/28 | Catch-up/ Reflection/ Free Study |     |                                |
+| Mon 9/29 | Isaiah 46-48        | 2 Corinthians 3 |                                |
+| Tue 9/30 | Isaiah 49-51        | 2 Corinthians 4 |                                |
+
+</details>
+
+# October
+
+<details>
+
+| Date     | Old Testament             | New Testament   | Optional for Study & Reference |
+|----------|---------------------------|-----------------|--------------------------------|
+| Wed 10/1 | Isaiah 52-54              | 2 Corinthians 5 | Yom Kippur (Day of Atonement): Exodus 30:10; Leviticus 23:26-32; Hebrews 9:11-14 |
+| Thu 10/2 | Isaiah 55-57              | 2 Corinthians 6 |                                |
+| Fri 10/3 | Isaiah 58-60              | 2 Corinthians 7 |                                |
+| Sat 10/4 | Isaiah 61-63              | 2 Corinthians 8 |                                |
+| Sun 10/5 | Isaiah 64-66              | 2 Corinthians 9 |                                |
+| Mon 10/6 | Jeremiah 1-3              | 2 Corinthians 10| Sukkot (Feast of Tabernacles): Exodus 23:16; Leviticus 23:34-44; Deuteronomy 16:13-16; John 7:37-39 |
+| Tue 10/7 | Jeremiah 4-6              | 2 Corinthians 11|                                |
+| Wed 10/8 | Jeremiah 7-9              | 2 Corinthians 12|                                |
+| Thu 10/9 | Jeremiah 10-12            | 2 Corinthians 13|                                |
+| Fri 10/10| Jeremiah 13-15            | Galatians 1     |                                |
+| Sat 10/11| Jeremiah 16-18            | Galatians 2     |                                |
+| Sun 10/12| Catch-up/ Reflection/ Free Study |         |                                |
+| Mon 10/13| Jeremiah 19-21            | Galatians 3     |                                |
+| Tue 10/14| Jeremiah 22-24            | Galatians 4     |                                |
+| Wed 10/15| Jeremiah 25-27            | Galatians 5     |                                |
+| Thu 10/16| Jeremiah 28-30            | Galatians 6     |                                |
+| Fri 10/17| Jeremiah 31-33            | Ephesians 1     | Matthew 2:18; Hebrews 8:8-12; 10:16-17; 2 Corinthians 6:16 |
+| Sat 10/18| Jeremiah 34-36            | Ephesians 2     |                                |
+| Sun 10/19| Jeremiah 37-39            | Ephesians 3     |                                |
+| Mon 10/20| Jeremiah 40-42            | Ephesians 4     |                                |
+| Tue 10/21| Jeremiah 43-45            | Ephesians 5     |                                |
+| Wed 10/22| Jeremiah 46-48            | Ephesians 6     |                                |
+| Thu 10/23| Jeremiah 49-51            | Philippians 1   |                                |
+| Fri 10/24| Jeremiah 52; Lamentations 1-2 | Philippians 2|                                |
+| Sat 10/25| Lamentations 3-5          | Philippians 3   |                                |
+| Sun 10/26| Catch-up/ Reflection/ Free Study |         |                                |
+| Mon 10/27| Ezekiel 1-3               | Philippians 4   | Revelation 4:1-8               |
+| Tue 10/28| Ezekiel 4-6               | Colossians 1    |                                |
+| Wed 10/29| Ezekiel 7-9               | Colossians 2    |                                |
+| Thu 10/30| Ezekiel 10-12             | Colossians 3    | Revelation 21:7                |
+| Fri 10/31| Ezekiel 13-15             | Colossians 4    | Halloween: Ephesians 5:11; 3 John 1:11; 2 Corinthians 6:14-18 |
+
+</details>
+
+# November
+
+<details>
+
+| Date     | Old Testament              | New Testament   | Optional for Study & Reference |
+|----------|----------------------------|-----------------|--------------------------------|
+| Sat 11/1 | Ezekiel 16-17              | 1 Thessalonians 1 |                              |
+| Sun 11/2 | Ezekiel 18-20              | 1 Thessalonians 2 |                              |
+| Mon 11/3 | Ezekiel 21-23              | 1 Thessalonians 3 |                              |
+| Tue 11/4 | Ezekiel 24-26              | 1 Thessalonians 4 |                              |
+| Wed 11/5 | Ezekiel 27-29              | 1 Thessalonians 5 |                              |
+| Thu 11/6 | Ezekiel 30-32              | 2 Thessalonians 1 |                              |
+| Fri 11/7 | Ezekiel 33-35              | 2 Thessalonians 2 |                              |
+| Sat 11/8 | Ezekiel 36-38              | 2 Thessalonians 3 | 2 Corinthians 6:16; Revelation 20:7-9 |
+| Sun 11/9 | Catch-up/ Reflection/ Free Study |             |                              |
+| Mon 11/10| Ezekiel 39-41              | 1 Timothy 1     | Revelation 21:2, 10           |
+| Tue 11/11| Ezekiel 42-44              | 1 Timothy 2     |                              |
+| Wed 11/12| Ezekiel 45-47              | 1 Timothy 3     | Revelation 22:1-2             |
+| Thu 11/13| Ezekiel 48; Daniel 1-2     | 1 Timothy 4-5   |                              |
+| Fri 11/14| Daniel 3-5                 | 1 Timothy 6     |                              |
+| Sat 11/15| Daniel 6-8                 | 2 Timothy 1     | Mark 13:26; Revelation 1:7    |
+| Sun 11/16| Daniel 9-12                | 2 Timothy 2     | Matthew 24:15; Mark 13:14     |
+| Mon 11/17| Hosea 1-3                  | 2 Timothy 3     | Romans 9:25-26                |
+| Tue 11/18| Hosea 4-6                  | 2 Timothy 4     | Matthew 9:13                  |
+| Wed 11/19| Hosea 7-9                  | Titus 1         |                              |
+| Thu 11/20| Hosea 10-12                | Titus 2         | Matthew 2:15; Luke 4:18-19    |
+| Fri 11/21| Hosea 13-14                | Titus 3         | 1 Corinthians 15:55           |
+| Sat 11/22| Joel 1-3                   | Philemon 1      | Acts 2:17-20; Romans 10:13    |
+| Sun 11/23| Catch-up/ Reflection/ Free Study |             |                              |
+| Mon 11/24| Amos 1-3                   | Hebrews 1       |                              |
+| Tue 11/25| Amos 4-6                   | Hebrews 2       | Acts 7:42-43                  |
+| Wed 11/26| Amos 7-9                   | Hebrews 3       | Acts 15:16-17                 |
+| Thu 11/27| Obadiah 1; Jonah 1-2       | Hebrews 4       | Thanksgiving: Psalm 100:1-5; 1 Chronicles 16:8; Colossians 3:16; 1 Thessalonians 5:18 |
+| Fri 11/28| Jonah 3-4; Micah 1         | Hebrews 5       |                              |
+| Sat 11/29| Micah 2-4                  | Hebrews 6       |                              |
+| Sun 11/30| Micah 5-7                  | Hebrews 7       | Matthew 2:6; 10:35-36         |
+
+</details>
+
+
+# December
+
+<details>
+
+| Date     | Old Testament              | New Testament   | Optional for Study & Reference |
+|----------|----------------------------|-----------------|--------------------------------|
+| Mon 12/1 | Nahum 1-3                  | Hebrews 8       |                                |
+| Tue 12/2 | Habakkuk 1-3               | Hebrews 9       | Romans 1:17; Galatians 3:11; Hebrews 10:37-38; Acts 13:41 |
+| Wed 12/3 | Zephaniah 1-3              | Hebrews 10      |                                |
+| Thu 12/4 | Haggai 1-2                 | Hebrews 11      | Hebrews 12:26                  |
+| Fri 12/5 | Zechariah 1-3              | Hebrews 12      |                                |
+| Sat 12/6 | Zechariah 4-6              | Hebrews 13      |                                |
+| Sun 12/7 | Zechariah 7-9              | James 1         | Ephesians 4:25; 2 Corinthians 6:16; Matthew 21:5; John 12:15 |
+| Mon 12/8 | Catch-up/ Reflection/ Free Study |           |                                |
+| Tue 12/9 | Zechariah 10-12            | James 2         | John 19:37; Matthew 27:9; Revelation 1:7 |
+| Wed 12/10| Zechariah 13-14; Malachi 1 | James 3         | Matthew 26:31; Mark 14:27; Romans 9:13 |
+| Thu 12/11| Malachi 2-4                | James 4         | Proverbs 3:34; Luke 1:17; Matthew 11:10,14; Mark 1:2; Luke 7:27 |
+| Fri 12/12|                            | James 5; 1 Peter 1-3 | Psalm 34:12-16           |
+| Sat 12/13|                            | 1 Peter 4-5; 2 Peter 1-2 | Proverbs 10:12         |
+| Sun 12/14|                            | 2 Peter 3; 1 John 1-3 | Isaiah 65:17; 66:22; Hanukkah (Feast of Light/Dedication): John 1:1-14; John 10:22-30 |
+| Mon 12/15|                            | 1 John 4-5; 2 John; 3 John |                       |
+| Tue 12/16|                            | Jude; Revelation 1-3 | Isaiah 41:4; 44:6; Jeremiah 17:10; Psalms 2:9; Isaiah 22:22-24; Daniel 7:9 |
+| Wed 12/17|                            | Revelation 4-7  | Isaiah 49:10; Daniel 7:14      |
+| Thu 12/18|                            | Revelation 8-11 |                                |
+| Fri 12/19|                            | Revelation 12-15| Daniel 7                       |
+| Sat 12/20|                            | Revelation 16-18|                                |
+| Sun 12/21| Catch-up/ Reflection/ Free Study |           |                                |
+| Mon 12/22|                            | Revelation 19-21| Isaiah 60:20-21; Daniel 7:10-14|
+| Tue 12/23|                            | Revelation 22   |                                |
+| Wed 12/24| Catch-up/ Free Study       |                 | Christmas Eve: Micah 5:2; Isaiah 7:14; 9:6; Luke 1:1-56; Matthew 1:18-25 |
+| Thu 12/25| Catch-up/ Free Study       |                 | Christmas Day: Luke 2:1-39; Matthew 2:1-12; John 1:1-14 |
+| Fri 12/26| Catch-up/ Free Study       |                 |                                |
+| Sat 12/27| Catch-up/ Free Study       |                 |                                |
+| Sun 12/28| Catch-up/ Free Study       |                 |                                |
+| Mon 12/29| Catch-up/ Free Study       |                 |                                |
+| Tue 12/30| Catch-up/ Free Study       |                 |                                |
+| Wed 12/31| Catch-up/ Free Study       |                 | NYE: Lamentations 3:22-24; 2 Corinthians 5:17; Ephesians 4:22-24; Colossians 3:9-11; Proverbs 3:5-6; Isaiah 54:1-5 |
+
+</details>
+
