@@ -1,6 +1,6 @@
 +++
 title = "My Favorite Things in Binghamton"
-date = 2025-06-30
+date = 2025-05-30
 +++
 
 I've been visiting family in the Binghamton, NY area since I was a kid, so here's some things I like! I'm sure there's a lot more (most of my time is spent with family)
