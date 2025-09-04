@@ -70,6 +70,42 @@ permissions to push (by design, not necessity). So, here's how to do a PR workfl
 
 Many of these steps use GitHub's web UI. There's [other ways](https://stackoverflow.com/questions/39819441/keeping-a-fork-up-to-date) to do parts of this with Git directly, but they're not as convenient for me.
 
+# Rebase a branch off an upstream repo
+
+Similar to the above - I need to contribute to a repo I don't own
+
+- Fork the repo in GitHub so I have a repo I can write to
+- Clone it locally
+- Branch off master and add my feature.
+- Create a PR
+
+Now if the upstream repo has changes I need to rebase my change on top of that. Example: [README: Python API update by bkane-msft · Pull Request #18890 · tikv/tikv](https://github.com/tikv/tikv/pull/18890)
+
+- Add the upstream remote to my local forks remotes
+
+```bash
+git remote add upstream 'https://github.com/tikv/tikv.git'
+```
+
+- Fetch new remote upstream changes
+
+```bash
+git fetch upstream
+```
+
+- rebase my branch off of `upstream/master` (or potentially `upstream/main`)
+
+```bash
+git checkout patch-1
+git rebase upstream/master
+```
+
+- push to update the PR (needs `--force` since we're rewriting history)
+
+```bash
+git push --force
+```
+
 ## Moving commits to a new branch
 
 I try to work on new features in a branch, but sometimes I just work on master and need to move to different branches. Luckily, [Stackoverflow](https://stackoverflow.com/a/22654961/2958070) has me covered:
