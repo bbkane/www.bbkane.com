@@ -70,7 +70,7 @@ permissions to push (by design, not necessity). So, here's how to do a PR workfl
 
 Many of these steps use GitHub's web UI. There's [other ways](https://stackoverflow.com/questions/39819441/keeping-a-fork-up-to-date) to do parts of this with Git directly, but they're not as convenient for me.
 
-# Rebase a branch off an upstream repo
+## Rebase a branch off an upstream repo
 
 Similar to the above - I need to contribute to a repo I don't own
 
