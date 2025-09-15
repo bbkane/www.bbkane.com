@@ -38,9 +38,10 @@ I've tried to categorize these links, but naturally there's some overlap :)
 - [GopherCon 2021: Arish Labroo - How we Go at Zillow - YouTube](https://www.youtube.com/watch?v=9Q1RMueVHAg) talks about productionalizing Go binaries to run HTTP services - timeouts, shutdowns, tracing, health checks, etc. Instead of going into the details about these aspects, Arish zooms out and focuses on how Zillow re-uses implementations with [google/wire: Compile-time Dependency Injection for Go](https://github.com/google/wire) to glue it all together. I really need to deepdive into this with some prototypes instead of only watching the talk.
 - [Using Rust For Game Development](https://www.youtube.com/watch?v=aKLntZcp27M), [Is There More to Game Architecture than ECS?](https://www.youtube.com/watch?v=aKLntZcp27M), [SIMD at Insomniac Games: How We Do the Shuffle](https://www.gdcvault.com/play/1022248/SIMD-at-Insomniac-Games-How), and  [Parallelizing the Naughty Dog Engine Using Fibers](https://www.gdcvault.com/play/1022186/Parallelizing-the-Naughty-Dog-Engine) are examples of programming patterns that fall out of the somewhat extreme needs video game designs impose on their architects. I haven't tried these architectures but I really liked these talks. [Neovim & Extensibility - My Talk from Jane Street - YouTube](https://www.youtube.com/watch?v=MQBr9hwf0BY) is a similar talk about how NeoVim can be extended.
 - [Functional Core, Imperative Shell](https://www.destroyallsoftware.com/screencasts/catalog/functional-core-imperative-shell) and [Boundaries](https://www.destroyallsoftware.com/talks/boundaries): Gary Bernhart has a bunch of great videos on his [website](https://www.destroyallsoftware.com/screencasts). These two talks build off one another and talk about how you should make as much of your code as possible pure functions. This makes testing and extending it much easier.
-- [Designing and Evaluating Reusable Components (2004)](https://caseymuratori.com/blog_0024): This talk is about what makes an API great. One particualr thing that stands out to me is how an API needs to cater to beginner users with simple functions yet also cater to more experienced users by offering more complicated knobs to twiddle.
+- [Designing and Evaluating Reusable Components (2004)](https://caseymuratori.com/blog_0024): This talk is about what makes an API great. One particualr thing that stands out to me is how an API needs to cater to beginner users with simple functions yet also cater to more experienced users by offering more complicated knobs to twiddle. Also see [API Design by Carson Gross ~ BSDC 2025 - YouTube](https://www.youtube.com/watch?v=dTstnhS3moc).
 - [Making Impossible States Impossible: Type-Safe Domain Modeling with Functional Dependency Injection · cekrem.github.io](https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/) - this is nice because it shows how Elm's type system can be used to layer an API.
 - [Linux kernel design patterns - part 3 [LWN.net]](https://lwn.net/Articles/336262/) - really good article about "mid layers" that should probably be libraries.
+- [Crash-only software: More than meets the eye [LWN.net]](https://lwn.net/Articles/191059/) - designing software to be able to recover from crashes
 
 # Data oriented design
 
@@ -78,11 +79,23 @@ This is mostly focused on OpenTelemetry, since I really like the "protocol over 
 
 - [An Observable Service with No Logs - InfoQ](https://www.infoq.com/presentations/event-tracing-monitoring/) - a company replaced logs with tracing and reported how it went. I'm trying to do the same thing for side projects, so I find this super interesting.
 - [Tracing: structured logging, but better in every way | Andy Dote](https://andydote.co.uk/2023/09/19/tracing-is-better/) and [HN comments](https://news.ycombinator.com/item?id=37562593) - Andy Cote gives a great overview of replacing tracing with logs, including screenshots and code samples. I think 
+- TODO: AWS blog about dashboards
+- TODO: grafana dashboard library
 
-# Testing
+# Testing / Formal methods
 
 - [Advanced Testing in Go (Hashimoto)](https://www.youtube.com/watch?v=8hQG7QlcLBk) ([transcript](https://about.sourcegraph.com/go/advanced-testing-in-go)): In this talk, Michael Hashimoto splits his time between talking about creating tests creating testable code. Very useful and pragmatic.
 - ["Testing Distributed Systems w/ Deterministic Simulation" by Will Wilson - YouTube](https://www.youtube.com/watch?app=desktop&v=4fFDFbi3toc) - this is the original deterministic simulation testing talk - this approach has since been copied by several projects and Will Wilson (the speaker) has launched [a company](https://antithesis.com/) to offer DST as a service
+- TODO: Hillel waynes talk
+- TODO: jon gengset podcast
+- TODO: ACM AWS paper
+
+# Platforms
+
+- [komoroske.com/gardening-platforms - Google Slides](https://docs.google.com/presentation/d/1cY95dRixFho0pMIlrEFcGL_XKVy9vnE4NGOD6TQMj50/edit?slide=id.p#slide=id.p) - This talks about how building, evolving, and growing platforms
+- [Stevey's Google Platforms Rant](https://gist.github.com/chitchcock/1281611) - This (unintentionally made public) rant about how Google can't make platforms is hilarious and has a lot of insight about how Amazon succeeded as a platform while Google hadn't (and even today it's not nearly as successful)
+- [Platform as a Reflection of Values - YouTube](https://www.youtube.com/watch?v=Xhx970_JKX4) - Bryan Cantrill reflects on why NodeJS was the wrong choice for his company, and also how a platform must make fundamental tradeoffs supporting an audience
+- [Dear Google Cloud: Your Deprecation Policy is Killing You | by Steve Yegge | Medium](https://steve-yegge.medium.com/dear-google-cloud-your-deprecation-policy-is-killing-you-ee7525dc05dc) - Steve Yegge talks once again about how platforms must remain stable for customers to trust them.
 
 # Specific Concepts / Ideas
 
@@ -93,7 +106,7 @@ This is mostly focused on OpenTelemetry, since I really like the "protocol over 
 - [How To Survive Your Project's First 100,000 Lines](https://verdagon.dev/blog/first-100k-lines) - a very nice checklist of specific tips on scaling a project.
 - [The Worst API Ever Made](https://caseymuratori.com/blog_0025): This is a rather hilarious post that really emphasizes how, when architecting a program, you should write the usage code first, so your users don't hate their experience with your API.
 - [HTML First](https://html-first.com/) - this site explains how to build frontends with HTML first, instead of large JavaScript dependencies. I want to do this primarily because I think it's more maintainable.
-- [The server chose violence - Cliffle](https://cliffle.com/blog/hubris-reply-fault/#the-server-isn-t-having-any-of-your-nonsense-either) talks about how software designed to "fail fast" facilitates more correctness. Also see [Zig And Rust](https://matklad.github.io/2023/03/26/zig-and-rust.html), a really great comparison of two styles to provide reliable software.
+- [The server chose violence - Cliffle](https://cliffle.com/blog/hubris-reply-fault/#the-server-isn-t-having-any-of-your-nonsense-either) talks about how software designed to "fail fast" facilitates more correctness. Also see [Zig And Rust](https://matklad.github.io/2023/03/26/zig-and-rust.html), a really great comparison of two styles to provide reliable software. 
 
 # Example Code
 
