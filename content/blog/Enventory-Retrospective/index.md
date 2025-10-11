@@ -1,12 +1,15 @@
 +++
 title = "Enventory Retrospective"
-date = 2025-08-26
+date = 2025-10-10
 draft = true
+
 +++
 
 I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), and here on some notes of what I've learned (mostly about architecture and Go)! I'm writing this post as an alternative to slides for a talk to give a few friends.
 
-# What is enventory?
+# Project
+
+## What is enventory?
 
 > Centrally manage environment variables with SQLite
 >
@@ -22,9 +25,11 @@ I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), 
 > - Advanced tab completion! Autocomplete commands, flags, env names, var/ref names
 > - Currently only supports `zsh`
 
+## Demo
+
 ![demo.gif](https://raw.githubusercontent.com/bbkane/enventory/master/demo.gif)
 
-# Motivation
+## Motivation
 
 - Solve a small problem I have 
 
@@ -34,17 +39,7 @@ I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), 
 
 - Fun! (and exercise [my CLI library](https://github.com/bbkane/warg))
 
-# Commit Stats
-
-~360 commits over 1.75 years
-
-<img src="./index.assets/image-20251009212831560.png" alt="image-20251009212831560" style="zoom:60%;" />
-
-Side project schedule: mornings, evenings, weekends
-
-Most commits around 5PM Sundays 🤷‍♂️
-
-![image-20251008215545080](./index.assets/image-20251008215545080.png)
+## Lines Of Code
 
 ~4500 lines of code
 
@@ -66,9 +61,23 @@ $ tokei --compact
 ===============================================================================
 ```
 
+## Project Length
+
+~360 commits over 1.75 years
+
+<img src="./index.assets/image-20251009212831560.png" alt="image-20251009212831560" style="zoom:60%;" />
+
+## Active hours per week
+
+Side project schedule: mornings, evenings, weekends
+
+Most commits around 5PM Sundays 🤷‍♂️
+
+![image-20251008215545080](./index.assets/image-20251008215545080.png)
+
 # Architecture
 
-A "layered architecture" inspired by the [WTF Dial blog posts
+A "layered architecture" inspired by the [WTF Dial blog posts](https://www.gobeyond.dev/wtf-dial/)
 
 ![image-20250120202741319](./index.assets/image-20250120202741319.png)
 
@@ -79,7 +88,7 @@ This is viewable in the import graph:
 - Generate DB layer with [sqlc](https://sqlc.dev/) - `sqlcgen` package
 - `cli` and `app` packages share types via a `models` package
 
-# Layered Architecture Thoughts
+## Layered Architecture Thoughts
 
 Advantages:
 
@@ -96,7 +105,9 @@ Other:
 
 - I tried to break this up even further (hexagonal architecture), but all my things refer to each other so I didn't find a good place.
 
-# CLI Design Notes
+# CLI Design
+
+## Design Notes
 
 - Make CLIs you'll actually use. You'll quickly discover what features they need
 - Read a few CLI design guides and pick a favorite (like [this](https://m.youtube.com/watch?v=eMz0vni6PAw) (REALLY good Cobra talk) or [this](https://fuchsia.dev/fuchsia-src/development/api/cli#ux-guidelines) or [this](https://rust-cli-recommendations.sunshowers.io/index.html))
@@ -105,10 +116,83 @@ Other:
 
 <img src="./index.assets/image-20251009215257929.png" alt="image-20251009215257929" style="zoom:50%;" />
 
-# CLI Implementation
-
 - 6 sections (used to group commands)
 - 19 commands total (so far)
+
+## Tab Completion
+
+CLI commands that are painfully long to type
+
+```bash
+enventory var ref create \
+    --env /path/to/project \
+    --name example_com_API_KEY \
+    --ref-env example_com_env \
+    --ref-var example_com_API_KEY
+```
+
+Most of these can be tab completed!
+
+Added **REALLY GOOD** tab completion to autocomplete basically anything already in the database (i.e., `--env`, `--ref-env`, `--ref-var`), scoped by previous passed flags. Example: limits `--ref-var` suggestions to  variables that exist in `--ref-env`.
+
+## Readable Output
+
+I use "Key/value" tables (quite similar to MySQL's "vertical ouput" mode )
+
+```
+$ go run . env list
+╭────────────┬───────────────────────────────────────╮
+│ Name       │ /Users/jennykane/Apps/openobserve-... │
+│ CreateTime │ Fri 2025-08-22                        │
+├────────────┼───────────────────────────────────────┤
+│ Name       │ /Users/jennykane/Git-GH/enventory     │
+│ CreateTime │ Mon 2024-06-24                        │
+│ UpdateTime │ Tue 2025-08-26                        │
+├────────────┼───────────────────────────────────────┤
+│ Name       │ /Users/jennykane/Git-GH/git-xargs-... │
+│ CreateTime │ Tue 2025-05-13                        │
+├────────────┼───────────────────────────────────────┤
+│ Name       │ /Users/jennykane/Git-GH/shovel_ans... │
+│ CreateTime │ Sat 2024-05-04                        │
+├────────────┼───────────────────────────────────────┤
+│ Name       │ openobserve                           │
+│ CreateTime │ Fri 2025-08-22                        │
+├────────────┼───────────────────────────────────────┤
+│ Name       │ otel_otlp_local_openobserve           │
+│ CreateTime │ Fri 2025-10-10                        │
+╰────────────┴───────────────────────────────────────╯
+```
+
+- Balance readability with information density
+- Value truncation if screen width is too small
+- Omit "uninteresting" key/value pairs (omit `UpdateTime` if it's the same as `CreateTime`)
+
+## Filter/sort `env list` with [`expr`](https://expr-lang.org/) query language
+
+Find the environments I care about.
+
+```
+$ enventory env list \
+    --expr 'filter(Envs, not pathExists(.Name) or .UpdateTime > now() - duration("90d"))'
+╭────────────┬────────────────────────────────────────────────────────────╮
+│ Name       │ /Users/jennykane/Apps/openobserve-v0.15.0-rc5-darwin-arm64 │
+│ CreateTime │ Fri 2025-08-22                                             │
+├────────────┼────────────────────────────────────────────────────────────┤
+│ Name       │ /Users/jennykane/Git-GH/enventory                          │
+│ CreateTime │ Mon 2024-06-24                                             │
+│ UpdateTime │ Tue 2025-08-26                                             │
+├────────────┼────────────────────────────────────────────────────────────┤
+│ Name       │ openobserve                                                │
+│ CreateTime │ Fri 2025-08-22                                             │
+├────────────┼────────────────────────────────────────────────────────────┤
+│ Name       │ otel_otlp_local_openobserve                                │
+│ CreateTime │ Fri 2025-10-10                                             │
+╰────────────┴────────────────────────────────────────────────────────────╯
+```
+
+# CLI Implementation
+
+## Command Nesting
 
 Command nesting is [pretty declarative](https://github.com/bbkane/enventory/blob/d8eb5315cb6784ed9473a77fd50633475f978787/main.go#L12):
 
@@ -135,7 +219,9 @@ app := warg.New(
     // more sections / commands
 ```
 
- Setting up a command is also not bad (using helper functions as some of these flags are re-used)
+## Setting up a Command 
+
+Setting up a command is also not bad (using helper functions as some of these flags are re-used)
 
 ```go
 func EnvDeleteCmd() warg.Cmd {
@@ -149,6 +235,8 @@ func EnvDeleteCmd() warg.Cmd {
   )
 }
 ```
+
+## Running a Command
 
 Piping the parsed flags into the business layer is a bit annoying, as is dealing with errors:
 
@@ -170,6 +258,8 @@ func envDelete(ctx context.Context, es models.Service, cmdCtx warg.CmdContext) e
   return nil
 }
 ```
+
+## Command Decorator Pattern
 
 Use decorators like `withSetup` or `withConfirm` to reduce verbosity:
 
@@ -198,7 +288,7 @@ func withConfirm(f func(cmdCtx warg.CmdContext) error) warg.Action {
 
 ```
 
-# CLI Snapshot Testing
+## CLI Snapshot Testing
 
 Allow deterministic output with either flags or a special app setup, so you can easily write snapshot tests.
 
@@ -211,7 +301,7 @@ Enventory is small and self-contained enough that snapshot tests are fast and co
 - Each test makes its own SQLite DB
 - Tests are run in parallel (enforced by [`paralleltest`](https://golangci-lint.run/docs/linters/configuration/#paralleltest))
 
-# CLI Test Example
+## CLI Test Example
 
 - Most tests are a [sequence of enventory commands](https://github.com/bbkane/enventory/blob/d8eb5315cb6784ed9473a77fd50633475f978787/main_env_test.go#L29) with a small "Builder" DSL to get easy tab completion
 
@@ -249,23 +339,9 @@ Example file content:
 ╰────────────┴────────────────╯
 ```
 
-# CLI Tab Completion
-
-CLI commands that are painfully long to type
-
-```bash
-enventory var ref create \
-    --env /path/to/project \
-    --name example_com_API_KEY \
-    --ref-env example_com_env \
-    --ref-var example_com_API_KEY
-```
-
-Most of these can be tab completed! 
-
-Added **REALLY GOOD** tab completion to autocomplete basically anything already in the database (i.e., `--env`, `--ref-env`, `--ref-var`), scoped by previous passed flags. Example: limits `--ref-var` suggestions to  variables that exist in `--ref-env`.
-
 # App Layer
+
+## Service interface
 
 Implements interface from `models` package, handles transactions to database layer.
 
@@ -295,9 +371,9 @@ type Service interface {
 }
 ```
 
-# App Transactions
+## Transactions
 
-Allows callers to run arbitrary code in the callback `fn`. Try to keep transactions at the top level.
+Allows callers to run arbitrary code in the callback `fn`. Try to keep transactions at the top level, since they can't be nested
 
 ```go
 WithTx(ctx context.Context, fn func(ctx context.Context, es Service) error) error
@@ -324,14 +400,14 @@ if err != nil {
 # DB Layer
 
 - Shove data into the database
-- Simple dataflow model:
+- Where to write and validate?
   - App layer does all writes
   - DB layer rejects writes that that violate constraints
 - Migrate with SQL files
 - Generate Go -> SQL functions with [sqlc.dev](https://sqlc.dev)
 - Generate markdown docs with [k1LoW/tbls: tbls is a CI-Friendly tool to document a database, written in Go.](https://github.com/k1LoW/tbls)
 
-# Main Tables
+## Main Tables
 
 
 
@@ -341,7 +417,7 @@ if err != nil {
 - Tables use `<tablename>_id` integer primary keys
   - Makes renames easy
 
-# Cross-table UNIQUE Constraints
+## Cross-table UNIQUE Constraints
 
 `var`s and `var ref`s are in different tables, yet must have unique names in the environment so exports work correctly.
 
@@ -354,11 +430,11 @@ Use views + triggers!
 CREATE TRIGGER tr_var_insert_check_unique_name
 BEFORE INSERT ON var
 FOR EACH ROW
-BEGIN
-SELECT RAISE(FAIL, 'name already exists in env')
-FROM
-vw_env_var_var_ref_unique_name
-WHERE env_id = NEW.env_id AND name = NEW.name;
+  BEGIN
+    SELECT RAISE(FAIL, 'name already exists in env')
+  FROM
+    vw_env_var_var_ref_unique_name
+  WHERE env_id = NEW.env_id AND name = NEW.name;
 END
 ```
 
@@ -367,7 +443,7 @@ Thoughts
 - I like that this is the "bottom layer" - upper layers don't need to validate this
 - SQL is hard to write (limited autocomplete), debug and test
 
-# SQL Migrations
+## SQL Migrations
 
 - Plain SQL files - alter table, add tables, update views, etc.
 - Embedded into the app binary
@@ -388,7 +464,7 @@ sqlite> SELECT * FROM migration_v2;
 └─────────────────┴───────────────────────────────────────┴──────────────────────┘
 ```
 
-# Generate SQL -> Go
+## Generate Type Safe Go -> SQL
 
 [`sqlc`](https://sqlc.dev) is amazing! It generates so much finicky boilerplate.
 
@@ -425,35 +501,148 @@ func (q *Queries) EnvCreate(ctx context.Context, arg EnvCreateParams) (EnvCreate
 }
 ```
 
-# Generate [SQL Docs](https://github.com/bbkane/enventory/tree/master/dbdoc) with [tbls](https://github.com/k1LoW/tbls)
+## Generate [SQL Docs](https://github.com/bbkane/enventory/tree/master/dbdoc) with [tbls](https://github.com/k1LoW/tbls)
 
 ![image-20251009223841419](./index.assets/image-20251009223841419.png)
 
-# Outline
+# Misc
 
-- LLMs and verbosity
-- SQLC codegen + diagrams
-- Observability 
+## OTEL Traces
 
-  - Wrap the layers
+![image-20251010195212626](./index.assets/image-20251010195212626.png)
 
-  - OTEL
-- Packaging - goreleaser
-- Expr to sort/filter
-- Table output - too wide, switch to kvtable
-- Future plans
+- tree view of calls
+- timestamps and how long each call took
+- structured data (for example, the exact SQL query here)
 
-  - Env ref
+## OTEL Trace Implementation
 
-  - Search?
-  
-  - backup on migration
-- Other things to learn
+Can do pretty well simply by wrapping the interfaces
 
-  - Queues and other types of I/o (APIs, etc)
+```go
+func (t *TracedService) EnvCreate(ctx context.Context, args EnvCreateArgs) (*Env, error) {
+  ctx, span := t.tracer.Start(
+    ctx,
+    "EnvCreate",
+    trace.WithAttributes(
+      attribute.String("args.Name", args.Name),
+      attribute.String("args.Comment", args.Comment),
+      attribute.String("args.CreateTime", TimeToString(args.CreateTime)),
+      attribute.String("args.UpdateTime", TimeToString(args.UpdateTime)),
+    ),
+  )
+  defer span.End()
 
-  - Auth
-- Goreleaser
-- Naming enventory
-- zsh integration
+  env, err := t.Service.EnvCreate(ctx, args)
+  if err != nil {
+    span.RecordError(err)
+    span.SetStatus(codes.Error, err.Error())
+  }
 
+  return env, err
+}
+```
+
+## New commands are tedious
+
+Updates:
+
+- DB schema (sometimes)
+- SQL queries
+- Generate DB code
+- Update `models.Service` interface
+- Update `models.TracedService` implementation
+- Update `app.Service` implementation 
+- Update CLI layer
+- Update output functions
+- Add snapshot tests
+
+## AI Agents excel at tedium!
+
+`enventory var ref update` prompt (and codegen needed to be slightly modified)
+
+> \---
+> mode: agent
+> tools: ['codebase']
+> \---
+>
+> Add a `var ref update` command. It should look like:
+>
+> ```bash
+> enventory var ref update \
+>     --comment 'newcomment' \
+>     --confirm true \
+>     --create-time <time> \
+>     --db-path <path> \
+>     --env <env> \
+>     --name myrefid \
+>     --new-env <another env> \
+>     --new-name myrefidnewname \
+>     --ref-env <env> \
+>     --ref-var <ref var name> \
+>     --timeout <timeout> \
+>     --update-time <time>
+> ```
+>
+> This should be very similar to `var update` or `env update` commands
+>
+> - Add a `VarRefUpdate` method to `EnvService` in `models/env.go` that calls the `sqlcgen.VarRefUpdate` method
+> - Implement it in `app/var_ref.go`
+> - create `VarRefUpdateCmd` and `varRefUpdateRun` in `cli/var_ref.go`
+> - Add a test in `main_var_ref_test.go`
+
+## Package with [GoReleaser](https://goreleaser.com/)
+
+- Configure [YAML file](https://github.com/bbkane/enventory/blob/master/.goreleaser.yml)
+- Package architecture-specific binaries for:
+  - GitHub releases
+  - Homebrew
+  - Scoop (Windows package manager)
+
+## Lint with [Golangci-lint](https://golangci-lint.run/)
+
+Package individual linters in one binary in pre-commit and CI
+
+- Another [YAML file](https://github.com/bbkane/enventory/blob/master/.golangci.yml)
+- check formatting
+- check common mistakes
+- Currently using 14 linters (easy to add more)
+
+## Naming is hard
+
+Went through several names I didn't like or were already taken... (some examples)
+
+| envporium | Envtopia | Enviary | Envana |
+|------------|-----------|----------|---------|
+| envisible  | enviscerate | envdb | envision |
+| switchenv  | envosaur | envinity | envvardb |
+| envcentral | envdepot | Enviator | Envoke |
+| Envsource | Envelope | chenv | envirodb |
+
+## Things I didn't learn with `enventory`
+
+- Queues / Async I/O
+- Auth
+- GUI implementation
+
+## Future Feature Ideas
+
+As time/interest allows...
+
+- Safer migrations (pre-req to most of these)
+  - backup before migrating
+  - testing
+- `env ref` - just `#include` an environment instead of reference each var separately 
+  - issues with recursive references
+  - issues preventing duplicate names in one environment
+  - All of these can be handled at SQL level with some complicated triggers, but haven't gotten annoyed enough yet to implement this
+- Search functionality
+  - easy to add with SQLite, but haven't needed it
+- Undo/redo commands
+  - Inspired by [Poor man's bitemporal data system in SQLite and Clojure](https://www.evalapply.org/posts/poor-mans-time-oriented-data-system/index.html)
+  - More triggers + backup tables + making sure every operation is undoable/redoable?
+- GUI/TUI
+
+# Thank you!
+
+Thanks for reading!
