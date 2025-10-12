@@ -1,6 +1,7 @@
 +++
 title = "Azure Resource Naming"
 date = 2021-08-02
+updated = 2025-10-12
 +++
 
 Naming Azure resources can be difficult. You want to include relevant information into the name, but also not make it too long too remember. You want to keep your names consistent, but some things are different per project. In addition, some resources have restrictions on the characters allowed or the length.
@@ -28,3 +29,9 @@ Example: A web app called `mywebapp`
 - `mwauserinfosadevbbk`  - storage account
 
 Azure AD names (users, groups, …) are shared among subscriptions in a tenant and should use the following naming convention: [project]-[part]
+
+Also see:
+
+- [Define your naming convention - Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Navnkonvensjoner i Azure](https://www.ironstoneit.com/no/artikler/naming-conventions-for-azure)
+- [Adventures with Azure: Regions – Matt Ruma](https://mattruma.com/adventures-with-azure-regions/)
