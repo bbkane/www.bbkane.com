@@ -68,7 +68,7 @@ As of 2023-12-19, these are currently $22 in the "Fallen Rock" category, and the
 
 ### [Men's Columbia Steens Mountain™ Full-Zip Fleece Jacket](https://www.kohls.com/product/prd-3592654/mens-columbia-steens-mountain-full-zip-fleece-jacket.jsp?skuId=37334142)
 
-I've had a version of this jacket (model number: `WM3200`) for the last decade and I love it. Soft, fits well (my size is `M`), durable, and high quality for the price.
+I've had a version of this jacket (model number: `WM3200`) for the last decade and I love it. Soft, fits well (my size is `M`), durable, and high quality for the price. [`WM3220`](https://www.amazon.com/dp/B0076R6L58) also works well (I got the regular fit).
 
 ### [15.6" Sport Backpack (Black) | Laptop Backpack | Targus](https://us.targus.com/products/sport-15-6-inch-laptop-backpack-tsb89104us)
 
