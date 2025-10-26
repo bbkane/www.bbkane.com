@@ -1,8 +1,6 @@
 +++
 title = "Enventory Retrospective"
 date = 2025-10-10
-draft = true
-
 +++
 
 I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), and here on some notes of what I've learned (mostly about architecture and Go)! I'm writing this post as an alternative to slides for a talk to give a few friends.
@@ -10,6 +8,8 @@ I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), 
 # Project
 
 ## What is enventory?
+
+From the [README](https://github.com/bbkane/enventory/blob/master/README.md)
 
 > Centrally manage environment variables with SQLite
 >
@@ -41,7 +41,7 @@ I've had a lot of fun writing [enventory](https://github.com/bbkane/enventory), 
 
 ## Lines Of Code
 
-~4500 lines of code
+~4500 lines of Go code to drive ~350 lines of SQL
 
 ```
 $ tokei --compact
@@ -92,7 +92,7 @@ This is viewable in the import graph:
 
 Advantages:
 
-- easy to add/enforce things within a layer (i.e., adding observability to a layer is as simple as wrapping the layer's interface with one that logged the method and called the layer )
+- Easy to add/enforce things within a layer (i.e., adding observability to a layer is as simple as wrapping the layer's interface with one that logged the method and called the layer )
 - It's generally pretty easy to know where to put things (sometimes hard between CLI and business layer)
 
 Disadvantages
@@ -103,7 +103,7 @@ Disadvantages
 
 Other:
 
-- I tried to break this up even further (hexagonal architecture), but all my things refer to each other so I didn't find a good place.
+- I tried to break up my interfaces (`Service`, `Queries`) into smaller ones , but all my things refer to each other so I didn't find a good place
 
 # CLI Design
 
@@ -137,7 +137,7 @@ Added **REALLY GOOD** tab completion to autocomplete basically anything already 
 
 ## Readable Output
 
-I use "Key/value" tables (quite similar to MySQL's "vertical ouput" mode )
+I use "Key/value" tables (quite similar to MySQL's "vertical output" mode )
 
 ```
 $ go run . env list
@@ -165,11 +165,11 @@ $ go run . env list
 
 - Balance readability with information density
 - Value truncation if screen width is too small
-- Omit "uninteresting" key/value pairs (omit `UpdateTime` if it's the same as `CreateTime`)
+- Don't show "uninteresting" key/value pairs (omit `UpdateTime` if it's the same as `CreateTime`)
 
 ## Filter/sort `env list` with [`expr`](https://expr-lang.org/) query language
 
-Find the environments I care about.
+Find the environments I care about
 
 ```
 $ enventory env list \
@@ -293,7 +293,7 @@ func withConfirm(f func(cmdCtx warg.CmdContext) error) warg.Action {
 Allow deterministic output with either flags or a special app setup, so you can easily write snapshot tests.
 
 - [`enventory`](https://github.com/bbkane/enventory) has a `--create-time` flag that defaults to the current time but can be passed a date so the output is deterministic. 
-- [`shovel`](https://github.com/bbkane/shovel) allows the app to be constructed with an [injectable I/O function](https://github.com/bbkane/shovel/blob/fb7e91479b15e58a14f8969ff9366942ecbdf3b8/dig/dig.go#L38). Tests use a mock function, `main()` uses a real one
+- [`shovel`](https://github.com/bbkane/shovel) (another app I wrote) allows the app to be constructed with an [injectable I/O function](https://github.com/bbkane/shovel/blob/fb7e91479b15e58a14f8969ff9366942ecbdf3b8/dig/dig.go#L38). Tests use a mock function, `main()` uses a real one
 
 Enventory is small and self-contained enough that snapshot tests are fast and convenient!
 
@@ -373,7 +373,7 @@ type Service interface {
 
 ## Transactions
 
-Allows callers to run arbitrary code in the callback `fn`. Try to keep transactions at the top level, since they can't be nested
+Allows callers to run arbitrary code in the callback `fn`. It's best to keep transactions at the top level, since they can't be nested
 
 ```go
 WithTx(ctx context.Context, fn func(ctx context.Context, es Service) error) error
@@ -441,14 +441,14 @@ END
 Thoughts
 
 - I like that this is the "bottom layer" - upper layers don't need to validate this
-- SQL is hard to write (limited autocomplete), debug and test
+- SQL is hard to write (limited autocomplete), debug, and test
 
 ## SQL Migrations
 
 - Plain SQL files - alter table, add tables, update views, etc.
 - Embedded into the app binary
 - Checked against migrations table on app startup to prevent running twice
-- Migrations manually tested for now
+- I manually test migrations
 
 ```
 sqlite> SELECT * FROM migration_v2;
@@ -512,7 +512,7 @@ func (q *Queries) EnvCreate(ctx context.Context, arg EnvCreateParams) (EnvCreate
 ![image-20251010195212626](./index.assets/image-20251010195212626.png)
 
 - tree view of calls
-- timestamps and how long each call took
+- timestamps and span duration
 - structured data (for example, the exact SQL query here)
 
 ## OTEL Trace Implementation
@@ -621,9 +621,9 @@ Went through several names I didn't like or were already taken... (some examples
 
 ## Things I didn't learn with `enventory`
 
-- Queues / Async I/O
+- Queues / Async / dealing with long-running tasks or retries
 - Auth
-- GUI implementation
+- GUIs
 
 ## Future Feature Ideas
 
