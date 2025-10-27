@@ -101,6 +101,7 @@ This is mostly focused on OpenTelemetry, since I really like the "protocol over 
 - [What Isn't Your System Supposed to Do? by Hillel Wayne - YouTube](https://www.youtube.com/watch?v=d9cM8f_qSLQ) - a SUPER good introduction into how to think about distributed systems and where they can go wrong.
 - [Reliable software: An interview with Jon Gjengset - timClicks (Tim McNamara)](https://timclicks.dev/podcast/reliable-software-an-interview-with-jon-gjengset) - extremely interesting talk about the 'spectrum' of testing software (with a focus on Rust). I've listened to this a few times and I think I'm actually due for another listen
 - [Systems Correctness Practices at Amazon Web Services – Communications of the ACM](https://cacm.acm.org/practice/systems-correctness-practices-at-amazon-web-services/) - article about how AWS ensures their distributed systems are correct. Covers some of the same things as previous links but also some specific problems they've faced (education, metastability).
+- [Turso simulator README](https://github.com/tursodatabase/turso/tree/main/simulator) - an implementation of DST for a SQL database. It has a good explanation of the different parts involved.
 
 # Platforms
 
