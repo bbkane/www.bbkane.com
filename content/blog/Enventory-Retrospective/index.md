@@ -31,7 +31,7 @@ From the [README](https://github.com/bbkane/enventory/blob/master/README.md)
 
 ## Motivation
 
-- Solve a small problem I have 
+- Solve a small problem I have
 
 - Learning
   - I've never been happy with CRUD architures in work projects
@@ -219,7 +219,7 @@ app := warg.New(
     // more sections / commands
 ```
 
-## Setting up a Command 
+## Setting up a Command
 
 Setting up a command is also not bad (using helper functions as some of these flags are re-used)
 
@@ -292,7 +292,7 @@ func withConfirm(f func(cmdCtx warg.CmdContext) error) warg.Action {
 
 Allow deterministic output with either flags or a special app setup, so you can easily write snapshot tests.
 
-- [`enventory`](https://github.com/bbkane/enventory) has a `--create-time` flag that defaults to the current time but can be passed a date so the output is deterministic. 
+- [`enventory`](https://github.com/bbkane/enventory) has a `--create-time` flag that defaults to the current time but can be passed a date so the output is deterministic.
 - [`shovel`](https://github.com/bbkane/shovel) (another app I wrote) allows the app to be constructed with an [injectable I/O function](https://github.com/bbkane/shovel/blob/fb7e91479b15e58a14f8969ff9366942ecbdf3b8/dig/dig.go#L38). Tests use a mock function, `main()` uses a real one
 
 Enventory is small and self-contained enough that snapshot tests are fast and convenient!
@@ -552,7 +552,7 @@ Updates:
 - Generate DB code
 - Update `models.Service` interface
 - Update `models.TracedService` implementation
-- Update `app.Service` implementation 
+- Update `app.Service` implementation
 - Update CLI layer
 - Update output functions
 - Add snapshot tests
@@ -632,7 +632,7 @@ As time/interest allows...
 - Safer migrations (pre-req to most of these)
   - backup before migrating
   - testing
-- `env ref` - just `#include` an environment instead of reference each var separately 
+- `env ref` - just `#include` an environment instead of reference each var separately
   - issues with recursive references
   - issues preventing duplicate names in one environment
   - All of these can be handled at SQL level with some complicated triggers, but haven't gotten annoyed enough yet to implement this
