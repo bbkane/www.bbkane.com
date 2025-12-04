@@ -23,9 +23,13 @@ In some cases, I'll remove links if I feel like I can expand the concept into a 
 - [How I build a feature](https://simonwillison.net/2022/Jan/12/how-i-build-a-feature/) describes how Simon Wilson manages to maintain his dozens of projects with "**perfect commit**—one that bundles together the implementation, the tests, the documentation and a link to an external issue thread.". It's really inspired me to adopt much better (e2e/integration/snapshot) testing for my own projects to make them more maintainable.
 - [Contributing to Complex Projects](https://mitchellh.com/writing/contributing-to-complex-projects) desribes somes useful steps to familiarize myself with giant projects. Super helpful; doing this can feel overwhelming.
 - [My Approach to Building Large Technical Projects – Mitchell Hashimoto](https://mitchellh.com/writing/building-large-technical-projects) - "Demo-driven design". This post is super useful to motivate "what to work on next" for a project. If I'm not using this method, I can quickly go down multiple rabbit holes for a project and never have anything big to show for it (which I'm actually okay with for personal projects - the goal there is to have fun).
-- [How do we get a tech team to make a big technical change? - Stack Overflow Blog](https://stackoverflow.blog/2023/05/10/how-do-we-get-a-tech-team-to-make-a-big-technical-change/) - how to make a technical change and bring the team along with you. This post explains so much about team "policitics" and I'm really trying to apply it to my work, especially after recently seeing projects get canceled/undone due to neglecting the team "context".
 - [New talk: Learning DNS in 10 years](https://jvns.ca/blog/2023/05/08/new-talk-learning-dns-in-10-years/) describes how to learn difficult things over time. Also see [New talk: Making Hard Things Easy](https://jvns.ca/blog/2023/10/06/new-talk--making-hard-things-easy/)
 - [Getting things done (in small increments)](https://dubroy.com/blog/getting-things-done-in-small-increments/) has really practical advice when you don't have a lot of time (he's a parent too!)
+
+# Culture
+
+- [Why I Ignore The Spotlight as a Staff Engineer](https://lalitm.com/software-engineering-outside-the-spotlight/) and [Software engineering under the spotlight](https://www.seangoedecke.com/the-spotlight/) are two really good posts succeeding in different types of engineering culture.
+- [How do we get a tech team to make a big technical change? - Stack Overflow Blog](https://stackoverflow.blog/2023/05/10/how-do-we-get-a-tech-team-to-make-a-big-technical-change/) - how to make a technical change and bring the team along with you. This post explains so much about team "policitics" and I'm really trying to apply it to my work, especially after recently seeing projects get canceled/undone due to neglecting the team "context".
 
 # General Concepts / Ideas
 
