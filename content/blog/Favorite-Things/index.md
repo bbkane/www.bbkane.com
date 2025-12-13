@@ -70,6 +70,10 @@ As of 2023-12-19, these are currently $22 in the "Fallen Rock" category, and the
 
 I've had a version of this jacket (model number: `WM3200`) for the last decade and I love it. Soft, fits well (my size is `M`), durable, and high quality for the price. [`WM3220`](https://www.amazon.com/dp/B0076R6L58) also works well (I got the regular fit).
 
+### [Oakley Team Issue Hydrolix Shorts](https://www.walmart.com/ip/Oakley-Men-s-Team-Issue-Hydrolix-Short-Forged-Iron/1466993318)
+
+`FOA402995` - Walmart is currently out of stock, but I've been getting these via my work store.
+
 ### [15.6" Sport Backpack (Black) | Laptop Backpack | Targus](https://us.targus.com/products/sport-15-6-inch-laptop-backpack-tsb89104us)
 
 I bought a few of these (model number TSB89104US) at Computer Central a few years ago (2019?) and I'm on my second one. They're the perfect size for a laptop, notebook, and a change of clothes.
