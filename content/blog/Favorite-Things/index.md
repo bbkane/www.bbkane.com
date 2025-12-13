@@ -72,7 +72,7 @@ I've had a version of this jacket (model number: `WM3200`) for the last decade a
 
 ### [Oakley Team Issue Hydrolix Shorts](https://www.walmart.com/ip/Oakley-Men-s-Team-Issue-Hydrolix-Short-Forged-Iron/1466993318)
 
-`FOA402995` - Walmart is currently out of stock, but I've been getting these via my work store.
+`FOA402995` - Walmart is currently out of stock, but I've been getting these via my work store. My size is `XL`. Oddly enought I can't seem to find thme on www.oakley.com, despite that being printed on the tag...
 
 ### [15.6" Sport Backpack (Black) | Laptop Backpack | Targus](https://us.targus.com/products/sport-15-6-inch-laptop-backpack-tsb89104us)
 
