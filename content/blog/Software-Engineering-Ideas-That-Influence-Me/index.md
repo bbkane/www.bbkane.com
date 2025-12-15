@@ -94,9 +94,10 @@ This is a mix of debugging advice as well as "war stories" for examples
 This is mostly focused on OpenTelemetry, since I really like the "protocol over specific vendors" approach they provide:
 
 - [An Observable Service with No Logs - InfoQ](https://www.infoq.com/presentations/event-tracing-monitoring/) - a company replaced logs with tracing and reported how it went. I'm trying to do the same thing for side projects, so I find this super interesting.
-- [Tracing: structured logging, but better in every way | Andy Dote](https://andydote.co.uk/2023/09/19/tracing-is-better/) and [HN comments](https://news.ycombinator.com/item?id=37562593) - Andy Cote gives a great overview of replacing tracing with logs, including screenshots and code samples. I think
+- [Tracing: structured logging, but better in every way | Andy Dote](https://andydote.co.uk/2023/09/19/tracing-is-better/) and [HN comments](https://news.ycombinator.com/item?id=37562593) - Andy Cote gives a great overview of replacing tracing with logs, including screenshots and code samples.
 - [Building dashboards for operational visibility | Amazon Builders' Library](https://aws.amazon.com/builders-library/building-dashboards-for-operational-visibility/) - very specific advice for building good dashboards.
-- [Grafana dashboards | Grafana Labs](https://grafana.com/grafana/dashboards/) - a library of dashboards voted on by the Grafana community! Great for inspiration!
+- [Grafana dashboards | Grafana Labs](https://grafana.com/grafana/dashboards/) - a library of dashboards voted on by the Grafana community! Great for inspiration! Also see their docs for each [visualization](https://grafana.com/docs/grafana/latest/visualizations/panels-visualizations/visualizations/).
+- [Observability as code (Grafana)](https://grafana.com/blog/2025/05/07/observability-as-code-grafana-12/) - This is more inspirational, but shows some exciting ways to model dashboards as code.
 
 # Testing / Formal methods
 
