@@ -20,7 +20,7 @@ Very different from my mom's!
 # Instructions
 
 - Dice up vegetables and lightly stir fry with seasoned salt and black pepper
-- rince split peas
+- rinse split peas
 - Add veggies and all other ingredients to crock pot
 - cook on low in the crock pot for 6-8 hours
 
