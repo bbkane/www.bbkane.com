@@ -237,3 +237,53 @@ Of course, this is the bare minimum to get started with OTEL and OpenObserve. Fu
 - Create an org instead of using the default one like this post does
 - Send traces / logs to OpenObserve as well!
 - Make a dashboard with these metrics
+
+# Bonus: testing metrics in memory
+
+This isn't super related to exporting metrics, but it's also not too difficult to set up an exporter that saves metrics in-memory for testing purposes. The hardest part is gluing together the APIs (thanks ChatGPT):
+
+<details>
+
+```go
+package otel_inmem_test
+
+import (
+	"context"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+	"go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/sdk/metric/metricdata"
+)
+
+func TestMyMetrics(t *testing.T) {
+	require := require.New(t)
+	ctx := context.Background()
+	reader := metric.NewManualReader()
+
+	provider := metric.NewMeterProvider(metric.WithReader(reader))
+
+	// everything is in scope in this test, so no need to set global meter provider. But if needed:
+	// otel.SetMeterProvider(provider)
+
+	meter := provider.Meter("test")
+	counter, err := meter.Int64Counter("my_counter")
+	require.NoError(err)
+
+	counter.Add(ctx, 5)
+	counter.Add(ctx, 10)
+
+	// Collect the metrics
+	var rm metricdata.ResourceMetrics
+	err = reader.Collect(ctx, &rm)
+	require.NoError(err)
+
+	require.Equal(1, len(rm.ScopeMetrics))
+	require.Equal(1, len(rm.ScopeMetrics[0].Metrics))
+
+	err = provider.Shutdown(ctx)
+	require.NoError(err)
+}
+```
+
+</details>
