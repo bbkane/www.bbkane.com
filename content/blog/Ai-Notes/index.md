@@ -109,3 +109,63 @@ I'm working around it by using a vanilla bash terminal in VS Code instead of my 
 ```json
 "terminal.integrated.defaultProfile.osx": "bash",
 ```
+
+# Thu 2026-01-01 - Trying VS Code here again
+
+Going to do some reading to try to get some customizations into warg/enventory..
+
+Warg:
+
+- Use gopkg.in/yaml.v4
+- Use os.Args[1:] instead of os.Args
+
+Enventory
+
+- add enabled to variables and references
+- add completions to choices
+- Add ability to copy all refs?
+
+[576 - Using LLMs at Oxide / RFD / Oxide](https://rfd.shared.oxide.computer/rfd/0576)
+
+- LLMs as readers - ask things about code, docs
+- they don't recommend using LLMs to write (and I agree - reviewing is better)
+- they have internal specific tips and tricks, but I can't access it..
+
+[Using agents in Visual Studio Code](https://code.visualstudio.com/docs/copilot/agents/overview) - basic overview, nothing new here
+
+[Customize chat to your workflow](https://code.visualstudio.com/docs/copilot/customization/overview) - ok this is nice:
+
+| Use Case                                        | Approach                                                     |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| Project-wide coding standards                   | [Custom instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) |
+| Language or framework-specific rules            | [Custom instructions with glob patterns](https://code.visualstudio.com/docs/copilot/customization/custom-instructions#_instructions-file-format) |
+| Specialized capabilities that work across tools | [Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) |
+| Reusable development tasks                      | [Prompt files](https://code.visualstudio.com/docs/copilot/customization/prompt-files) |
+| Use chat for planning or research               | [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents) |
+| Define specialized workflows                    | [Custom agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents) |
+| Complex reasoning and analysis                  | [Language models](https://code.visualstudio.com/docs/copilot/customization/language-models) |
+| Bring your own model                            | [Language models](https://code.visualstudio.com/docs/copilot/customization/language-models) |
+| Integrate external services                     | [MCP and tools](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) |
+
+Let's make some custom instructions to document how to do things in enventory, then a custom agent to plan it, then a cloud agent to add a feature
+
+[Use custom instructions in VS Code](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+Custom instructions vs AGENTS.md? https://code.visualstudio.com/docs/copilot/customization/custom-instructions#_type-of-instructions-files - I don't think there's a lot of difference? Ohh... I think AGENTS.md is useful for CLI tools tool, not just VS Code. So let's start with AGENTS.md?
+
+Things to put in AGENTS.md
+
+- architecture
+- how to test
+- how to write SQL migrations (where to put, etc)
+- back up current enventory.db
+
+Other notes: [Writing a good Claude.md | Hacker News](https://news.ycombinator.com/item?id=46098838)
+
+- need about 50 instrutions total , < 300 liens (shorter is better)
+- table of contents approach and docs folder
+
+ooh in enventory SQLite's migration difficulties (I want to add a column without default which means I need to create a new table and transfer all views and indexes...) means I probably need to write that out with custom instructions and make a plan JUST for this part.
+
+TODO: try to use `sqlite-utils` for the migration part. See if it patches up indexes, foreign keys, and views
+
