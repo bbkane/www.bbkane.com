@@ -12,7 +12,8 @@ build_search_index = true
 
 [markdown.highlighting]
 code = true
-# see: http://127.0.0.1:1111/blog/azure-functions-with-terraform/
+# https://www.getzola.org/documentation/content/syntax-highlighting/
+# https://github.com/getzola/giallo?tab=readme-ov-file#themes
 theme = "dracula"
 extra_themes = []               # optional
 
