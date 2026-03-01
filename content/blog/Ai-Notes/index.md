@@ -169,3 +169,48 @@ ooh in enventory SQLite's migration difficulties (I want to add a column without
 
 TODO: try to use `sqlite-utils` for the migration part. See if it patches up indexes, foreign keys, and views
 
+# Sun 2026-02-22 VS Code update notes
+
+https://code.visualstudio.com/updates/v1_109
+
+Can use `/plan` to plan stuff.
+
+It works with Claude files.
+
+Can interrupt the agent thinking with `Steer with message` option in tthe chat
+
+`renderMermaidDiagram` tool
+
+Note: to fix the "vscode language model unavailable", I had to:
+
+- uninstall MSFT intellisense plugins
+- Uninstall GH chat plugin
+- Sign out of my GH accounts 
+- re-install
+- sign into my GH accounts
+- close and re-open VS code
+
+I'm not sure which one of those did the trick
+
+Can create hooks with `/hooks` - I'd like to use this to talk when it wants me to respond
+
+Can use `/init` to set up md files
+
+How do I get MCP apps working? They can show UI in the editor
+
+> You can now double-click immediately after an opening bracket or  immediately before a closing bracket to select all the content inside.  This also works for strings - double-click right after an opening quote  or right before a closing quote to select the string contents. This  provides a quick way to select, copy, or replace the content within  brackets or strings without manually positioning your cursor.
+
+> ### [Agent customization skill (Experimental)](https://code.visualstudio.com/updates/v1_109#_agent-customization-skill-experimental)
+>
+> **Setting**: 
+>
+> chat.agentCustomizationSkill.enabled
+>
+> 
+>
+> A new **agent-customization** skill teaches the agent  how to help you customize your AI coding experience. When you ask about  creating custom agents, instructions, prompts, or skills, the agent  automatically loads this skill to provide accurate guidance.
+
+Can look into https://github.com/ShepAlderson/copilot-orchestra for "agent orchestration"
+
+> The Problems panel now supports filtering by the source or owner of  diagnostics. This is useful when you want to focus on specific types of  issues, such as build errors, while temporarily hiding diagnostics from  other sources like spell checkers or linters. For example, type `source:ts` in the filter box to show only TypeScript diagnostics, or use `!source:cSpell` to hide all spell checker warnings.
+
