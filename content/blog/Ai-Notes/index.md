@@ -214,3 +214,41 @@ Can look into https://github.com/ShepAlderson/copilot-orchestra for "agent orche
 
 > The Problems panel now supports filtering by the source or owner of  diagnostics. This is useful when you want to focus on specific types of  issues, such as build errors, while temporarily hiding diagnostics from  other sources like spell checkers or linters. For example, type `source:ts` in the filter box to show only TypeScript diagnostics, or use `!source:cSpell` to hide all spell checker warnings.
 
+# Sat 2026-03-07 VS Code update notes
+
+![image-20260307162749732](./index.assets/image-20260307162749732.png)
+
+Here's how to find the backgound agent...
+
+https://code.claude.com/docs/en/vs-code#manage-plugins says it can manage plugins but I'm not seeing it.
+
+Agent debug panel: 
+
+> Open the panel from the Command Palette with **Developer: Open Agent Debug Panel**, or select the gear icon at the top of the Chat view and choose **View Agent Logs**.
+
+Agent Plugins: https://code.visualstudio.com/updates/v1_110#_agent-plugins-experimental
+
+![image-20260307163225391](./index.assets/image-20260307163225391.png)
+
+
+
+Not seeing any, though it DID autocomplete (maybe because it's experimental)
+
+Agent browser tools: https://code.visualstudio.com/updates/v1_110#_agentic-browser-tools-experimental . TODO: remember this for UIs
+
+> `/create-prompt`: generate a reusable [prompt](https://code.visualstudio.com/docs/copilot/customization/prompt-files) file
+>
+> `/create-instruction`: generate an [instruction](https://code.visualstudio.com/docs/copilot/customization/custom-instructions) file for project conventions
+>
+> `/create-skill`: extract a multi-step workflow into a [skill](https://code.visualstudio.com/docs/copilot/customization/agent-skills) package
+>
+> `/create-agent`: create a specialized [custom agent](https://code.visualstudio.com/docs/copilot/customization/custom-agents) persona
+>
+> `/create-hook`: create a [hook](https://code.visualstudio.com/docs/copilot/customization/hooks) configuration for lifecycle automation
+
+> ### [Keybinding to toggle TODO list focus](https://code.visualstudio.com/updates/v1_110#_keybinding-to-toggle-todo-list-focus)
+>
+> Use ⇧⌘T to quickly toggle focus between the agent TODO list and the chat input. This is particularly helpful for screen reader users to get an overview of pending tasks and return to the chat inpu
+
+https://code.visualstudio.com/updates/v1_110#_ai-coauthor-attribution-for-commits - Could set this up
+
