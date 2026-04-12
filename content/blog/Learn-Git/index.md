@@ -329,3 +329,16 @@ git push
 ```
 
 This will revert everything from the HEAD back to the commit hash (excluded), meaning it will recreate that commit state in the working tree as if every commit after 0d1d7fc3 had been walked back. You can then commit the current tree, and it will create a brand new commit essentially equivalent to the commit you "reverted" to
+
+## See what a branch changed from master
+
+From [here](https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project):
+
+In the context of the `git diff` command, you can put three periods after another branch to do a `diff` between the last commit of the branch you’re on and its common ancestor with another branch:
+
+```bash
+git diff master...contrib
+```
+
+This command shows you only the work your current topic branch has introduced since its common ancestor with `master`. That is a very useful syntax to remember.
+
