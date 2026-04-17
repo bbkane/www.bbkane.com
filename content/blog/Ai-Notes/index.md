@@ -252,3 +252,19 @@ Agent browser tools: https://code.visualstudio.com/updates/v1_110#_agentic-brows
 
 https://code.visualstudio.com/updates/v1_110#_ai-coauthor-attribution-for-commits - Could set this up
 
+# Thu 2026-03-19 VS Code update notes
+
+https://code.visualstudio.com/updates/v1_112
+
+
+https://code.visualstudio.com/docs/copilot/chat/chat-debug-view
+
+```
+/troubleshoot
+```
+
+Some kinda image support? It's experimental but come back to this if I need to...
+
+https://code.visualstudio.com/docs/debugtest/integrated-browser - you can debug from this now... I think it's JS. Can also add elements to chat
+
+Interestingly, you can also ask agents to debug using this browser...
