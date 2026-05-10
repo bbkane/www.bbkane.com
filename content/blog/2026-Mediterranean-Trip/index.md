@@ -2,9 +2,12 @@
 title = "2026 Mediterranean Trip"
 date = 2026-05-09
 draft = true
+
 +++
 
-We (me, Jenny, JJ, her parents) just returned from a Mediterranean trip, starting in Barcelona where we stayed a few days, then a cruise that spent a day at sea, and a day each in Malta, Corfu Greece, Kortor Montenegro, Dubrovnik Croatia, and Split Croatia before finally docking at Ravenna Italy. We spent a day there, then took the train to Rome where we also spent a few days.
+We (me, Jenny, JJ, her parents) just returned from a Mediterranean trip, starting in Barcelona where we stayed a few days, then a cruise that spent a day at sea, and a day each in Malta, Corfu Greece, Kortor Montenegro, Dubrovnik Croatia, and Split Croatia before finally docking at Ravenna Italy. We spent a day there, then took the train to Rome where we also spent a few days. They made a trip doc [here](https://docs.google.com/document/d/16s9l9ECSLYU3eYpp5gAeXDVj3WdaFATfNhCzGvN0dEQ/edit?tab=t.0#heading=h.rst9z063mfzl) (it's not publicly accessible though)
+
+I actually spent very little time planning or scheduling this trip so I'm especially grateful to Jenny and her parents for doing this.
 
 Now that I'm back and can't sleep due to jet lag, it's the perfect time to write about it!
 
@@ -18,7 +21,7 @@ The second was that I really made an effort to eat reasonably (lower carbs, lots
 
 So those were the two biggies. I might also have felt more confortable are that the Norweigan Pearl is essentially a clone of the Norweigan Jade (the cruise ship we took last time) so I remembered where most things were.
 
-We also had JJ in underwear for MOST of the daytime during this trip (diapers at night). He got a lot better over the trip at telling us when he needed to pee (basically perfect at this), though for some reason he had issues telling us when he needed to poo.
+We also had JJ in underwear for MOST of the daytime during this trip (diapers at night). He got a lot better over the trip at telling us when he needed to pee (basically perfect at this), though for some reason he had issues telling us when he needed to poo. He started pulling up his underwear and pants by himself now too!
 
 One thing that is MUCH harder on the cruise is laundry - manually cleaning poopy underwear and your child is disgusting. Usually I ended up extracting the underwear from JJ and washing him and Jenny cleaned it. They did offer us a free bag of laundry in the middle of the cruise. Otherwise laundry is extortionately expensive and we avoided it. This stopped me from using the pool / hot tub since I didn't want to deal with cleaning the clothes afterwards.
 
