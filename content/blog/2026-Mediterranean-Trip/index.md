@@ -27,9 +27,17 @@ One thing that is MUCH harder on the cruise is laundry - manually cleaning poopy
 
 It's a "me" thing but I'm also more comfortable with self-service than being served. They offered a lot of service (room cleaning, waiting, etc.) and I always felt weird asking for things. The restaurants also add 20% gratuity for meals automatically but ALSO offer the spot for an additional tip on the receipt. A few times I left additional tips but I felt weird if I did and awkward if I didn't (the service was always excellent).
 
+# Barcelona
 
+![01-barcelone-gothic-quarter.MP](./index.assets/01-barcelone-gothic-quarter.MP.jpg)
 
 - Travel
+- Malta
+  - not super impressed
+
+- greece
+  - running up the fort feeling
+
 - kotor
   - hike
   - cheese plate
