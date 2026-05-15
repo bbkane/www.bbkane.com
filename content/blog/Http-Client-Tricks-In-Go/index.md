@@ -1,5 +1,5 @@
 +++
-title = "Layering HTTP Transports in Go"
+title = "HTTP Client Tricks in Go"
 date = 2026-05-12
 +++
 
@@ -54,9 +54,58 @@ Also, a note on terminology:  `http.RoundTripper` is an **interface** defining h
 
 # Common settings in a "base" `RoundTripper`
 
+For production, this is the innermost `RoundTripper` that actually makes the HTTP requests. Example (Claude-generated, for inspiration). This is where common settings should go: timeouts, proxy settings, observability...
 
+```go
+ import (
+"net"
+"net/http"
+"time"
+)
 
+func NewBaseTransport() *http.Transport {
+	return &http.Transport{
+		// Honor HTTP_PROXY / HTTPS_PROXY / NO_PROXY env vars.
+		Proxy: http.ProxyFromEnvironment,
 
+		DialContext: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+		}).DialContext,
+
+		ForceAttemptHTTP2: true,
+
+		MaxIdleConns:	100,
+		MaxIdleConnsPerHost: 10,
+		IdleConnTimeout:     90 * time.Second,
+
+		TLSHandshakeTimeout:   10 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
+	}
+}
+
+func NewClient() *http.Client {
+	return &http.Client{
+		Transport: NewBaseTransport(),
+		// safety net against requests that hang past anything reasonable.
+		Timeout:   60 * time.Second,
+	}
+}
+```
+
+# Snapshot Tests
+
+## Goal
+
+The goal of snapshot tests are to easily get realistic HTTP responses for testing purposes. This is done by recording a "snapshot" of a *live* HTTP response to disk when an environment variable is set. In "replay" mode, when the environment variable is NOT set, the test uses the recorded snapshot for its purposes.
+
+The upside is that you don't have to mock data, you can simply use the recorded live data. The downside is that you can't easily get the exact data you want (it's recorded live), so you have to keep your test asserts fairly general and use other code to test rarer error conditions you can't easily trigger live.
+
+## Code
+
+Fortunately, [earthboundkid/requests](https://github.com/earthboundkid/requests) has a `reqtest` package that does the actual work.
+
+## Tweaks
 
 
 
