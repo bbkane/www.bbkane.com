@@ -234,7 +234,7 @@ func WrapRetriableStatuses(resp *http.Response) error {
 		}
 		return fmt.Errorf("retry after: %d", seconds)
 
-	// treat 5xx are retriable errors
+	// treat 5xx as retriable errors
 	case resp.StatusCode >= 500 && resp.StatusCode <= 599:
 		return fmt.Errorf("retry on 5xx: %d", resp.StatusCode)
 
@@ -266,7 +266,7 @@ func Retry(ctx context.Context, f func() error) error {
 }
 ```
 
-## Update `FetchTitle`
+## Update  `FetchTitle` with retries
 
 ```go
 // FetchTitle GETs example.com and returns the contents of its <title> tag.
