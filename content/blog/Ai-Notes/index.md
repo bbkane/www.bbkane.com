@@ -268,3 +268,9 @@ Some kinda image support? It's experimental but come back to this if I need to..
 https://code.visualstudio.com/docs/debugtest/integrated-browser - you can debug from this now... I think it's JS. Can also add elements to chat
 
 Interestingly, you can also ask agents to debug using this browser...
+
+# Tue 2026-05-19
+
+```bash
+code --agents
+```
