@@ -269,8 +269,15 @@ https://code.visualstudio.com/docs/debugtest/integrated-browser - you can debug 
 
 Interestingly, you can also ask agents to debug using this browser...
 
-# Tue 2026-05-19
+# Tue 2026-05-19 Agent Mode
+
+Open with
 
 ```bash
 code --agents
 ```
+
+It doesn't have a plan mode so you have to type `/plan` before your plan request
+
+Ew you can't go to definition when looking at the files.... need to see if there's a workaround somewhere or else use the terminal.
+
