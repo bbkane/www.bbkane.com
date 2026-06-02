@@ -365,3 +365,29 @@ if __name__ == "__main__":
 
 ```
 
+# Logging Subprocesses
+
+Useful if you're coordinating processes with python scripts instead of Bash scripts
+
+```python
+def run_cmd(*args: str) -> int:
+    logger.info(f"Running command: {shlex.join(args)}")
+    res = subprocess.run(
+        args,
+        encoding="utf-8",
+        capture_output=True,
+        text=True,
+    )
+    level = logging.DEBUG
+    if res.returncode != 0:
+        level = logging.ERROR
+        logger.error(f"Command failed with return code: {res.returncode}")
+    if res.stdout:
+        logger.log(level, f"stdout:\n{res.stdout}")
+
+    if res.stderr:
+        logger.log(level, f"stderr:\n{res.stderr}")
+
+    return res.returncode
+```
+
