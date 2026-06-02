@@ -391,3 +391,140 @@ def run_cmd(*args: str) -> int:
     return res.returncode
 ```
 
+# Replacing Shell Scripts
+
+Example to replace a shell script with good logs
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import argparse
+import copy
+import logging
+import os
+import shlex
+import subprocess
+import sys
+from pathlib import Path
+
+logger = logging.getLogger(__name__)
+
+script_dir = Path(__file__).parent.resolve()
+os.chdir(script_dir)
+print(script_dir)
+
+# alternative for temporary logs
+# now = datetime.datetime.now().isoformat(timespec="seconds")
+# log_file = f"/tmp/{Path(__file__).stem}-{now}.log"
+
+log_file = f"{script_dir.name}.{Path(__file__).stem}.log"
+
+
+class Color:
+    reset = "\x1b[0m"
+    grey = "\x1b[38;21m"
+    blue = "\x1b[38;5;39m"
+    yellow = "\x1b[38;5;226m"
+    red = "\x1b[38;5;196m"
+    bold_red = "\x1b[31;1m"
+
+
+# logic from https://stackoverflow.com/a/75339761
+class ColorLevelFormatter(logging.Formatter):
+
+    _color_levelname = {
+        "DEBUG": f"{Color.grey}DEBUG{Color.reset}",
+        "INFO": f"{Color.blue}INFO{Color.reset}",
+        "WARNING": f"{Color.yellow}WARNING{Color.reset}",
+        "ERROR": f"{Color.red}ERROR{Color.reset}",
+        "CRITICAL": f"{Color.bold_red}CRITICAL{Color.reset}",
+    }
+
+    def __init__(
+        self,
+        fmt: str = "%(levelname)s %(filename)s:%(lineno)s: %(message)s",
+        *args,
+        **kwargs,
+    ):
+        super().__init__(fmt, *args, **kwargs)
+
+    def format(self, record):
+        record = copy.copy(record)
+        record.levelname = self._color_levelname[record.levelname]
+        return super().format(record)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+
+    parser.add_argument(
+        "--log-level",
+        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        default="INFO",
+        help="terminal log level",
+    )
+    parser.add_argument(
+        "--log-file",
+        default=log_file,
+        help=f"log file path (default: {log_file})",
+    )
+
+    return parser
+
+
+def run_cmd(*args: str) -> int:
+    logger.info(f"Running command: {shlex.join(args)}")
+    res = subprocess.run(
+        args,
+        encoding="utf-8",
+        capture_output=True,
+        text=True,
+    )
+    level = logging.DEBUG
+    if res.returncode != 0:
+        level = logging.ERROR
+        logger.error(f"Command failed with return code: {res.returncode}")
+    if res.stdout:
+        logger.log(level, f"stdout:\n{res.stdout}")
+
+    if res.stderr:
+        logger.log(level, f"stderr:\n{res.stderr}")
+
+    return res.returncode
+
+
+def main():
+    parser = build_parser()
+    args = parser.parse_args()
+
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.DEBUG)
+
+    file_handler = logging.FileHandler(args.log_file, mode="a", encoding="utf-8")
+    file_handler.setFormatter(
+        logging.Formatter(
+            "# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s"
+        )
+    )  # noqa: E501
+    root_logger.addHandler(file_handler)
+
+    stdout_handler = logging.StreamHandler(sys.stdout)
+    stdout_handler.setLevel(logging._nameToLevel[args.log_level])
+    stdout_handler.setFormatter(ColorLevelFormatter())
+    root_logger.addHandler(stdout_handler)
+
+    logger.debug("args: %r", args)
+    logger.debug("working directory: %s", os.getcwd())
+    logger.info("log file: %s", args.log_file)
+
+    run_cmd("echo", "Hello, World!")
+
+
+if __name__ == "__main__":
+    main()
+```
+
