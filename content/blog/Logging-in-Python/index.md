@@ -393,11 +393,28 @@ def run_cmd(*args: str) -> int:
 
 # Replacing Shell Scripts
 
-Example to replace a shell script with good logs
+Example to replace a shell script with good logs. This gets long because it supports streaming commands as well as the fancy logging
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""examplecli.py — template for a logged, subprocess-driven CLI.
+
+A small, self-contained starting point for local ops/automation scripts. It
+shows the patterns worth reusing:
+
+  * structured logging — colorized terminal output plus a full file log;
+  * ``run_cmd`` — a subprocess wrapper that logs every command and captures its
+    output, with optional confirm prompt, live streaming, timeout, and dry-run;
+  * fail-fast helpers — ``run_or_abort`` / ``StepError`` to bail out of a
+    subcommand cleanly after a failed or unsafe step;
+  * argparse subcommands with a shared set of common flags.
+
+Run the ``selftest`` subcommand to watch the ``run_cmd`` options behave. Copy
+this file and add your own ``cmd_*`` functions to the ``COMMANDS`` table.
+"""
+
+from __future__ import annotations
 
 import argparse
 import copy
@@ -406,13 +423,14 @@ import os
 import shlex
 import subprocess
 import sys
+import threading
 from pathlib import Path
+from typing import NoReturn
 
 logger = logging.getLogger(__name__)
 
 script_dir = Path(__file__).parent.resolve()
 os.chdir(script_dir)
-print(script_dir)
 
 # alternative for temporary logs
 # now = datetime.datetime.now().isoformat(timespec="seconds")
@@ -432,7 +450,6 @@ class Color:
 
 # logic from https://stackoverflow.com/a/75339761
 class ColorLevelFormatter(logging.Formatter):
-
     _color_levelname = {
         "DEBUG": f"{Color.grey}DEBUG{Color.reset}",
         "INFO": f"{Color.blue}INFO{Color.reset}",
@@ -455,6 +472,281 @@ class ColorLevelFormatter(logging.Formatter):
         return super().format(record)
 
 
+def _as_text(data: object) -> str:
+    """Coerce subprocess output (str/bytes/buffer/None) to str for logging.
+
+    On a timeout, subprocess hands back raw bytes even in text mode, so the
+    captured partial output needs decoding before it can be logged cleanly.
+    """
+    if isinstance(data, str):
+        return data
+    if isinstance(data, (bytes, bytearray, memoryview)):
+        return bytes(data).decode("utf-8", "replace")
+    return ""
+
+
+def _log_streams(stdout: str, stderr: str, level: int) -> None:
+    """Log captured stdout/stderr at `level`, skipping empty streams."""
+    if stdout:
+        logger.log(level, f"stdout:\n{stdout}")
+    if stderr:
+        logger.log(level, f"stderr:\n{stderr}")
+
+
+def _tee(pipe, sink, buffer: list[str]) -> None:
+    """Echo a pipe line-by-line to `sink` while buffering it for the log."""
+    for line in iter(pipe.readline, ""):
+        sink.write(line)
+        sink.flush()
+        buffer.append(line)
+    pipe.close()
+
+
+def _run_streaming(args: tuple, timeout: float | None = None) -> int:
+    """Run a command, streaming stdout/stderr live and buffering for the log."""
+    try:
+        proc = subprocess.Popen(
+            args,
+            encoding="utf-8",
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+    except OSError as exc:
+        logger.error(f"Command could not be run: {shlex.join(args)} ({exc})")
+        return 127
+    out_buf: list[str] = []
+    err_buf: list[str] = []
+    t_out = threading.Thread(target=_tee, args=(proc.stdout, sys.stdout, out_buf))
+    t_err = threading.Thread(target=_tee, args=(proc.stderr, sys.stderr, err_buf))
+    t_out.start()
+    t_err.start()
+    timed_out = False
+    try:
+        proc.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        timed_out = True
+        logger.error(f"Command timed out after {timeout}s, killing: {shlex.join(args)}")
+        proc.kill()
+        proc.wait()
+    t_out.join()
+    t_err.join()
+
+    if timed_out:
+        returncode = 124  # match the non-streaming path's convention
+    else:
+        returncode = proc.returncode
+        if returncode != 0:
+            logger.error(f"Command failed with return code: {returncode}")
+    # Output was already echoed live, so log it at DEBUG (file only, since the
+    # terminal handler is INFO+) to avoid showing it twice.
+    _log_streams("".join(out_buf), "".join(err_buf), logging.DEBUG)
+    return returncode
+
+
+def run_cmd(
+    *args: str,
+    confirm: bool = False,
+    stream: bool = False,
+    timeout: float | None = None,
+    dry_run: bool = False,
+) -> int:
+    """Run a command, log it, and return its exit code.
+
+    The command is given as separate arguments (like a subprocess list). It is
+    logged as it runs and its output captured to the log: by default output is
+    buffered and written after the command finishes — stdout/stderr at DEBUG on
+    success (so it only reaches the log file, not the INFO terminal) and at ERROR
+    on failure (so failures surface on the terminal too).
+
+    Returns the command's exit code, with these special cases:
+      * 124 — the command hit ``timeout`` and was killed.
+      * 127 — the command could not be launched (e.g. binary not found).
+      * 0   — also returned when nothing actually ran (skipped via ``confirm`` or
+              ``dry_run``).
+
+    Optional flags:
+      confirm: print the exact command and ask y/N before running; on anything but
+               yes, log "Skipped by user" and return 0 without running. Mutating
+               callers pass ``confirm=not yes`` so ``-y`` bypasses the prompt;
+               read-only callers pass ``confirm=False``.
+      stream:  stream stdout/stderr to the terminal live (via Popen) while still
+               buffering for the log — use for long or hang-prone commands.
+               Default buffers and logs after exit.
+      timeout: seconds; if exceeded, kill the command and return 124. Applies to
+               both the streamed and buffered paths. None = wait indefinitely.
+      dry_run: log "[DRY-RUN] would run: <cmd>" and return 0 without executing,
+               prompting, or streaming. Checked first, so it overrides the others.
+    """
+    cmd_str = shlex.join(args)
+    if dry_run:
+        logger.info(f"[DRY-RUN] would run: {cmd_str}")
+        return 0
+
+    if confirm:
+        try:
+            answer = input(f"Run this command? [y/N]\n  {cmd_str}\n> ").strip().lower()
+        except EOFError:
+            logger.error(
+                f"cannot prompt for confirmation (no interactive input); re-run with -y: {cmd_str}"
+            )
+            return 1
+        if answer not in ("y", "yes"):
+            logger.warning(f"Skipped by user: {cmd_str}")
+            return 0
+
+    logger.info(f"Running command: {cmd_str}")
+    if stream:
+        return _run_streaming(args, timeout=timeout)
+
+    try:
+        res = subprocess.run(
+            args, encoding="utf-8", capture_output=True, text=True, timeout=timeout
+        )
+    except subprocess.TimeoutExpired as exc:
+        logger.error(f"Command timed out after {timeout}s: {cmd_str}")
+        # Log any partial output captured before the kill (bytes -> str).
+        _log_streams(_as_text(exc.stdout), _as_text(exc.stderr), logging.ERROR)
+        return 124
+    except OSError as exc:
+        logger.error(f"Command could not be run: {cmd_str} ({exc})")
+        return 127
+    if res.returncode != 0:
+        logger.error(f"Command failed with return code: {res.returncode}")
+    _log_streams(
+        res.stdout, res.stderr, logging.ERROR if res.returncode else logging.DEBUG
+    )
+    return res.returncode
+
+
+# --- fail-fast helpers -----------------------------------------------------
+
+
+class StepError(Exception):
+    """Raised to abort a subcommand after a failed or unsafe step.
+
+    main() turns it into a non-zero process exit; the message is already logged.
+    """
+
+
+def _abort(msg: str) -> NoReturn:
+    logger.error(msg)
+    raise StepError(msg)
+
+
+def run_or_abort(*args: str, **kwargs) -> int:
+    """Like run_cmd, but abort the whole subcommand if the command fails."""
+    rc = run_cmd(*args, **kwargs)
+    if rc != 0:
+        _abort(f"aborting after failed step (exit {rc}): {shlex.join(args)}")
+    return rc
+
+
+def require_exists(path: Path) -> None:
+    """Abort unless `path` exists — a pre-check before mv/cp."""
+    if not path.exists():
+        _abort(f"required file does not exist: {path}")
+
+
+def safe_copy(src: Path, dst: Path, *, yes: bool, dry_run: bool) -> None:
+    """cp src -> dst after checking src exists; aborts on missing src or failure."""
+    require_exists(src)
+    run_or_abort("cp", str(src), str(dst), confirm=not yes, dry_run=dry_run)
+
+
+def safe_move(src: Path, dst: Path, *, yes: bool, dry_run: bool) -> None:
+    """mv src -> dst after checking src exists; aborts on missing src or failure."""
+    require_exists(src)
+    run_or_abort("mv", str(src), str(dst), confirm=not yes, dry_run=dry_run)
+
+
+# --- subcommands -----------------------------------------------------------
+
+
+def cmd_selftest(yes: bool, dry_run: bool) -> None:
+    """Exercise run_cmd with each option (harmless echo/sleep) to see its behavior."""
+    logger.info("⭐️ selftest yes=%r dry_run=%r", yes, dry_run)
+
+    logger.info(
+        "[1] plain run — buffered; on success stdout goes to the log file (DEBUG), not the terminal"
+    )
+    logger.info(
+        "    -> returned %d", run_cmd("echo", "hello from run_cmd", dry_run=dry_run)
+    )
+
+    logger.info("[2] failing command, buffered — stdout/stderr surface at ERROR")
+    logger.info(
+        "    -> returned %d",
+        run_cmd("sh", "-c", "echo oops >&2; exit 3", dry_run=dry_run),
+    )
+
+    logger.info("[3] stream=True, success — output appears live, line by line")
+    logger.info(
+        "    -> returned %d",
+        run_cmd(
+            "sh",
+            "-c",
+            "for i in 1 2 3; do echo line $i; sleep 0.3; done",
+            stream=True,
+            dry_run=dry_run,
+        ),
+    )
+
+    logger.info(
+        "[4] stream=True, failure — live output + ERROR failure line (not shown twice)"
+    )
+    logger.info(
+        "    -> returned %d",
+        run_cmd(
+            "sh", "-c", "echo streamed then fail; exit 5", stream=True, dry_run=dry_run
+        ),
+    )
+
+    logger.info(
+        "[5] timeout, buffered — prints then hangs, timeout=1 -> 124 + partial output"
+    )
+    logger.info(
+        "    -> returned %d",
+        run_cmd(
+            "sh",
+            "-c",
+            "echo partial output before timeout; sleep 3",
+            timeout=1,
+            dry_run=dry_run,
+        ),
+    )
+
+    logger.info(
+        "[6] timeout, streamed — prints then hangs, timeout=1 -> 124 + partial output"
+    )
+    logger.info(
+        "    -> returned %d",
+        run_cmd(
+            "sh", "-c", "echo working; sleep 3", stream=True, timeout=1, dry_run=dry_run
+        ),
+    )
+
+    logger.info(
+        "[7] confirm — prompts y/N unless -y/--yes was passed (answer n to see the skip path)"
+    )
+    logger.info(
+        "    -> returned %d",
+        run_cmd("echo", "you confirmed this", confirm=not yes, dry_run=dry_run),
+    )
+
+    logger.info("[8] forced dry_run=True — always previews, never executes")
+    logger.info(
+        "    -> returned %d", run_cmd("echo", "this should NOT execute", dry_run=True)
+    )
+
+
+# Map subcommand name -> handler. argparse preserves this insertion order in
+# --help, so list commands in whatever order reads best. Add your own here.
+COMMANDS = {
+    "selftest": cmd_selftest,
+}
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=__doc__,
@@ -473,28 +765,30 @@ def build_parser() -> argparse.ArgumentParser:
         help=f"log file path (default: {log_file})",
     )
 
-    return parser
-
-
-def run_cmd(*args: str) -> int:
-    logger.info(f"Running command: {shlex.join(args)}")
-    res = subprocess.run(
-        args,
-        encoding="utf-8",
-        capture_output=True,
-        text=True,
+    # -y/--yes is shared by every subcommand and passed in as an argument
+    # (not a global), so mutating commands forward it as `confirm=not yes`.
+    common = argparse.ArgumentParser(add_help=False)
+    common.add_argument(
+        "-y",
+        "--yes",
+        action="store_true",
+        help="skip confirmation prompts for mutating commands",
     )
-    level = logging.DEBUG
-    if res.returncode != 0:
-        level = logging.ERROR
-        logger.error(f"Command failed with return code: {res.returncode}")
-    if res.stdout:
-        logger.log(level, f"stdout:\n{res.stdout}")
+    common.add_argument(
+        "-n",
+        "--dry-run",
+        action="store_true",
+        help="preview commands without executing them",
+    )
 
-    if res.stderr:
-        logger.log(level, f"stderr:\n{res.stderr}")
+    subparsers = parser.add_subparsers(dest="command", required=True)
+    for name, func in COMMANDS.items():
+        sub = subparsers.add_parser(
+            name, parents=[common], help=func.__doc__, description=func.__doc__
+        )
+        sub.set_defaults(func=func)
 
-    return res.returncode
+    return parser
 
 
 def main():
@@ -513,18 +807,28 @@ def main():
     root_logger.addHandler(file_handler)
 
     stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setLevel(logging._nameToLevel[args.log_level])
+    stdout_handler.setLevel(logging.getLevelName(args.log_level))
     stdout_handler.setFormatter(ColorLevelFormatter())
     root_logger.addHandler(stdout_handler)
 
     logger.debug("args: %r", args)
     logger.debug("working directory: %s", os.getcwd())
-    logger.info("log file: %s", args.log_file)
+    logger.info("log file: %s", Path(args.log_file).resolve())
 
-    run_cmd("echo", "Hello, World!")
+    if args.dry_run:
+        logger.warning("DRY-RUN mode: no commands will be executed")
+
+    try:
+        args.func(yes=args.yes, dry_run=args.dry_run)
+    except StepError:
+        sys.exit(1)  # already logged by _abort
+    except Exception:
+        logger.critical("unexpected error", exc_info=True)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
+
 ```
 

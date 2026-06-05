@@ -281,3 +281,12 @@ It doesn't have a plan mode so you have to type `/plan` before your plan request
 
 Ew you can't go to definition when looking at the files.... need to see if there's a workaround somewhere or else use the terminal.
 
+# Fri 2026-06-05 VS Code Update notes
+
+https://code.visualstudio.com/updates/v1_123
+
+```
+/chronicle to gtet personalized productivity tips
+/research (preview/CLI only) - readonly reasearch
+```
+
