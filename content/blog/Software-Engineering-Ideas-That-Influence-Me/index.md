@@ -126,6 +126,7 @@ This is mostly focused on OpenTelemetry, since I really like the "protocol over 
 - [The Worst API Ever Made](https://caseymuratori.com/blog_0025): This is a rather hilarious post that really emphasizes how, when architecting a program, you should write the usage code first, so your users don't hate their experience with your API.
 - [HTML First](https://html-first.com/) - this site explains how to build frontends with HTML first, instead of large JavaScript dependencies. I want to do this primarily because I think it's more maintainable.
 - [Write code that is easy to delete, not easy to extend](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)  - really good article about how locking into an architecture too early can hurt you, and when it's worth it.
+- [AWS re:Invent 2024 - Try again: The tools and techniques behind resilient systems (ARC403) - YouTube](https://www.youtube.com/watch?v=rvHd4Y76-fs) - Mark Brooker goes into the details for retries and things for distributed systems. He also has a great [blog](https://brooker.co.za/blog/) and is the occasional guest on different podcasts and YouTube shows.
 
 # Example Code
 
