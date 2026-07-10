@@ -5,7 +5,7 @@ aliases = [ "2018/09/04/Go-Notes.html" ]
 
 +++
 
-These are notes on writing good Go Code. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [Go Project Notes](@/blog/Go-Project-Notes/index.md)
+These are notes on writing good Go Code. Also see [Go Developer Tooling](@/blog/Go-Developer-Tooling/index.md). and [CLI Project Notes](@/blog/Cli-Project-Notes/index.md)
 
 # Testing
 

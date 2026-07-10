@@ -9,7 +9,7 @@ easier. I develop on a Mac, so install instructions are MacOS-focused.
 
 See [example-go-cli](https://github.com/bbkane/example-go-cli) for a repo using these tools.
 
-Also see [Go Project Notes](@/blog/Go-Project-Notes/index.md).
+Also see [CLI Project Notes](@/blog/Cli-Project-Notes/index.md).
 
 ## [panicparse](https://github.com/maruel/panicparse)
 
