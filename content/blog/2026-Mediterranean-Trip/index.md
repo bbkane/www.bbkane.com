@@ -29,6 +29,8 @@ It's a "me" thing but I'm also more comfortable with self-service than being ser
 
 # Barcelona
 
+TODO: try jpegoptim --max=90 --strip-all *.jpg
+
 ![01-barcelone-gothic-quarter.MP](./index.assets/01-barcelone-gothic-quarter.MP.jpg)
 
 - Travel
