@@ -44,33 +44,32 @@ This works for most links but can only paste the markdown formatted plain text.
 
 Luckily, Simon Willison [wrote how to do this](https://til.simonwillison.net/javascript/copy-rich-text-to-clipboard), and I was able to easily use his function in my own bookmarklet.
 
-So, without further ado, here's the bookmarklet I'm now using to copy the titla and the URL from a page. I've got it saved in my bookmarks bar, so I just click it and happily paste elsewhere.
+So, without further ado, here's the bookmarklet I'm now using to copy the title and URL from a page. It writes a minimal HTML link to the clipboard, without copying the page's styling, so the pasted link uses the destination document's style.
 
-Unfortunately, it doesn't seem to work on Google Docs links
+Drag this link to your bookmarks bar:
+
+<a href='javascript:(async()=>{const t=document.title,u=location.href,a=document.createElement("a");a.href=u;a.textContent=t;const h=a.outerHTML,p=`${t} - ${u}`;try{await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([h],{type:"text/html"}),"text/plain":new Blob([p],{type:"text/plain"})})])}catch(e){prompt("Rich-text copy failed. Copy this instead:",p)}})();'>Title Link RTF</a>
 
 ```javascript
-javascript:(function() {
+javascript:(async () => {
+    const title = document.title;
+    const url = location.href;
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = title;
 
-    function copyRichText(html) {
-        const htmlContent = html;
-        /* Create a temporary element to hold the HTML content */
-        const tempElement = document.createElement("div");
-        tempElement.innerHTML = htmlContent;
-        document.body.appendChild(tempElement);
-        /* Select the HTML content */
-        const range = document.createRange();
-        range.selectNode(tempElement);
-        /* Copy the selected HTML content to the clipboard */
-        const selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand("copy");
-        selection.removeAllRanges();
-        document.body.removeChild(tempElement);
+    const html = link.outerHTML;
+    const plainText = `${title} - ${url}`;
+
+    try {
+        await navigator.clipboard.write([
+            new ClipboardItem({
+                "text/html": new Blob([html], { type: "text/html" }),
+                "text/plain": new Blob([plainText], { type: "text/plain" }),
+            }),
+        ]);
+    } catch (error) {
+        prompt("Rich-text copy failed. Copy this instead:", plainText);
     }
-
-var link = `<a href="${window.location.href}">${document.title}</a>`;
-copyRichText(link);
 })();
 ```
-
