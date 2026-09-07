@@ -22,7 +22,7 @@ Around the beginning of 2026 (this year), my wife convinced me to try a continuo
 
 # Health Coach
 
-I set up a recurring virtual meeting with a health coach from my clinic, and we chatted on Zoom once a month to go over progress and get advice. She asked me to start a food journal and helped me realize that there's no easy fix for this - I needed to (and continue to need to) become the kind of person with habits and hobbies that are healthy.
+I set up a recurring virtual meeting with a health coach from my clinic (Crossover Health, which also employs my wife!), and we chat on Zoom once a month to go over progress and get advice. She asked me to start a food journal and helped me realize that there's no easy fix for this - I needed to (and continue to need to) become the kind of person with habits and hobbies that are healthy.
 
 # Brainwashing Myself
 
@@ -35,7 +35,7 @@ I think this is maybe the most important and subtle set of things I've changed (
   - This is very hard when work gets stressful and I feel internal/external pressure to skip a class or work late without a class to meet a deadline. I cope with this somewhat by reminding myself that I do better work when I'm well exercised.
 - Healthy hobbies
   - When I wake up before the family (I'm an early riser), I try to take a walk or go for a bike ride instead of reading Reddit or watching YouTube or even programming stuff on the side.
-  - Doing active things with my son! I have a four year old and he loves to run and play - I'm taking notes! This is really great, because its a fun way to bond with him and tire us both out.
+  - Doing active things with my son: I have a four year old and he loves to run and play - I'm taking notes! This is really great, because its a fun way to bond with him and tire us both out.
     - Taking him to the park and running around with him (or doing pushups/situp/stretches while he's on the playground equipment), 
     - Jogging along while he's on his little bike
     - Dancing with him to YouTube music in the evenings
@@ -50,10 +50,10 @@ As mentioned before, with the CGM to guide me, I started a food journal. Some th
 - Fiber at the start of every meal I can, usually salad or some kind of root vegetable. At work they have cafes, so this is easy, and at home I mix spinach with olive or avocado oil, sesame oil and soy sauce for a dressing
 - Skipping most desserts
 - A walk after most meals to help digest everything more smoothly
-- A food journal! I'm using (TODO: get name), which is nothing fancy, it just a way to arrange pictures and notes on a timeline. I originally planned to use AI to analyze calories, but its been sufficient to take a picture of each meal (which helps me consider portion size), post it, and, at the end of the day, take a picture of my blood sugar that day and think about why it looked the way it did. This has helped me practice "mindful eating"
-- I haven't needed to formally count calories
+- A food journal! I'm using [StoryPad](https://github.com/theachoem/storypad), which is nothing fancy, it just a way to arrange pictures and notes on a timeline. I originally planned to use AI to analyze calories, but its been sufficient to take a picture of each meal (which helps me consider portion size), post it, and, at the end of the day, take a picture of my blood sugar that day and think about why it looked the way it did. This has helped me practice "mindful eating"
+- I haven't needed to formally count calories.
 - In the last 3 months or so I've started intermittent fasting, restricting food times to between 10AM and 7PM. This is not very extreme, but it means I can eat before my gym classes, including the lunch ones.
-- More psychological, but I'm explicitly trying to shift from the mindset of "food is really good, I should enjoy it when I have it" to "being healthy is really good, I will take satisfaction from being trimmer instead of food". This is hard for me as I grew up somewhat "competing" for food with my two siblings and developed the habit of grabbing food first without thinking too much as it wouldn't be there if I waited.
+- More psychological, but I'm explicitly trying to shift from the mindset of "food is really good, I should enjoy it when I have it" to "being healthy is really good, I will take satisfaction from being trimmer instead of food". This is hard for me as I grew up somewhat "competing" for food with my two siblings and I developed the habit of grabbing food first without thinking too much as it wouldn't be there if I waited. Sometimes I do have unhealthy food and I try really hard to watch my portion size when I decide I really want it anyway.
 - I re-organized our kitchen to make it easier to cook, clearing counter spaces, tossing stuff we were never going to use, getting more shelving, and dividing the fridge into "sections" - leftovers, meats/cheeses, and veggies.
 
 # Hume Scale
