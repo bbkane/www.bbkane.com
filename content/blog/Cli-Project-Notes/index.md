@@ -31,7 +31,14 @@ For an up-to-date example of how I integrate the following code and tools into a
 Install linting/testing tools from Homebrew:
 
 ```bash
-brew install golangci-lint yamllint lefthook taplo
+brew install golangci-lint yamllint lefthook
+```
+
+Additionally, for Rust projects:
+
+```bash
+brew install taplo zig
+cargo install --locked cargo-zigbuild
 ```
 
 Install precommit:
