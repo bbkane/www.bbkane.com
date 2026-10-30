@@ -24,7 +24,7 @@ Around the beginning of 2026 (this year), my wife convinced me to try a continuo
 
 I set up a recurring virtual meeting with a health coach from my clinic (Crossover Health, which also employs my wife!), and we chat on Zoom once a month to go over progress and get advice. She asked me to start a food journal and helped me realize that there's no easy fix for this - I needed to (and continue to need to) become the kind of person with habits and hobbies that are healthy.
 
-# Brainwashing Myself
+# The Right Mindset
 
 I think this is maybe the most important and subtle set of things I've changed (though somewhat obvious in hindsight) - the person I was last year had pre-diabetes, so the person this year has to be a different person - I have to BE a person who's fit. Some things that helped:
 
