@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import copy
 import logging
 import sys
 
@@ -35,6 +36,8 @@ class ColorLevelFormatter(logging.Formatter):
         super().__init__(fmt, *args, **kwargs)
 
     def format(self, record):
+        # Handlers share the record; keep color changes local.
+        record = copy.copy(record)
         record.levelname = self._color_levelname[record.levelname]
         return super().format(record)
 

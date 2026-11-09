@@ -33,6 +33,8 @@ First, use the method above to get the lab working, and, once you have access
 to Python (from Jupyter Notebook, for example), run the following code to set
 up a password:
 
+> Note (2026-11-08): This password setup example may be out of date for current Jupyter/IPython versions.
+
 ```python
 In [1]: from IPython.lib import passwd
 

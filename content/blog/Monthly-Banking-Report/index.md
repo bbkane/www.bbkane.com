@@ -97,7 +97,7 @@ This is where Polars comes in! The first thing I do is read these CSVs in and co
 
 ```python
     cc_trs_all = (
-        pl.read_csv(cc_csv_path, sep="\t")
+        pl.read_csv(cc_csv_path, separator="\t")
         .rename(
             {
                 "Transaction Date": "tr_date",
@@ -107,15 +107,15 @@ This is where Polars comes in! The first thing I do is read these CSVs in and co
                 "Trans. Amount": "tr_amount",
             }
         )
-        .with_column(pl.col("tr_date").str.strptime(pl.Date, "%m/%d/%Y"))
+        .with_columns(pl.col("tr_date").str.strptime(pl.Date, "%m/%d/%Y"))
         # * -1 : make purchases negative, paying off the card positive
-        .with_column(pl.col("tr_amount").str.replace_all(r"[$,]", "").cast(pl.Float64) * -1)
-        .with_column(pl.lit("credit_card").alias("source"))
+        .with_columns(pl.col("tr_amount").str.replace_all(r"[$,]", "").cast(pl.Float64) * -1)
+        .with_columns(pl.lit("credit_card").alias("source"))
         .sort("tr_date")
     )
 
     check_trs_all = (
-        pl.read_csv(categorized_checking_tsv_path, sep="\t")
+        pl.read_csv(categorized_checking_tsv_path, separator="\t")
         .rename(
             {
                 "Date": "tr_date",
@@ -127,9 +127,9 @@ This is where Polars comes in! The first thing I do is read these CSVs in and co
                 # no need to rename category
             }
         )
-        .with_column(pl.col("tr_date").str.strptime(pl.Date, "%m/%d/%Y"))
-        .with_column(pl.col("tr_amount").str.replace_all(r"[$,]", "").cast(pl.Float64))
-        .with_column(pl.lit("checking").alias("source"))
+        .with_columns(pl.col("tr_date").str.strptime(pl.Date, "%m/%d/%Y"))
+        .with_columns(pl.col("tr_amount").str.replace_all(r"[$,]", "").cast(pl.Float64))
+        .with_columns(pl.lit("checking").alias("source"))
     )
 
     trs_all = pl.concat(
@@ -150,7 +150,7 @@ These use a small helper function to write the TSV
 def write_tsv(df: pl.DataFrame, workdir_path: str | pathlib.Path, file_name: str) -> None:
     df.write_csv(
         pathlib.Path(workdir_path, file_name),
-        sep="\t",
+        separator="\t",
     )
 ```
 
@@ -160,7 +160,7 @@ def write_tsv(df: pl.DataFrame, workdir_path: str | pathlib.Path, file_name: str
     month_so_far_costs_by_category = (
         trs_all.filter(pl.col("tr_date") >= first_of_month)
         .select(["category", "tr_amount"])
-        .groupby("category")
+        .group_by("category")
         .agg(
             [
                 pl.col("tr_amount").sum().alias("total").round(2),
@@ -180,10 +180,10 @@ def write_tsv(df: pl.DataFrame, workdir_path: str | pathlib.Path, file_name: str
         trs_all.filter(pl.col("category") != "Int Account Transfer")
         .select(["tr_date", "tr_amount"])
         # TODO: optimize this? the strings are already lexigraphically sortable
-        .with_column(pl.col("tr_date").dt.strftime("%Y-%m-15").str.strptime(pl.Date, "%Y-%m-%d"))
-        .groupby("tr_date")
+        .with_columns(pl.col("tr_date").dt.strftime("%Y-%m-15").str.strptime(pl.Date, "%Y-%m-%d"))
+        .group_by("tr_date")
         .agg(pl.col("tr_amount").sum().alias("total").round(2))
-        .with_column(pl.lit("profit").alias("type"))
+        .with_columns(pl.lit("profit").alias("type"))
         .select(["tr_date", "type", "total"])
         .sort("tr_date")
     )

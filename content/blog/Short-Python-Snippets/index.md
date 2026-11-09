@@ -67,7 +67,6 @@ try:
     # how params work:
     # change into root_dir
     # creating base_name.zip and adding base_dir to it
-    # NOTE: not threadsafe! https://bugs.python.org/issue30511
     shutil.make_archive(
         base_name=base_name,
         format='zip',
@@ -149,7 +148,7 @@ import urllib.request
 
 headers = {"Content-Type": "application/json"}
 req = urllib.request.Request("https://api.com/api", headers=headers)
-with urllib.request.urlopen(req) as resp:
+with urllib.request.urlopen(req, timeout=30) as resp:
     # guess UTF-8 if no encoding found
     encoding = resp.info().get_content_charset("utf-8")
     content = resp.read()
@@ -157,7 +156,7 @@ with urllib.request.urlopen(req) as resp:
     headers = resp.info()
 
     if return_code != 200:
-        raise ValueError(f"Error for fqdn: {fqdn}")
+        raise ValueError(f"Unexpected HTTP status {return_code} for {req.full_url}")
 
     json_data = json.loads(content.decode(encoding))
 ```
@@ -193,7 +192,7 @@ writer.writerows([s._asdict() for s in students])
 ## Executing a subprocess and capturing the output as text
 
 ```python
-from subprocess import run
+import subprocess
 
 result = subprocess.run(
     args=["echo", "hi"],
@@ -266,4 +265,3 @@ python -m debugpy --listen 5678 --wait-for-client ./main.py arg1 arg2
 ```
 
 Nothing will happen because it's waiting for VS Code's debug client to connect. Connect by hitting the green "play" button you just configured.
-

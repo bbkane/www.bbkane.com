@@ -27,8 +27,9 @@ variables ( very similar to a `struct` in C ). Here's an example `Song` class:
 ```python
 class SongVanilla:
 
-    def __init__(self, title: str, length: int): self.title = title
-    self.length = length
+    def __init__(self, title: str, length: int):
+        self.title = title
+        self.length = length
 ```
 
 This is a perfectly functional object, even if the `__init__` method seems a
@@ -36,7 +37,8 @@ little redundant. However if you print it, you something similar to this
 ugliness:
 
 ```python
-s = SongVanilla('mysong', 300) print(s)
+s = SongVanilla('mysong', 300)
+print(s)
 
 # <__main__.SongVanilla object at 0x10be016a0>
 ```
@@ -47,17 +49,19 @@ The default `__repr__` method for classes is very unhelpful. Let's add one:
 ```python
 class SongVanilla:
 
-    def __init__(self, title: str, length: int): self.title = title
-    self.length = length
+    def __init__(self, title: str, length: int):
+        self.title = title
+        self.length = length
 
-    def __repr__(self): return f'SongVanilla({self.title!r},
-    {self.length!r})'
+    def __repr__(self):
+        return f'SongVanilla({self.title!r}, {self.length!r})'
 ```
 
 This does get us a nice print method:
 
 ```python
-s = SongVanilla('mysong', 300) print(s)
+s = SongVanilla('mysong', 300)
+print(s)
 
 # SongVanilla('mysong', 300)
 ```

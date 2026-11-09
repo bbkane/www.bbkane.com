@@ -647,7 +647,7 @@ Next, replicate the function settings we added to Terraform to `local.settings.j
 }
 ```
 
-Finally, add the following code to `__init__.py`. We'll walk through it in more detail soon. If I were writing this code again, I wouldn't use `ConcertAzureFuncError` to handle control flow, but this works and it's not too bad :). See below the code dump for explanations of each piece.
+Finally, add the following code to `__init__.py` (Python 3.10 or later). We'll walk through it in more detail soon. If I were writing this code again, I wouldn't use `ConcertAzureFuncError` to handle control flow, but this works and it's not too bad :). See below the code dump for explanations of each piece.
 
 ```python
 import json
@@ -658,7 +658,6 @@ import random
 import string
 import sys
 import traceback
-import typing as ty
 
 from azure.identity import DefaultAzureCredential
 from azure.identity import ManagedIdentityCredential
@@ -672,7 +671,7 @@ from azure.mgmt.keyvault.models import AccessPolicyEntry
 
 import azure.functions as func
 
-Numeric = ty.Union[int, float]
+Numeric = int | float
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -692,8 +691,8 @@ class ConcertAzureFuncError(Exception):
         *,
         message: str,
         status_code: int,
-        data: ty.Dict[str, ty.Union[str, Numeric]] = None,
-        debug_data: ty.Union[str, Numeric] = None,
+        data: dict[str, str | Numeric] | None = None,
+        debug_data: dict[str, str | Numeric] | None = None,
     ):
         self.message = message
         self.status_code = status_code
@@ -703,7 +702,7 @@ class ConcertAzureFuncError(Exception):
 
 def create_keyvault(
     *,
-    credential: ty.Union[ManagedIdentityCredential, DefaultAzureCredential],
+    credential: ManagedIdentityCredential | DefaultAzureCredential,
     subscription_id: str,
     tenant_id: str,
     resource_group_name: str,
@@ -915,7 +914,7 @@ Now for the meat of this code, creating a Key Vault with `create_keyvault`:
 We start off requiring some parameters. Most of these are self-explanatory, but the `credential` is interesting:
 
 ```python
-credential: ty.Union[ManagedIdentityCredential, DefaultAzureCredential],
+credential: ManagedIdentityCredential | DefaultAzureCredential,
 ```
 
 When we run locally, we'll be authenticating with a `DefaultAzureCredential` provided by `az login` to authorize the function to  create a Key Vault on our behalf. When this function runs in Azure, it'll use a  `ManagedIdentityCredential` to  do this. It gets this credential from the System Assigned Identity we set up in our Terraform code.

@@ -186,28 +186,3 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
-## Extras
-
-###  `stdin` or a file
-
-If I want to use either `stdin` or a file for an argument, I can use this:
-
-```python
-# Use a file or stdin for an argument
-# https://stackoverflow.com/a/11038508/2958070
-parser.add_argument(
-    "infile",
-    nargs="?",
-    type=argparse.FileType("r"),
-    default=sys.stdin,
-    help="Use a file or stdin",
-)
-```
-
-Later (after parsing) I can read the contents like this:
-
-```python
-with args.infile:
-    pass
-```

@@ -22,7 +22,7 @@ with open("verses.txt") as fp, open("output.md", "w") as ofp:
         line = urllib.parse.quote(line)
         url = f"https://bible-api.com/{line}?translation=kjv"
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=30) as resp:
             content = resp.read()
             return_code = resp.getcode()
             headers = resp.info()

@@ -54,7 +54,8 @@ import requests
 
 
 def main():
-    response = requests.get('http://127.0.0.1:5000/get_ips')
+    response = requests.get('http://127.0.0.1:5000/get_ips', timeout=30)
+    response.raise_for_status()
     # pdb.set_trace()
     response_json = response.json()
     pprint.pprint(response_json)

@@ -14,6 +14,7 @@ This is useful for quick scripts where you want pretty logs, but probably not mo
 ```python
 #!/usr/bin/env python3
 
+import copy
 import logging
 import sys
 
@@ -49,6 +50,8 @@ class ColorLevelFormatter(logging.Formatter):
         super().__init__(fmt, *args, **kwargs)
 
     def format(self, record):
+        # Handlers share the record; keep color changes local.
+        record = copy.copy(record)
         record.levelname = self._color_levelname[record.levelname]
         return super().format(record)
 
@@ -104,7 +107,7 @@ def setup_global_logging(
     """
     log_dir = Path(log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
-    logname = log_dir / datetime.datetime.now().strftime("%Y-%m-%d.%H.%M.%S.log")
+    logname = log_dir / datetime.now().strftime("%Y-%m-%d.%H.%M.%S.log")
 
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(stream_level or level)
@@ -463,6 +466,7 @@ class ColorLevelFormatter(logging.Formatter):
         super().__init__(fmt, *args, **kwargs)
 
     def format(self, record):
+        # Handlers share the record; keep color changes local.
         record = copy.copy(record)
         record.levelname = self._color_levelname[record.levelname]
         return super().format(record)

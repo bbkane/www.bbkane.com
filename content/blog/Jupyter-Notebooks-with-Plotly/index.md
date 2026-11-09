@@ -54,7 +54,7 @@ This opens up a Jupyter notebook in your browser (usually at http://localhost:88
 ```python
 # verify that I'm using the right Python
 import sys
-sys.executable'
+sys.executable
 ```
 
 ![](./sys_executable.png)
