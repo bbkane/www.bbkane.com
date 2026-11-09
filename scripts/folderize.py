@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import argparse
 import logging
@@ -49,7 +48,7 @@ def main():
 
     logging.basicConfig(
         format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=logging.getLevelName(args.log_level),
+        level=args.log_level,
     )
 
     file: Path

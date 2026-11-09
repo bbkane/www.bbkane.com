@@ -33,7 +33,6 @@ So, here's the skeleton:
 
 ```python
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import argparse
 import logging
@@ -106,7 +105,7 @@ def main():
 
     logging.basicConfig(
         format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=logging.getLevelName(args.log_level),
+        level=args.log_level,
     )
 
     match args.subcommand_name:
@@ -134,7 +133,6 @@ This is if I don't need subcommands, but instead I just need to parse a few flag
 
 ```python
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import argparse
 import logging
@@ -177,7 +175,7 @@ def main():
 
     logging.basicConfig(
         format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=logging.getLevelName(args.log_level),
+        level=args.log_level,
     )
 
     logger.debug("debug")
@@ -213,4 +211,3 @@ Later (after parsing) I can read the contents like this:
 with args.infile:
     pass
 ```
-

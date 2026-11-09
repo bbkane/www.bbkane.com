@@ -13,7 +13,6 @@ This is useful for quick scripts where you want pretty logs, but probably not mo
 
 ```python
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import logging
 import sys
@@ -76,7 +75,6 @@ loggers we care about.
 
 ```python
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 from datetime import datetime
 from pathlib import Path
@@ -304,7 +302,6 @@ This also demos setting the log level from an argparse CLI switch:
 
 ```python
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 import argparse
 import logging
@@ -397,7 +394,6 @@ Example to replace a shell script with good logs. This gets long because it supp
 
 ```python
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """examplecli.py — template for a logged, subprocess-driven CLI.
 
 A small, self-contained starting point for local ops/automation scripts. It
@@ -807,7 +803,7 @@ def main():
     root_logger.addHandler(file_handler)
 
     stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setLevel(logging.getLevelName(args.log_level))
+    stdout_handler.setLevel(args.log_level)
     stdout_handler.setFormatter(ColorLevelFormatter())
     root_logger.addHandler(stdout_handler)
 
@@ -831,4 +827,3 @@ if __name__ == "__main__":
     main()
 
 ```
-
