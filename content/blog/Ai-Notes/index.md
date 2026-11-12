@@ -290,3 +290,6 @@ https://code.visualstudio.com/updates/v1_123
 /research (preview/CLI only) - readonly reasearch
 ```
 
+# Thu 2026-11-12 AI Slides
+
+I've had good luck using [Slidev](https://sli.dev/)(also note it comes with AI skills) and I'd like to try [Motion Canvas - Visualize complex ideas programmatically](https://motioncanvas.io/) for complex state diagrams as well...
