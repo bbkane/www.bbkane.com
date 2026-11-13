@@ -7,7 +7,7 @@
 {% block content %}
 <h1>{{ page.title }}</h1>
 <blockquote>
-    Updated {{ page.updated | default(value=page.date) | date(format="%a %Y-%m-%d") }} | {{page.word_count }} words
+    Updated {% if page.updated %}{{ page.updated | date(format="%a %Y-%m-%d") }}{% else %}{{ page.date | date(format="%a %Y-%m-%d") }}{% endif %} | {{page.word_count }} words
 </blockquote>
 {% if page.toc %}
 <ul>

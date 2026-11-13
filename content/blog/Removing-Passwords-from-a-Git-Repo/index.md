@@ -38,7 +38,7 @@ def main():
     else:
         raise SystemExit("Platform not supported")
 
-    {% comment %}Need to escape the double quotes below {% endcomment %}
+    {# Need to escape the double quotes below #}
     {% raw %}
     find_str = r"find . -type f -exec {sed_program} -i -e 's/{first_word}/{second_word}/g' {{}} \;"
     {% endraw %}

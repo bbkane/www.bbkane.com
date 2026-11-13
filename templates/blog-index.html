@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-<!-- https://www.getzola.org/documentation/templates/overview/ -->
-<!-- section.html - applied: blog directory - vars: section vars -->
+{# https://www.getzola.org/documentation/templates/overview/ #}
+{# section.html - applied: blog directory - vars: section vars #}
 
 {% block title %}Blog Index{% endblock title %}
 
@@ -13,7 +13,7 @@
 </h1>
 
 {% for page in section.pages %}
-<h3><a href="{{ page.permalink | safe }}">{{ page.title }}</a> {{ page.updated | default(value=page.date) }} | {{
+<h3><a href="{{ page.permalink | safe }}">{{ page.title }}</a> {% if page.updated %}{{ page.updated }}{% else %}{{ page.date }}{% endif %} | {{
   page.word_count }}
   words
 </h3>

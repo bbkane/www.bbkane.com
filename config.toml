@@ -10,8 +10,13 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+# These pages contain literal template syntax in examples.
+skip_content_templating = [
+  "blog/How-I-Blog/index.md",
+  "blog/Tracking-Work-Faster-With-Command-Line-Jira/index.md",
+]
+
 [markdown.highlighting]
-code = true
 # https://www.getzola.org/documentation/content/syntax-highlighting/
 # https://github.com/getzola/giallo?tab=readme-ov-file#themes
 theme = "dracula"
