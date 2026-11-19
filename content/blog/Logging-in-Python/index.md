@@ -1,142 +1,89 @@
 +++
 title = "Logging in Python"
 date = 2018-09-05
-updated = 2025-06-24
+updated = 2026-11-19
 aliases = [ "2018/09/05/Logging-in-Python.html" ]
 +++
 
-## Setup: Colors + Minimal metadata
+## Setup
 
-This is useful for quick scripts where you want pretty logs, but probably not module information or timestamps...
+I kept re-implementing slightly different logging setups, so now I keep one small, stdlib-only module: [`log.py`](https://github.com/bbkane/dotfiles/blob/master/bin_common/bin_common/lib/log.py) ([permalink](https://github.com/bbkane/dotfiles/blob/a0fc5c37b09b6b9fecad83822f2e6eeeefa8990b/bin_common/bin_common/lib/log.py)). Copy it next to your script as `lib/log.py` (with an empty `lib/__init__.py`) and import it with `from lib import log`.
+
+- `log.to_stream(...)` and `log.to_file(...)` build handlers. Each takes its own `level`, `fmt`, and `utc`.
+- `log.setup(*handlers)` installs them on the root logger, replacing any existing handlers. It also accepts any stdlib `logging.Handler`.
+- Format presets: `log.MSG` (`LEVEL: msg`), `log.SHORT` (`LEVEL file:line: msg`, the terminal default), `log.LONG` (timestamp, logger, file, line, and function, then the message on its own line; the file default), and `log.LINE` (one line with a timestamp; the default for rotating files).
+- `log.add_log_args(parser)` adds `--log-level` (and `--log-file` if you pass `log_file=`).
+
+### Colored terminal
+
+Level names are colored when the stream is a terminal (and `NO_COLOR` isn't set).
 
 ![image-20250624050350282](./index.assets/image-20250624050350282.png)
 
 ```python
 #!/usr/bin/env python3
 
-import copy
-import logging
-import sys
-
-logger = logging.getLogger(__name__)
-
-
-class Color:
-    reset = '\x1b[0m'
-    grey = '\x1b[38;21m'
-    blue = '\x1b[38;5;39m'
-    yellow = '\x1b[38;5;226m'
-    red = '\x1b[38;5;196m'
-    bold_red = '\x1b[31;1m'
-
-
-# logic from https://stackoverflow.com/a/75339761
-class ColorLevelFormatter(logging.Formatter):
-
-    _color_levelname = {
-        'DEBUG': f"{Color.grey}DEBUG{Color.reset}",
-        'INFO': f"{Color.blue}INFO{Color.reset}",
-        'WARNING': f"{Color.yellow}WARNING{Color.reset}",
-        'ERROR': f"{Color.red}ERROR{Color.reset}",
-        'CRITICAL': f"{Color.bold_red}CRITICAL{Color.reset}",
-    }
-
-    def __init__(
-            self,
-            fmt: str = "%(levelname)s %(filename)s:%(lineno)s : %(message)s",
-            *args,
-            **kwargs,
-    ):
-        super().__init__(fmt, *args, **kwargs)
-
-    def format(self, record):
-        # Handlers share the record; keep color changes local.
-        record = copy.copy(record)
-        record.levelname = self._color_levelname[record.levelname]
-        return super().format(record)
-
-
-root_logger = logging.getLogger()
-root_logger.setLevel(logging.DEBUG)
-stdout_handler = logging.StreamHandler(sys.stdout)
-stdout_handler.setFormatter(ColorLevelFormatter())
-root_logger.addHandler(stdout_handler)
-
-logger.debug("Debugging information")
-logger.info("Informational message")
-logger.warning("Warning message")
-logger.error("Error message")
-logger.critical("Critical issue")
-```
-
-## Setup: Log to file + stderr
-
-This is the code driving the program - `main.py` for me usually.
-
-This sets the format for all loggers and turns on debug output for just the
-loggers we care about.
-
-```python
-#!/usr/bin/env python
-
-from datetime import datetime
-from pathlib import Path
+import argparse
 import logging
 
-__author__ = "Benjamin Kane"
-__version__ = "0.1.0"
+from lib import log
 
 logger = logging.getLogger(__name__)
-
-
-def setup_global_logging(
-    log_dir: str = "logs",
-    loggers=[logging.getLogger("__main__"), logging.getLogger(__package__)],
-    level=logging.INFO,
-    global_level=None,
-    stream_level=logging.INFO,
-):
-    """Set up basic logging to stderr and a log directory
-
-    loggers: defaults to this module's logger and this module's package's logger
-    level: set log level for `loggers` (above parameter). Defaults to logging.INFO
-    global_level: let log level for loggers in in `loggers` (like 3rd party libs) Defaults to logging.ERROR.
-    stream_level: set log level of stderr specifically. Defaults to `level`'s value
-
-    See `logging.Logger.manager.loggerDict` for a list of all loggers
-    """
-    log_dir = Path(log_dir)
-    log_dir.mkdir(parents=True, exist_ok=True)
-    logname = log_dir / datetime.now().strftime("%Y-%m-%d.%H.%M.%S.log")
-
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(stream_level or level)
-
-    logging.basicConfig(
-        format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=global_level,  # logging package sets to logging.ERROR if it's None here
-        handlers=(stream_handler, logging.FileHandler(logname)),
-    )
-
-    if loggers is not None:
-        for l in loggers:
-            if l is not logging.getLogger():
-                l.setLevel(level)
 
 
 def main():
-    setup_global_logging(level=logging.DEBUG)
+    parser = argparse.ArgumentParser()
+    log.add_log_args(parser)
+    args = parser.parse_args()
 
-    # ...do actual work, and be content that it will be logged appropriately
-    logger.debug("I'm too loggy for my tree")
-    logger.info("I'm too loggy for my tree")
-    logger.warning("I'm too loggy for my tree")
-    logger.error("I'm too loggy for my tree")
-    logger.critical("I'm too loggy for my tree")
+    log.setup(log.to_stream(args.log_level))
+
+    logger.debug("Debugging information")
+    logger.info("Informational message")
+    logger.warning("Warning message")
+    logger.error("Error message")
+    logger.critical("Critical issue")
 
 
 if __name__ == "__main__":
     main()
+```
+
+### Terminal + log file per run
+
+The terminal shows `--log-level` and above; the file captures everything at DEBUG with timestamps, file locations, and function names.
+
+```python
+parser = argparse.ArgumentParser()
+log.add_log_args(parser, log_file=log.per_run_path())  # /tmp/<script>-<timestamp>.log
+args = parser.parse_args()
+
+log.setup(log.to_stream(args.log_level), log.to_file(args.log_file))
+logger.info("log file: %s", args.log_file)
+```
+
+### Background (hooks, cron)
+
+No terminal, so log only to a size-bounded rotating file. Rotating files default to single-line entries with UTC timestamps, which are easier to `grep`.
+
+```python
+log.setup(
+    log.to_file(
+        Path.home() / "logs" / "myhook.log",
+        level=os.environ.get("MYHOOK_LOG_LEVEL", "INFO"),
+        rotate_bytes=256 * 1024,
+    )
+)
+```
+
+### Custom formats and noisy libraries
+
+```python
+log.setup(
+    log.to_stream(args.log_level, fmt=log.MSG),
+    log.to_file(args.log_file, fmt=log.LONG),
+    quiet=["urllib3"],  # raise noisy third-party loggers to WARNING
+)
 ```
 
 ## How to use a logger
@@ -248,21 +195,15 @@ from azure import identity
 from azure.mgmt.dns import DnsManagementClient
 import azure.mgmt.dns.models as dm
 import logging
-import logging.handlers
 import os
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    handlers=(
-        logging.StreamHandler(),
-        # overwrite log file each time
-        logging.handlers.RotatingFileHandler("tmplog.log", mode="w"),
-    )
-)
+from lib import log
+
 logger = logging.getLogger(__name__)
 
 
 def main():
+    log.setup(log.to_stream("DEBUG"), log.to_file(log.per_run_path()))
     logger.debug("starting run")
     cred = identity.ClientSecretCredential(
         client_id=os.environ["AZURE_CLIENT_ID"],
@@ -393,7 +334,7 @@ def run_cmd(*args: str) -> int:
 
 # Replacing Shell Scripts
 
-Example to replace a shell script with good logs. This gets long because it supports streaming commands as well as the fancy logging
+Example to replace a shell script with good logs. This gets long because it supports streaming commands. It uses [`log.py`](#setup) for the logging setup.
 
 ```python
 #!/usr/bin/env python3
@@ -402,7 +343,7 @@ Example to replace a shell script with good logs. This gets long because it supp
 A small, self-contained starting point for local ops/automation scripts. It
 shows the patterns worth reusing:
 
-  * structured logging — colorized terminal output plus a full file log;
+  * logging via lib/log.py — colorized terminal output plus a full file log;
   * ``run_cmd`` — a subprocess wrapper that logs every command and captures its
     output, with optional confirm prompt, live streaming, timeout, and dry-run;
   * fail-fast helpers — ``run_or_abort`` / ``StepError`` to bail out of a
@@ -416,7 +357,6 @@ this file and add your own ``cmd_*`` functions to the ``COMMANDS`` table.
 from __future__ import annotations
 
 import argparse
-import copy
 import logging
 import os
 import shlex
@@ -426,50 +366,17 @@ import threading
 from pathlib import Path
 from typing import NoReturn
 
+from lib import log
+
 logger = logging.getLogger(__name__)
 
 script_dir = Path(__file__).parent.resolve()
 os.chdir(script_dir)
 
 # alternative for temporary logs
-# now = datetime.datetime.now().isoformat(timespec="seconds")
-# log_file = f"/tmp/{Path(__file__).stem}-{now}.log"
+# log_file = log.per_run_path()
 
 log_file = f"{script_dir.name}.{Path(__file__).stem}.log"
-
-
-class Color:
-    reset = "\x1b[0m"
-    grey = "\x1b[38;21m"
-    blue = "\x1b[38;5;39m"
-    yellow = "\x1b[38;5;226m"
-    red = "\x1b[38;5;196m"
-    bold_red = "\x1b[31;1m"
-
-
-# logic from https://stackoverflow.com/a/75339761
-class ColorLevelFormatter(logging.Formatter):
-    _color_levelname = {
-        "DEBUG": f"{Color.grey}DEBUG{Color.reset}",
-        "INFO": f"{Color.blue}INFO{Color.reset}",
-        "WARNING": f"{Color.yellow}WARNING{Color.reset}",
-        "ERROR": f"{Color.red}ERROR{Color.reset}",
-        "CRITICAL": f"{Color.bold_red}CRITICAL{Color.reset}",
-    }
-
-    def __init__(
-        self,
-        fmt: str = "%(levelname)s %(filename)s:%(lineno)s: %(message)s",
-        *args,
-        **kwargs,
-    ):
-        super().__init__(fmt, *args, **kwargs)
-
-    def format(self, record):
-        # Handlers share the record; keep color changes local.
-        record = copy.copy(record)
-        record.levelname = self._color_levelname[record.levelname]
-        return super().format(record)
 
 
 def _as_text(data: object) -> str:
@@ -753,17 +660,7 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument(
-        "--log-level",
-        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-        default="INFO",
-        help="terminal log level",
-    )
-    parser.add_argument(
-        "--log-file",
-        default=log_file,
-        help=f"log file path (default: {log_file})",
-    )
+    log.add_log_args(parser, log_file=log_file)
 
     # -y/--yes is shared by every subcommand and passed in as an argument
     # (not a global), so mutating commands forward it as `confirm=not yes`.
@@ -795,21 +692,7 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    root_logger = logging.getLogger()
-    root_logger.setLevel(logging.DEBUG)
-
-    file_handler = logging.FileHandler(args.log_file, mode="a", encoding="utf-8")
-    file_handler.setFormatter(
-        logging.Formatter(
-            "# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s"
-        )
-    )  # noqa: E501
-    root_logger.addHandler(file_handler)
-
-    stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setLevel(args.log_level)
-    stdout_handler.setFormatter(ColorLevelFormatter())
-    root_logger.addHandler(stdout_handler)
+    log.setup(log.to_stream(args.log_level), log.to_file(args.log_file))
 
     logger.debug("args: %r", args)
     logger.debug("working directory: %s", os.getcwd())

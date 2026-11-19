@@ -1,6 +1,7 @@
 +++
 title = "Argparse Template"
 date = 2023-08-29
+updated = 2026-11-19
 +++
 
 ## Subcommand Skeleton
@@ -25,7 +26,7 @@ This is a pretty rigid structure that I find easy to read and expand. It has the
 - Subcommands can be grouped by subsections, almost like you can group files by directory
 - No positional arguments - commands receive all parameters via `--flag`s
 
-I wrote [a Go library](https://github.com/bbkane/warg) to give me this easily, but argparse is flexible enough to do it in Python without too much work. I'm also adding a few convenience flags I find useful, like `--log-level`.
+I wrote [a Go library](https://github.com/bbkane/warg) to give me this easily, but argparse is flexible enough to do it in Python without too much work. I'm also adding a few convenience flags I find useful, like `--log-level`. Logging is set up with my small [`log.py`](@/blog/Logging-in-Python/index.md#setup) module - copy it next to the script as `lib/log.py`.
 
 I try to stick to stdlib Python, but if I'm regularly passing files as flag values, I also use [shtab](https://github.com/iterative/shtab) to add zsh completion for files/directories.
 
@@ -38,6 +39,7 @@ import argparse
 import logging
 import sys
 
+from lib import log
 
 __author__ = "Benjamin Kane"
 __version__ = "0.1.0"
@@ -59,12 +61,7 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument(
-        "--log-level",
-        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-        default="INFO",
-        help="log level",
-    )
+    log.add_log_args(parser)
 
     subcommands = parser.add_subparsers(dest="subcommand_name", required=True)
 
@@ -103,10 +100,7 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    logging.basicConfig(
-        format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=args.log_level,
-    )
+    log.setup(log.to_stream(args.log_level))
 
     match args.subcommand_name:
         case "greet":
@@ -138,6 +132,8 @@ import argparse
 import logging
 import sys
 
+from lib import log
+
 __author__ = "Benjamin Kane"
 __version__ = "0.1.0"
 __doc__ = f"""
@@ -158,12 +154,7 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument(
-        "--log-level",
-        choices=["NOTSET", "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-        default="INFO",
-        help="log level",
-    )
+    log.add_log_args(parser)
 
     return parser
 
@@ -173,10 +164,7 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    logging.basicConfig(
-        format="# %(asctime)s %(levelname)s %(name)s %(filename)s:%(lineno)s\n%(message)s\n",
-        level=args.log_level,
-    )
+    log.setup(log.to_stream(args.log_level))
 
     logger.debug("debug")
     logger.info("info")
